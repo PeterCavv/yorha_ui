@@ -1,0 +1,102 @@
+{
+    "auth": {
+        "title": "yorha",
+        "subtitle1": "for the glory of mankind",
+        "subtitle2": "じんるいへのかがやき",
+        "button": "entrar",
+        "error_user_message": "Usuario no registrado.",
+        "error_pass_message": "Algo sali\u00f3 mal. Revise el usuario y contraseña introducidos.",
+        "loading_message1": "cargando - ",
+        "loading_message2": "Comprobando Sistema",
+        "loading_success": "Estatus de BDD: Verde. Inicializando..."
+    },
+    "start": {
+        "title": "Men\u00fa de Inicio",
+        "subtitle": "スタートメニュー",
+        "fabrication_title": "Fabricaci\u00f3n",
+        "fabrication_subtitle1": "Creaci\u00f3n de Androides",
+        "fabrication_desc1": "Pulse el bot\u00f3n para acceder al ",
+        "fabrication_desc1_2": "formulario de creaci\u00f3n de androide.",
+        "fabrication_desc1_3": "Ser\u00e1 capaz de producir androides con las posibles siguientes caracter\u00edsticas:",
+        "fabrication_button": "Crear un androide",
+        "fabrication_subtitle2": "Caracter\u00edsticas de Androide",
+        "fabrication_desc2_title1": "Apariencia",
+        "fabrication_desc2_appearance1": "Masculina",
+        "fabrication_desc2_appearance2": "Femenina",
+        "fabrication_desc2_appearance3": "Andr\u00f3gina",
+        "fabrication_desc2_title2": "Informaci\u00f3n b\u00e1sica de un androide",
+        "fabrication_desc2_info1": "Nombre",
+        "fabrication_desc2_info2": "Modelo",
+        "fabrication_desc2_info3": "Tipo",
+        "fabrication_desc2_info4": "Biograf\u00eda"
+    },
+    "fabrication": {
+        "subtitle": "製造",
+        "form_title" : "Dise\u00f1o de Androide",
+        "caution": "Importante",
+        "caution_message": "Para realizar el env\u00edo del formulario, se deben de cumplir los siguientes requisitos:",
+        "caution_list1": "Debe de ser de uno de los modelos disponibles.",
+        "caution_list2": "Si el androide es un modelo 'YoRHa', debe de tener un rol. El nombre del androide se completar\u00e1 con la informaci\u00f3n necesaria.",
+        "caution_list3": "Si el androide es un modelo 'Special', se debe de escribir su nombre. ",
+        "caution_list3_mark": "¡Este modelo no tiene tipo!",
+        "subcaution": "*Si no se selecciona una apariencia al enviar el formulario, esta se rellenar\u00e1 autom\u00e1ticamente con la apariencia 'Femenina'.",
+        "operator_info": "¡Recuerda asignar un androide al crear un 'Operator'!"
+    },
+    "data_base": {
+        "title": "Base de datos",
+        "subtitle": "データベース",
+        "androids": "Androides",
+        "reports": "Informes",
+        "android_data": "Datos de Androides",
+        "reports_data": "Datos de Informes",
+        "android_info": "Informaci\u00f3n de {n}",
+        "android_state": "Estado",
+        "android_null_desc": "No hay informaci\u00f3n.",
+        "android_type_number": "N\u00famero",
+        "android_no_type": "-",
+        "short_name": "Nombre corto",
+        "types": "{n} (Tipo {m})"
+    },
+    "system": {
+        "title": "Sistema",
+        "subtitle": "データベース",
+        "page_title": "Manipulaci\u00f3n de datos",
+        "info_title": "A\u00f1adir/Eliminar/Editar Datos",
+        "info_desc": "Aqu\u00ed puedes a\u00f1adir o eliminar tipos de androides,",
+        "mark_desc": "asignar androides a los tipo 'Operator'",
+        "info_desc2": "y asignar a un androide uno de tipo 'Executioner'.",
+        "caution": "*¡Atenci\u00f3n!",
+        "caution_desc": "No puedes asignar un 'Executioner' a un 'Operator'.",
+        "operators": "Operators",
+        "operator_title": "Operator's Data",
+        "types": "Types",
+        "types_title": "Types's Data",
+        "execute": "Execute",
+        "execute_title": "Executers Data"
+
+    },
+    "information": {
+        "title": "Informaci\u00f3n ",
+        "desc": "La informaci\u00f3n necesaria ser\u00e1 mostrada aqu\u00ed.",
+        "content": "Contenido:",
+        "data_empty": "-",
+        "null_desc": "No existe informaci\u00f3n"
+    },
+    "form": {
+        "submit": "Enviar"
+    },
+    "data_search": {
+        "android_search": "Buscar androide",
+        "android_message": "No se encontraron androides.",
+        "reports_search": "Buscar informe",
+        "reports_message": "No se encontraron informes.",
+        "operators": "Buscar un operador",
+        "operator_message": "No se encontraron operadores",
+        "types": "Buscar un tipo",
+        "type_message": "No se encontraron tipos"
+    },
+    "loggin": {
+        "user": "Usuario",
+        "password": "Contraseña"
+    }
+}

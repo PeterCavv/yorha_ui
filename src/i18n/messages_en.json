@@ -1,0 +1,103 @@
+{
+    "auth": {
+        "title": "yorha",
+        "subtitle1": "for the glory of mankind",
+        "subtitle2": "じんるいへのかがやき",
+        "button": "enter",
+        "error_user_message": "User not registered.",
+        "error_pass_message": "Something went wrong. Please check the user and password.",
+        "loading_message1": "loading - ",
+        "loading_message2": "Cheacking System",
+        "loading_success": "Data Base Status: Green. Initializing..."
+    },
+    "start": {
+        "title": "Start Menu",
+        "subtitle": "スタートメニュー",
+        "fabrication_title": "Fabrication",
+        "fabrication_subtitle1": "Android Manufacture",
+        "fabrication_desc1": "Click on the button below to access to ",
+        "fabrication_desc1_2": "android creation form",
+        "fabrication_desc1_3": ". You will be able to create an android with the following features:",
+        "fabrication_button": "Create an android",
+        "fabrication_subtitle2": "Android Features",
+        "fabrication_desc2_title1": "Appearance",
+        "fabrication_desc2_appearance1": "Male",
+        "fabrication_desc2_appearance2": "Female",
+        "fabrication_desc2_appearance3": "Androgyne",
+        "fabrication_desc2_title2": "Basic Android Information",
+        "fabrication_desc2_info1": "Name",
+        "fabrication_desc2_info2": "Model",
+        "fabrication_desc2_info3": "Type",
+        "fabrication_desc2_info4": "Biography"
+    },
+    "fabrication": {
+        "subtitle": "製造",
+        "form_title" : "Android Design",
+        "caution": "Caution",
+        "caution_message": "In order to submit the following form, the following requirements must be met:",
+        "caution_list1": "It has to be one of the two available models.",
+        "caution_list2": "If the android is a 'YoRHa' model, it must have a rol. The name will be autofilled with the necessary information.",
+        "caution_list3": "If the android is a 'Special' model, the name must be written.",
+        "caution_list3_mark": "This model have no type!",
+        "subcaution": "*If you didn't select an appearance when submitting the form, it will be autofilled in with the 'Female' appearance.",
+        "operator_info": "Remember to assign an android if you create an Operator YoRHa model!"
+    },
+    "data_base": {
+        "title": "Data Base",
+        "subtitle": "データベース",
+        "androids": "Androids",
+        "reports": "Reports",
+        "android_data": "Androids Data",
+        "reports_data": "Reports Data",
+        "android_info": "{n} Information",
+        "android_state": "State",
+        "android_type_number": "Number",
+        "short_name": "Short name",
+        "types": "{n} (Type {m})",
+        "type_desc": "Type Description",
+        "btn_assing_android": "Assing an android"
+    },
+    "system": {
+        "title": "System",
+        "subtitle": "データベース",
+        "page_title": "Data Manipulation",
+        "info_title": "Add/Remove/Edit Data",
+        "info_desc": "Here you can add or remove android types,",
+        "mark_desc": "assign androids to an 'Operator' android type",
+        "info_desc2": "and assign to an android an 'Executioner' android type.",
+        "caution": "*Caution!",
+        "caution_desc": "You can`t assign a 'Executioner' to a Operator.",
+        "operators": "Operators",
+        "operator_title": "Operator's Data",
+        "types": "Types",
+        "types_title": "Types's Data",
+        "execute": "Execute",
+        "execute_title": "Executers Data"
+
+    },
+    "information": {
+        "title": "Information",
+        "desc": "The necessary information will be shown here.",
+        "content": "Content:",
+        "data_empty": "-",
+        "null_desc": "No information"
+    },
+    "form": {
+        "submit": "Submit"
+    },
+    "data_search": {
+        "android_search": "Search an android",
+        "android_message": "No androids found.",
+        "reports_search": "Search a report",
+        "reports_message": "No reports found.",
+        "operators": "Search an Operator",
+        "operator_message": "No operators found",
+        "types": "Search types",
+        "type_message": "No types found"
+        
+    },
+    "loggin": {
+        "user": "User",
+        "password": "Password"
+    }
+}
