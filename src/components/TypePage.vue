@@ -17,7 +17,7 @@
                                             {{ type.name }}
                                         </button>
                                     </li>
-                                </div>
+                                </div> 
                             </div>
                             <div v-else style="text-align: left;">{{ $t('data_search.type_message')}}</div>
                         </ul>
@@ -25,7 +25,7 @@
                 </blockquote>
             </td>
 
-            <InfoWindow :dataUse="selectedType" :dataType="'type'" :addWindow="addWindow"/>
+            <InfoWindow :dataUse="selectedType" :dataType="'type'" :addWindow="addWindow" :edit="false"/>
 
         </tr>
     </table>

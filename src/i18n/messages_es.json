@@ -55,7 +55,11 @@
         "android_type_number": "N\u00famero",
         "android_no_type": "-",
         "short_name": "Nombre corto",
-        "types": "{n} (Tipo {m})"
+        "types": "{n} (Tipo {m})",
+        "type_desc": "Descripci\u00f3n del tipo",
+        "btn_assing_android": "Asignar un androide",
+        "edit_type": "Editar tipo",
+        "editing_type": "Editar Tipo {n}"
     },
     "system": {
         "title": "Sistema",

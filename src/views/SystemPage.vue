@@ -111,7 +111,7 @@ export default {
 }
 
 .innerbox2{
-    min-width: 25rem;
-    max-width: 25rem;
+    min-width: 28rem;
+    max-width: 28rem;
 }
 </style>

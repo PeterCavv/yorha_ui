@@ -55,7 +55,9 @@
         "short_name": "Short name",
         "types": "{n} (Type {m})",
         "type_desc": "Type Description",
-        "btn_assing_android": "Assing an android"
+        "btn_assing_android": "Assing an android",
+        "edit_type": "Edit type",
+        "editing_type": "Edit Type {n}"
     },
     "system": {
         "title": "System",

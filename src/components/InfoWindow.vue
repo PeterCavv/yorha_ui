@@ -7,6 +7,7 @@
         </td>
 
         <td v-else-if="addWindow == 1" >
+
             <!--REPORT INFO -->
             <div v-if="dataType=='report'">
                 <figure class="innerbox">
@@ -73,6 +74,7 @@
                     
                 </figure>
             </div>
+
             <!-- OPERATOR INFO -->
             <div v-else-if="dataType=='operator'">
                 <figure class="innerbox2">
@@ -83,7 +85,7 @@
                     </figcaption>
                     <label><cite>{{ $t('data_base.androids') }}</cite></label>
                     <ul>
-                        <div v-if="!dataUse.androids.length == 0">
+                        <div v-if="dataUse.androids.length">
                             <div v-for="(android, index) in dataUse.androids" :key="index">
                                 <li>
                                 <button class="button button-list" style="margin-bottom: 10px;">
@@ -101,8 +103,8 @@
                     <br/>
                     <div>
                         <button class="button" id="menu" 
-                        style="margin-bottom: 6px; text-align: center; float: right; text-transform: none;">
-                            Asignar Androide
+                        style="margin-bottom: 6px; text-align: center; float: right; text-transform: none; width: 45%">
+                            {{ $t('data_base.btn_assing_android') }}
                         </button>
                     </div>
                 </figure>
@@ -110,7 +112,7 @@
 
             <!-- TYPES INFO -->
             <div v-else-if="dataType=='type'">
-                <figure class="innerbox">
+                <figure v-if="!edit" class="innerbox">
                     <figcaption style ="text-transform: uppercase;">
                         <img src="../assets/Info_Icon.png" width="22" height="19" 
                         style="vertical-align: middle;"/>
@@ -121,10 +123,20 @@
                     <br/>
                     <div>
                         <button class="button" id="menu"
-                        style="margin-bottom: 6px; text-align: center; float: right; text-transform: none;">
-                            Editar Androide
+                        style="margin-bottom: 6px; text-align: center; float: right; text-transform: none; width: 30%"
+                        @click="changeEditBox()">
+                            {{ $t('data_base.edit_type') }}
                         </button>
-                    </div>
+                    </div> 
+                </figure>
+                <figure v-else class="innerbox">
+                        <figcaption style ="text-transform: uppercase;">
+                            <img src="../assets/Info_Icon.png" width="22" height="19" 
+                            style="vertical-align: middle;"/>
+                            {{ $t('data_base.editing_type', { n: dataUse.name }) }}
+                        </figcaption>
+                        <label><cite>Type Name</cite></label>
+                        <input type="text" placeholder="Type Name"/>
                 </figure>
             </div>
 
@@ -133,6 +145,7 @@
 
 
 <script>
+
 export default {
     name: "InfoWindow",
     props: {
@@ -147,7 +160,19 @@ export default {
         addWindow: {
             type: Number,
             required: false
+        },
+        edit: {
+            type: Boolean,
+            required: true
         }
-    } 
+    },
+    methods: {
+        changeEditBox(){
+            if(this.edit)
+                this.edit = false
+            else
+               this.edit = true
+        }
+    }
 }
 </script>
