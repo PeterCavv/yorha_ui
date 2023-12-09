@@ -83,11 +83,18 @@
                     </figcaption>
                     <label><cite>{{ $t('data_base.androids') }}</cite></label>
                     <ul>
-                        <div v-for="(android, index) in dataUse.androids" :key="index">
-                            <li>
-                            <button class="button button-list" style="margin-bottom: 10px;">
-                                    {{ android.name }}
-                            </button>
+                        <div v-if="!dataUse.androids.length == 0">
+                            <div v-for="(android, index) in dataUse.androids" :key="index">
+                                <li>
+                                <button class="button button-list" style="margin-bottom: 10px;">
+                                        {{ android.name }}
+                                </button>
+                                </li>
+                            </div>
+                        </div>
+                        <div v-else>
+                            <li style="text-transform: uppercase;">
+                                {{ $t('information.null_desc') }}
                             </li>
                         </div>
                     </ul>
