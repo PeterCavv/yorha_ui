@@ -57,7 +57,7 @@
                     <input v-if="(selectedModel != 'YoRHa' && selectedModel != 'Special')"  type="text" 
                     style="width: 15rem; margin-right: 18px;" disabled/>
                     <input v-else-if="(selectedModel != 'YoRHa' && selectedModel == 'Special')" v-model="androidName" id="specialModel" 
-                    type="text" style="width: 15rem; margin-right: 18px;" placeholder="Poppola" :maxlength="25"/>
+                    type="text" style="width: 15rem; margin-right: 18px;" :placeholder="$t('fabrication.insert_name')" :maxlength="25"/>
                     <input v-else-if="(selectedModel == 'YoRHa' && selectedModel == undefinded)" :value="selectedType.name" type="text" 
                     style="width: 15rem; margin-right: 18px;" disabled/>
                     <input v-else :value="selectedModel + ' Type ' + selectedType.charAt(0)"  id="yorhaModel" type="text" style="width: 15rem; 
@@ -72,7 +72,7 @@
 
                 <p>
                     <label for="textarea">{{ $t('start.fabrication_desc2_info4') }}:</label>
-                    <textarea v-model="bio" class="full" id="textarea" rows="8" placeholder="This android..."></textarea>
+                    <textarea v-model="bio" class="full" id="textarea" rows="8" placeholder="This android..." :maxlength="500"></textarea>
                 </p>
                 <p v-if="(selectedModel == 'YoRHa' && selectedType == 'Operator')" style="font-size:small; font-style: normal;">
                     <cite>{{ $t('fabrication.operator_info') }}</cite></p>

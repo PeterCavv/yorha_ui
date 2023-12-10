@@ -40,7 +40,8 @@
         "caution_list3": "Si el androide es un modelo 'Special', se debe de escribir su nombre. ",
         "caution_list3_mark": "¡Este modelo no tiene tipo!",
         "subcaution": "*Si no se selecciona una apariencia al enviar el formulario, esta se rellenar\u00e1 autom\u00e1ticamente con la apariencia 'Femenina'.",
-        "operator_info": "¡Recuerda asignar un androide al crear un 'Operator'!"
+        "operator_info": "¡Recuerda asignar un androide al crear un 'Operator'!",
+        "insert_name": "Inserte Nombre"
     },
     "data_base": {
         "title": "Base de datos",
@@ -63,7 +64,7 @@
     },
     "system": {
         "title": "Sistema",
-        "subtitle": "データベース",
+        "subtitle": "システム",
         "page_title": "Manipulaci\u00f3n de datos",
         "info_title": "A\u00f1adir/Eliminar/Editar Datos",
         "info_desc": "Aqu\u00ed puedes a\u00f1adir o eliminar tipos de androides,",
