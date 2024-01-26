@@ -92,85 +92,80 @@
 import { connection } from '@/services/ApiConnection'
 
   export default {
-      el: 'FabricationPage',
-      components: {},
-      data(){
-          return{
-              showCreate: false,
-              selectedType: "",
-              selectedModel: "",
-              selectedAppearance: "Female",
-              androidName: "",
-              saveName: "",
-              bio: "",
-              types: [],
-              models: [],
-              appe: [],
-              androids: [],
-              state: []
-          }
-      },
-      methods: {
-          changeName(){
-              switch (this.selectedModel){
-                  case "YoRHa":
-                      this.androidName = document.getElementById("yorhaModel").value;
-                      console.log(this.androidName);
-                      break;
-                  case "Special":
-                      this.androidName = document.getElementById("specialModel").value;
-                      console.log(this.androidName);
-                      break;
-                  default:
-                      break;
-              }
-          },
-          async getTypes(){
-              await fetch(connection + "types")
-              .then(response => response.json())
-              .then(data =>{
-                  this.types = data;
-              })
-          },
-          async getModels(){
-              await fetch(connection + "models")
-              .then(response => response.json())
-              .then(data =>{
-                  this.models = data;
-              })
-          },
-          async getAppearances(){
-              await fetch(connection + "appearances")
-              .then(response => response.json())
-              .then(data =>{
-                  this.appe = data;
-              })
-          },
-          async getStates() {
-              await fetch(connection + "states")
-              .then(response => response.json())
-              .then(data =>{
-                  this.state = data;
-              })
-          },
-          async getAndroids() {
-              await fetch(connection + "androids")
-              .then(response => response.json())
-              .then(data =>{
-                  this.androids = data;
-              })
-          },
-          async addAndroid(){
+    el: 'FabricationPage',
+    components: {},
+    data(){
+        return{
+            showCreate: false,
+            selectedType: "",
+            selectedModel: "",
+            selectedAppearance: "Female",
+            androidName: "",
+            saveName: "",
+            bio: "",
+            types: [],
+            models: [],
+            appe: [],
+            androids: [],
+            state: []
+        }
+    },
+    methods: {
+        changeName(){
+            switch (this.selectedModel){
+                case "YoRHa":
+                    this.androidName = document.getElementById("yorhaModel").value;
+                    console.log(this.androidName);
+                    break;
+                case "Special":
+                    this.androidName = document.getElementById("specialModel").value;
+                    console.log(this.androidName);
+                    break;
+                default:
+                    break;
+            }
+        },
+        async getTypes(){
+            await fetch(connection + "types")
+            .then(response => response.json())
+            .then(data =>{
+                this.types = data;
+            })
+        },
+        async getModels(){
+            await fetch(connection + "models")
+            .then(response => response.json())
+            .then(data =>{
+                this.models = data;
+            })
+        },
+        async getAppearances(){
+            await fetch(connection + "appearances")
+            .then(response => response.json())
+            .then(data =>{
+                this.appe = data;
+            })
+        },
+        async getStates() {
+            await fetch(connection + "states")
+            .then(response => response.json())
+            .then(data =>{
+                this.state = data;
+            })
+        },
+        async getAndroids() {
+            await fetch(connection + "androids")
+            .then(response => response.json())
+            .then(data =>{
+                this.androids = data;
+            })
+        },
+        async addAndroid(){
             let androidNumber = 0;
-            let androidType = {};
-            let androidModel = {};
 
             this.androids.forEach(android => {
                 if(android.type != null && android.type.name == this.selectedType && androidNumber <= android.type_number){ 
-                    androidModel = android.model;
-                    androidType = android.type;
                     androidNumber = android.type_number + 1;
-                    console.log(androidNumber);
                 }
             });
             if(androidNumber == 0){
@@ -178,50 +173,37 @@ import { connection } from '@/services/ApiConnection'
             }
 
             let androidAppearance = this.appe.find(element => element.name == this.selectedAppearance);
+            let androidModelSel = this.models.find(element => element.name == this.selectedModel);
+            let androidTypeSel = this.types.find(element => element.name == this.selectedType);
             let stateAndroid = this.state.find(element => element.name == "Operational");
             this.saveName = this.selectedModel + " No." + androidNumber + " Type " + this.selectedType.charAt(0);
             let shortName = androidNumber + this.selectedType.charAt(0);
 
-            let newAndroid = {name: this.saveName, short_name: shortName, model: androidModel, type: androidType, 
-            type_number: androidNumber, appearance: androidAppearance, state: stateAndroid, desc: this.bio};
+            var newAndroid = {name: this.saveName, short_name: shortName, modelId: androidModelSel.id, typeId: androidTypeSel.id, 
+            type_number: androidNumber, appearanceId: androidAppearance.id, stateId: stateAndroid.id, desc: this.bio};
 
-            console.log(newAndroid)
-
-            // let androidNumber = 0;
-            // let androidType = "";
-            // let androidModel = "";
-
-            // this.androids.forEach(android => {
-            //     if(android.type != null && android.type.name == this.selectedType && androidNumber <= android.type_number){ 
-            //         androidModel = android.model.name;
-            //         androidNumber = android.type_number + 1;
-            //         console.log(androidNumber);
-            //     }
-            // });
-            // if(androidNumber == 0){
-            //     androidNumber = 1;
-            // }
-
-            // this.saveName = this.selectedModel + " No." + androidNumber + " Type " + this.selectedType.charAt(0);
-            // let shortName = androidNumber + this.selectedType.charAt(0);
-
-            // let newAndroid = {name: this.saveName, short_name: shortName, model: androidModel, type: this.selectedType, 
-            // type_number: androidNumber, appearance: this.selectedAppearance, state: "Operational", desc: this.bio};
-
-            // console.log(newAndroid)
+            console.log(newAndroid);
         
-            await fetch(connection + "androids/create/" , {method: "POST", body: JSON.stringify(newAndroid)});
-          }
+            await fetch(connection + "androids", {
+                method: "POST", 
+                body: JSON.stringify(newAndroid),
+                headers:{
+                    "Content-Type": "application/json"
+                }
+            })
+            .then((res) => res.json())
+            .catch((error) => console.error("Error: " + error))
+            .then((response) => console.log("Success: " + response))
+        }
+    },
+    mounted() {
+        this.getTypes();
+        this.getModels();
+        this.getAppearances();
+        this.getAndroids();
+        this.getStates();
 
-      },
-      mounted() {
-          this.getTypes();
-          this.getModels();
-          this.getAppearances();
-          this.getAndroids();
-          this.getStates();
-
-      }
+    }
   }
 </script>
 
