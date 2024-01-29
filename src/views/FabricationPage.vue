@@ -173,14 +173,17 @@ import { connection } from '@/services/ApiConnection'
             }
 
             let androidAppearance = this.appe.find(element => element.name == this.selectedAppearance);
-            let androidModelSel = this.models.find(element => element.name == this.selectedModel);
-            let androidTypeSel = this.types.find(element => element.name == this.selectedType);
-            let stateAndroid = this.state.find(element => element.name == "Operational");
-            this.saveName = this.selectedModel + " No." + androidNumber + " Type " + this.selectedType.charAt(0);
-            let shortName = androidNumber + this.selectedType.charAt(0);
+  
+            var androidTypeSel = this.selectedModel == "YoRHa" ? 
+                this.types.find(element => element.name == this.selectedType) :
+                null;
 
-            var newAndroid = {name: this.saveName, short_name: shortName, modelId: androidModelSel.id, typeId: androidTypeSel.id, 
-            type_number: androidNumber, appearanceId: androidAppearance.id, stateId: stateAndroid.id, desc: this.bio};
+            var androidModelSel = this.models.find(element => element.name == this.selectedModel);
+
+
+        
+            var newAndroid = {name: this.androidName, modelId: androidModelSel.id, typeId: androidTypeSel.id, 
+            type_number: androidNumber, appearanceId: androidAppearance.id, desc: this.bio};
 
             console.log(newAndroid);
         
@@ -194,6 +197,9 @@ import { connection } from '@/services/ApiConnection'
             .then((res) => res.json())
             .catch((error) => console.error("Error: " + error))
             .then((response) => console.log("Success: " + response))
+
+            this.getAndroids();
+
         }
     },
     mounted() {
