@@ -40,7 +40,7 @@
                             </td>
                             <td style="width: 5rem;">
                                 <label><cite>{{ $t('start.fabrication_desc2_info3') }}</cite></label>
-                                <p v-if="dataUse.type !== null">{{ dataUse.type.name }}</p>
+                                <p v-if="dataUse.type !== null && dataUse.type.name !== 'NoType'">{{ dataUse.type.name }}</p>
                                 <p v-else>{{ $t('information.data_empty') }}</p>
                             </td>
                             <td>
@@ -112,7 +112,7 @@
 
             <!-- TYPES INFO -->
             <div v-else-if="dataType=='type'">
-                <figure v-if="!edit" class="innerbox">
+                <figure v-if="!canEdit || canEdit === undefined" class="innerbox">
                     <figcaption style ="text-transform: uppercase;">
                         <img src="../assets/Info_Icon.png" width="22" height="19" 
                         style="vertical-align: middle;"/>
@@ -135,8 +135,25 @@
                             style="vertical-align: middle;"/>
                             {{ $t('data_base.editing_type', { n: dataUse.name }) }}
                         </figcaption>
-                        <label><cite>Type Name</cite></label>
-                        <input type="text" placeholder="Type Name"/>
+                        <table>
+                            <tr>
+                                <td style="padding-right: 10px;">
+                                    <label><cite>Type Name: </cite></label>
+                                    <input type="text" :value="dataUse.name" placeholder="Type Name" />
+                                </td>
+                                <td>
+                                    <label><cite>Resume Name will be: </cite></label>
+                                    <input type="text" disabled/>
+                                </td>
+                            </tr>
+                        </table>
+                        <div>
+                            <button class="button" id="editMenu"
+                            style="margin-bottom: 6px; text-align: center; float: right; text-transform: none; width: 20%"
+                            @click="changeEditBox()">
+                                Cancel
+                            </button>
+                        </div>
                 </figure>
             </div>
 
@@ -166,12 +183,27 @@ export default {
             required: true
         }
     },
+    data: function() {
+        return{
+            editVal: this.setEditValue,
+            canEdit: undefined        
+        }
+    },
+    computed: {
+        setEditValue() {
+            if(this.canEdit !== undefined){
+                return this.canEdit
+            } 
+            return this.edit
+        }
+    },
     methods: {
-        changeEditBox(){
-            if(this.edit)
-                this.edit = false
-            else
-               this.edit = true
+        changeEditBox() {
+            if(!this.editVal){
+                this.canEdit = true
+            } else {
+                this.canEdit = undefined
+            }
         }
     }
 }

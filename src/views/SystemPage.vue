@@ -2,8 +2,10 @@
     <br/><br/><br/>
     <hr/>
     <h1 style="text-align:left; padding-left:2rem;">
-        <span>{{ $t('system.title') }}
-        <font size="4">{{ $t('system.subtitle') }}</font></span>
+        <span>
+            {{ $t('system.title') }}
+            <font size="4">{{ $t('system.subtitle') }}</font>
+        </span>
     </h1>
 
     <h2>{{ $t('system.page_title') }}</h2>
@@ -11,22 +13,30 @@
         <figcaption>{{ $t('system.info_title') }}</figcaption>
         <p>{{ $t('system.info_desc') }} <mark>{{ $t('system.mark_desc') }}</mark> 
             {{ $t('system.info_desc2') }}</p>
-        <p style="font-size: 11.5px;"><mark style=" text-transform: uppercase;">{{ $t('system.caution') }}</mark> 
-            {{ $t('system.caution_desc') }}</p>
+        <p style="font-size: 11.5px;">
+            <mark style=" text-transform: uppercase;">{{ $t('system.caution') }}</mark> 
+            {{ $t('system.caution_desc') }}
+        </p>
     </figure>
     <hr/>
 
     <nav style="margin-top: -15px;">
         <ul>
-            <li><button @click="show('operator');" class="button button-menu" id="menu">
-                {{ $t('system.operators') }}
-                <img v-if="checkOperators" src="../assets/New_Icon.png" width="24" height="18" 
-                style="vertical-align: middle; float: right;"/>
-            </button></li>
+            <li>
+                <button @click="show('operator');" class="button button-menu" id="menu">
+                    {{ $t('system.operators') }}
+                    <img v-if="checkOperators" src="../assets/New_Icon.png" width="24" height="18" 
+                    style="vertical-align: middle; float: right;"/>
+                </button>
+            </li>
             <li>&nbsp;&nbsp;&nbsp;</li>
-            <li><button @click="show('type');" class="button button-menu" id="menu">{{ $t('system.types') }}</button></li>
+            <li>
+                <button @click="show('type');" class="button button-menu" id="menu">{{ $t('system.types') }}</button>
+            </li>
             <li>&nbsp;&nbsp;&nbsp;</li>
-            <li><button @click="show('report');" class="button button-menu" id="menu">{{ $t('system.execute') }}</button></li>
+            <li>
+                <button @click="show('report');" class="button button-menu" id="menu">{{ $t('system.execute') }}</button>
+            </li>
             <li>&nbsp;&nbsp;&nbsp;</li>
         </ul>
     </nav>

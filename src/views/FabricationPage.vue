@@ -20,7 +20,8 @@
         <ul>
             <li>{{ $t('fabrication.caution_list1') }}</li>
             <li>{{ $t('fabrication.caution_list2') }}</li>
-            <li>{{ $t('fabrication.caution_list3') }}
+            <li>
+                {{ $t('fabrication.caution_list3') }}
                 <mark>
                     {{ $t('fabrication.caution_list3_mark') }}
                 </mark>
@@ -46,14 +47,16 @@
                     &nbsp;
                     <select v-if="selectedModel != 'YoRHa'" v-model="selectedType" style="width: 15rem; margin-right: 18px;" disabled/>
                     <select v-else-if="selectedModel == 'YoRHa'" v-model="selectedType" style="width: 15rem; margin-right: 18px;">
-                        <option v-for="typeA in types" :key="typeA" >
-                            {{ typeA.name }}
+                        <option v-for="(typeA, index) in types" :key="index" >
+                                {{ typeA.name }}
                         </option>
                     </select>
                 
                     <br/><br/>
                     <label for="text">{{ $t('start.fabrication_desc2_info1') }}:</label>
+
                     &nbsp;
+
                     <input v-if="(selectedModel != 'YoRHa' && selectedModel != 'Special')"  type="text" 
                     style="width: 15rem; margin-right: 18px;" disabled/>
                     <input v-else-if="(selectedModel != 'YoRHa' && selectedModel == 'Special')" v-model="androidName" id="specialModel" 
@@ -64,7 +67,9 @@
                     margin-right: 18px;" disabled/>
 
                     <label>{{ $t('start.fabrication_desc2_title1') }}:</label>
+
                     &nbsp;
+
                     <select v-model="selectedAppearance" style="width: 15rem; margin-right: 18px;">
                         <option v-for="a in appe" :key="a">{{ a.name }}</option>
                     </select>
@@ -104,6 +109,7 @@ import { connection } from '@/services/ApiConnection'
             saveName: "",
             bio: "",
             types: [],
+            noType: [],
             models: [],
             appe: [],
             androids: [],
@@ -131,6 +137,10 @@ import { connection } from '@/services/ApiConnection'
             .then(data =>{
                 this.types = data;
             })
+
+            this.noType = this.types.filter(element => element.name == 'NoType');
+            let index = this.types.findIndex(element => element.name == 'NoType' );
+            this.types.splice(index, 1);
         },
         async getModels(){
             await fetch(connection + "models")
@@ -176,12 +186,11 @@ import { connection } from '@/services/ApiConnection'
   
             var androidTypeSel = this.selectedModel == "YoRHa" ? 
                 this.types.find(element => element.name == this.selectedType) :
-                null;
+                this.noType[0];
 
+            console.log(androidTypeSel);
             var androidModelSel = this.models.find(element => element.name == this.selectedModel);
 
-
-        
             var newAndroid = {name: this.androidName, modelId: androidModelSel.id, typeId: androidTypeSel.id, 
             type_number: androidNumber, appearanceId: androidAppearance.id, desc: this.bio};
 
