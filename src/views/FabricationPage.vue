@@ -178,7 +178,7 @@ import { connection } from '@/services/ApiConnection'
                     androidNumber = android.type_number + 1;
                 }
             });
-            if(androidNumber == 0){
+            if(androidNumber == 0 && this.selectedModel == "YoRHa"){
                 androidNumber = 1;
             }
 
@@ -191,11 +191,15 @@ import { connection } from '@/services/ApiConnection'
             console.log(androidTypeSel);
             var androidModelSel = this.models.find(element => element.name == this.selectedModel);
 
-            var newAndroid = {name: this.androidName, modelId: androidModelSel.id, typeId: androidTypeSel.id, 
-            type_number: androidNumber, appearanceId: androidAppearance.id, desc: this.bio};
+            let isOperator = androidTypeSel.name === "Operator";
 
-            console.log(newAndroid);
-        
+            console.log(isOperator)
+
+            var newAndroid = {name: this.androidName, modelId: androidModelSel.id, typeId: androidTypeSel.id, 
+            type_number: androidNumber, appearanceId: androidAppearance.id, desc: this.bio, isOperator: isOperator};
+
+                
+
             await fetch(connection + "androids", {
                 method: "POST", 
                 body: JSON.stringify(newAndroid),
