@@ -7,6 +7,7 @@
         </td>
 
         <td v-else-if="addWindow == 1" >
+
             <!--REPORT INFO -->
             <div v-if="dataType=='report'">
                 <figure class="innerbox">
@@ -39,12 +40,12 @@
                             </td>
                             <td style="width: 5rem;">
                                 <label><cite>{{ $t('start.fabrication_desc2_info3') }}</cite></label>
-                                <p v-if="dataUse.type !== null">{{ dataUse.type.name }}</p>
+                                <p v-if="dataUse.type !== null && dataUse.type.name !== 'NoType'">{{ dataUse.type.name }}</p>
                                 <p v-else>{{ $t('information.data_empty') }}</p>
                             </td>
                             <td>
                                 <label><cite>{{ $t('data_base.android_type_number') }}</cite></label>
-                                <p v-if="dataUse.type_number != ''">{{ dataUse.type_number}}</p>
+                                <p v-if="dataUse.type_number != '' && dataUse.type_number != 0">{{ dataUse.type_number}}</p>
                                 <p v-else>{{ $t('information.data_empty') }}</p>
                             </td>
                             <td>
@@ -73,6 +74,7 @@
                     
                 </figure>
             </div>
+
             <!-- OPERATOR INFO -->
             <div v-else-if="dataType=='operator'">
                 <figure class="innerbox2">
@@ -83,19 +85,26 @@
                     </figcaption>
                     <label><cite>{{ $t('data_base.androids') }}</cite></label>
                     <ul>
-                        <div v-for="(android, index) in dataUse.androids" :key="index">
-                            <li>
-                            <button class="button button-list" style="margin-bottom: 10px;">
-                                    {{ android.name }}
-                            </button>
+                        <div v-if="dataUse.androids.length">
+                            <div v-for="(android, index) in dataUse.androids" :key="index">
+                                <li>
+                                <button class="button button-list" style="margin-bottom: 10px;">
+                                        {{ android.name }}
+                                </button>
+                                </li>
+                            </div>
+                        </div>
+                        <div v-else>
+                            <li style="text-transform: uppercase;">
+                                {{ $t('information.null_desc') }}
                             </li>
                         </div>
                     </ul>
                     <br/>
                     <div>
                         <button class="button" id="menu" 
-                        style="margin-bottom: 6px; text-align: center; float: right; text-transform: none;">
-                            Asignar Androide
+                        style="margin-bottom: 6px; text-align: center; float: right; text-transform: none; width: 45%">
+                            {{ $t('data_base.btn_assing_android') }}
                         </button>
                     </div>
                 </figure>
@@ -114,10 +123,11 @@
                     <br/>
                     <div>
                         <button class="button" id="menu"
-                        style="margin-bottom: 6px; text-align: center; float: right; text-transform: none;">
-                            Editar Androide
+                        style="margin-bottom: 6px; text-align: center; float: right; text-transform: none; width: 30%"
+                        @click="changeEditBox()">
+                            {{ $t('data_base.edit_type') }}
                         </button>
-                    </div>
+                    </div> 
                 </figure>
             </div>
 
@@ -126,6 +136,7 @@
 
 
 <script>
+
 export default {
     name: "InfoWindow",
     props: {
@@ -141,6 +152,11 @@ export default {
             type: Number,
             required: false
         }
-    } 
+    },
+    data: function() {
+        return{
+            editVal: "",   
+        }
+    }
 }
 </script>

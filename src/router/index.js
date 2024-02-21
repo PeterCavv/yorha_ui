@@ -1,5 +1,57 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { connection } from '@/services/ApiConnection'
 import AuthPage from "../views/AuthPage.vue"
+import axios from 'axios'
+import multiguard from 'vue-router-multiguard';
+
+const types = function getTypes(to, from, next) {
+  axios.get(connection + "types")
+  .then(response => {
+    to.params.types = response.data;
+    next()
+  })
+}
+
+const models = function getModels(to, from, next) {
+  axios.get(connection + "models")
+  .then(response => {
+    to.params.models = response.data;
+    next()
+  })
+}
+
+const androids = function getAndroids(to, from, next) {
+  axios.get(connection + "androids")
+  .then(response => {
+    to.params.androids = response.data;
+    next()
+  })
+}
+
+const operators = function getOperators(to, from, next) {
+  axios.get(connection + "operators")
+  .then(response => {
+    to.params.operators = response.data;
+    next()
+  })
+}
+
+const reports = function getReports(to, from, next) {
+  axios.get(connection + "reports")
+  .then(response => {
+    to.params.reports = response.data;
+    next()
+  })
+}
+
+const appe = function getAppearances(to, from, next) {
+  axios.get(connection + "appearances")
+  .then(response => {
+    to.params.appe = response.data;
+    next()
+  })
+}
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
@@ -17,17 +69,23 @@ const router = createRouter({
     {
       path: '/startmenu/fabrication',
       name: 'fabrication',
-      component: () => import('../views/FabricationPage.vue')
+      component: () => import('../views/FabricationPage.vue'),
+      props: true,
+      beforeEnter: multiguard([types, models, appe, androids])
     },
     {
       path: '/database',
       name: 'database',
-      component: () => import('../views/DataBase.vue')
+      component: () => import('../views/DataBase.vue'),
+      props: true,
+      beforeEnter: multiguard([androids, reports])
     },
     {
       path: '/system',
       name: 'system',
-      component: () => import('../views/SystemPage.vue')
+      component: () => import('../views/SystemPage.vue'),
+      props: true,
+      beforeEnter: multiguard([operators, types])
     }
   ]
 })

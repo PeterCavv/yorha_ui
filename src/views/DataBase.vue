@@ -9,11 +9,15 @@
 
 		<nav>
 			<ul>
-				<li><button @click="show('android');" class="button button-menu" 
-					id="menu">{{ $t('data_base.androids' )}}</button></li>
+				<li>
+					<button @click="show('android');" class="button button-menu" 
+					id="menu">{{ $t('data_base.androids' )}}</button>
+				</li>
 				<li>&nbsp;&nbsp;&nbsp;</li>
-				<li><button @click="show('report');" class="button button-menu" 
-					id="menu">{{ $t('data_base.reports' )}}</button></li>
+				<li>
+					<button @click="show('report');" class="button button-menu" 
+					id="menu">{{ $t('data_base.reports' )}}</button>
+				</li>
 				<li>&nbsp;&nbsp;&nbsp;</li>
 			</ul>
 		</nav>
@@ -39,9 +43,17 @@ export default {
 		return {
 			dataAndroids: false,
 			dataReports: false,
-			androids: [],
-			reports: [],
 		};
+	},
+	props: {
+		androids: {
+			type: Object,
+			req: true
+		},
+		reports: {
+			type: Object,
+			req: true
+		}
 	},
 	computed: {
 		reportList() {
@@ -65,25 +77,7 @@ export default {
 				default:
 					break;
 			}
-		},
-		async getAndroids() {
-			await fetch(connection + "androids")
-				.then(response => response.json())
-				.then(data => {
-				this.androids = data;
-			});
-		},
-		async getReports() {
-			await fetch(connection + "reports")
-				.then(response => response.json())
-				.then(data => {
-				this.reports = data;
-			});
 		}
-	},
-	mounted() {
-		this.getAndroids();
-		this.getReports();
 	}
 }
 </script>

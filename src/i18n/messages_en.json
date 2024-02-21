@@ -40,7 +40,8 @@
         "caution_list3": "If the android is a 'Special' model, the name must be written.",
         "caution_list3_mark": "This model have no type!",
         "subcaution": "*If you didn't select an appearance when submitting the form, it will be autofilled in with the 'Female' appearance.",
-        "operator_info": "Remember to assign an android if you create an Operator YoRHa model!"
+        "operator_info": "Remember to assign an android if you create an Operator YoRHa model!",
+        "insert_name": "Insert Name"
     },
     "data_base": {
         "title": "Data Base",
@@ -55,11 +56,13 @@
         "short_name": "Short name",
         "types": "{n} (Type {m})",
         "type_desc": "Type Description",
-        "btn_assing_android": "Assing an android"
+        "btn_assing_android": "Assing an android",
+        "edit_type": "Edit type",
+        "editing_type": "Edit Type {n}"
     },
     "system": {
         "title": "System",
-        "subtitle": "データベース",
+        "subtitle": "システム",
         "page_title": "Data Manipulation",
         "info_title": "Add/Remove/Edit Data",
         "info_desc": "Here you can add or remove android types,",
