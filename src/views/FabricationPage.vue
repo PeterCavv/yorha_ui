@@ -131,46 +131,52 @@ import axios from "axios"
         }
     },
     methods: {
-        changeName(){
-            switch (this.selectedModel){
-                case "YoRHa":
-                    this.androidName = document.getElementById("yorhaModel").value;
-                    console.log(this.androidName);
-                    break;
-                case "Special":
-                    this.androidName = document.getElementById("specialModel").value;
-                    console.log(this.androidName);
-                    break;
-                default:
-                    break;
-            }
-        },
+        /**
+         * This method is going to set an Android on point and send it to the API with a HTTP POST request using Axios.
+         */
         async addAndroid(){
+            //Initializes number to 0 because we want to now if there is another android of this type.
             let androidNumber = 0;
 
-            this.androids.forEach(android => {
-                if(android.type != null && android.type.name == this.selectedType && androidNumber <= android.type_number){ 
-                    androidNumber = android.type_number + 1;
-                }
-            });
-            if(androidNumber == 0 && this.selectedModel == "YoRHa"){
-                androidNumber = 1;
+            //Search de appearance object depends on the appearance name selected on the view.
+            let androidAppearance = this.appe.find( element => element.name == this.selectedAppearance );
+
+            //The same as before but with model.
+            var androidModelSel = this.models.find(element => element.name == this.selectedModel);
+
+            //Set a value to the variable noType, it is going to save the object with the name NoType
+            //to save a Special model if it is the case.
+            if( this.noType.length == 0 ){
+                this.noType = this.types.filter(element => element.name == 'NoType');
+                let index = this.types.findIndex(element => element.name == 'NoType' );
+                this.types.splice(index, 1);
             }
 
-            let androidAppearance = this.appe.find(element => element.name == this.selectedAppearance);
-  
+            //If the android is a Special model, the type is going to be NoType, because android
+            //special models doesn't have a Type.
             var androidTypeSel = this.selectedModel == "YoRHa" ? 
                 this.types.find(element => element.name == this.selectedType) :
                 this.noType[0];
 
-            console.log(androidTypeSel);
-            var androidModelSel = this.models.find(element => element.name == this.selectedModel);
+            //To set the number, needs to now if there is another android with this type created.
+            this.androids.forEach(android => {
+                if( android.type != null && android.type.name == this.selectedType && androidNumber <= android.type_number ){ 
+                    androidNumber = android.type_number + 1;
+                }
+            });
+
+            //If there is no android with the type selected and it is a YoRHa model, the number will be 1.
+            if( androidNumber == 0 && this.selectedModel == "YoRHa" ){
+                androidNumber = 1;
+            }
 
             let isOperator = androidTypeSel.name === "Operator";
 
+            var name = androidModelSel.name === "Special" ? this.androidName : "";
+
             console.log(isOperator)
 
-            var newAndroid = {name: this.androidName, modelId: androidModelSel.id, typeId: androidTypeSel.id, 
+            var newAndroid = {name: name, modelId: androidModelSel.id, typeId: androidTypeSel.id, 
             type_number: androidNumber, appearanceId: androidAppearance.id, desc: this.bio, isOperator: isOperator};
 
             console.log(newAndroid)
