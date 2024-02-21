@@ -45,7 +45,7 @@
                             </td>
                             <td>
                                 <label><cite>{{ $t('data_base.android_type_number') }}</cite></label>
-                                <p v-if="dataUse.type_number != ''">{{ dataUse.type_number}}</p>
+                                <p v-if="dataUse.type_number != '' && dataUse.type_number != 0">{{ dataUse.type_number}}</p>
                                 <p v-else>{{ $t('information.data_empty') }}</p>
                             </td>
                             <td>
@@ -112,7 +112,7 @@
 
             <!-- TYPES INFO -->
             <div v-else-if="dataType=='type'">
-                <figure v-if="!canEdit || canEdit === undefined" class="innerbox">
+                <figure class="innerbox">
                     <figcaption style ="text-transform: uppercase;">
                         <img src="../assets/Info_Icon.png" width="22" height="19" 
                         style="vertical-align: middle;"/>
@@ -128,32 +128,6 @@
                             {{ $t('data_base.edit_type') }}
                         </button>
                     </div> 
-                </figure>
-                <figure v-else class="innerbox">
-                        <figcaption style ="text-transform: uppercase;">
-                            <img src="../assets/Info_Icon.png" width="22" height="19" 
-                            style="vertical-align: middle;"/>
-                            {{ $t('data_base.editing_type', { n: dataUse.name }) }}
-                        </figcaption>
-                        <table>
-                            <tr>
-                                <td style="padding-right: 10px;">
-                                    <label><cite>Type Name: </cite></label>
-                                    <input type="text" :value="dataUse.name" placeholder="Type Name" />
-                                </td>
-                                <td>
-                                    <label><cite>Resume Name will be: </cite></label>
-                                    <input type="text" disabled/>
-                                </td>
-                            </tr>
-                        </table>
-                        <div>
-                            <button class="button" id="editMenu"
-                            style="margin-bottom: 6px; text-align: center; float: right; text-transform: none; width: 20%"
-                            @click="changeEditBox()">
-                                Cancel
-                            </button>
-                        </div>
                 </figure>
             </div>
 
@@ -177,33 +151,11 @@ export default {
         addWindow: {
             type: Number,
             required: false
-        },
-        edit: {
-            type: Boolean,
-            required: true
         }
     },
     data: function() {
         return{
-            editVal: this.setEditValue,
-            canEdit: undefined        
-        }
-    },
-    computed: {
-        setEditValue() {
-            if(this.canEdit !== undefined){
-                return this.canEdit
-            } 
-            return this.edit
-        }
-    },
-    methods: {
-        changeEditBox() {
-            if(!this.editVal){
-                this.canEdit = true
-            } else {
-                this.canEdit = undefined
-            }
+            editVal: "",   
         }
     }
 }
