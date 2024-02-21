@@ -55,7 +55,7 @@ export default {
     props: {
         operators: {
             type: Object,
-            required: true
+            req: true
         }
     },
     data: {

@@ -95,6 +95,7 @@
 
 <script>
 import { connection } from '@/services/ApiConnection'
+import axios from "axios"
 
   export default {
     el: 'FabricationPage',
@@ -108,12 +109,25 @@ import { connection } from '@/services/ApiConnection'
             androidName: "",
             saveName: "",
             bio: "",
-            types: [],
             noType: [],
-            models: [],
-            appe: [],
-            androids: [],
-            state: []
+        }
+    },
+    props: {
+        types: {
+            type: Object,
+            req: true
+        },
+        models: {
+            type: Object,
+            req: true
+        },
+		appe: {
+			type: Object,
+			req: true
+		},
+        androids: {
+            type: Object,
+			req: true
         }
     },
     methods: {
@@ -130,45 +144,6 @@ import { connection } from '@/services/ApiConnection'
                 default:
                     break;
             }
-        },
-        async getTypes(){
-            await fetch(connection + "types")
-            .then(response => response.json())
-            .then(data =>{
-                this.types = data;
-            })
-
-            this.noType = this.types.filter(element => element.name == 'NoType');
-            let index = this.types.findIndex(element => element.name == 'NoType' );
-            this.types.splice(index, 1);
-        },
-        async getModels(){
-            await fetch(connection + "models")
-            .then(response => response.json())
-            .then(data =>{
-                this.models = data;
-            })
-        },
-        async getAppearances(){
-            await fetch(connection + "appearances")
-            .then(response => response.json())
-            .then(data =>{
-                this.appe = data;
-            })
-        },
-        async getStates() {
-            await fetch(connection + "states")
-            .then(response => response.json())
-            .then(data =>{
-                this.state = data;
-            })
-        },
-        async getAndroids() {
-            await fetch(connection + "androids")
-            .then(response => response.json())
-            .then(data =>{
-                this.androids = data;
-            })
         },
         async addAndroid(){
             let androidNumber = 0;
@@ -198,9 +173,18 @@ import { connection } from '@/services/ApiConnection'
             var newAndroid = {name: this.androidName, modelId: androidModelSel.id, typeId: androidTypeSel.id, 
             type_number: androidNumber, appearanceId: androidAppearance.id, desc: this.bio, isOperator: isOperator};
 
-                
+            console.log(newAndroid)
 
-            await fetch(connection + "androids", {
+            await axios.post(connection + "androids", JSON.stringify(newAndroid), {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then((res) => res.json())
+            .catch((error) => console.error("Error: " + error))
+            .then((response) => console.log("Success: " + response))
+
+            /*await fetch(connection + "androids", {
                 method: "POST", 
                 body: JSON.stringify(newAndroid),
                 headers:{
@@ -209,19 +193,9 @@ import { connection } from '@/services/ApiConnection'
             })
             .then((res) => res.json())
             .catch((error) => console.error("Error: " + error))
-            .then((response) => console.log("Success: " + response))
-
-            this.getAndroids();
+            .then((response) => console.log("Success: " + response))*/
 
         }
-    },
-    mounted() {
-        this.getTypes();
-        this.getModels();
-        this.getAppearances();
-        this.getAndroids();
-        this.getStates();
-
     }
   }
 </script>

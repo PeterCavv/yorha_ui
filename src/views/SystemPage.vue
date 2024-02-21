@@ -50,39 +50,35 @@
 <script>
 import OperatorPage from '../components/OperatorPage.vue';
 import TypePage from '../components/TypePage.vue';
-import { connection } from '../services/ApiConnection';
 
 export default {
     el: 'SystemPage',
     data() {
         return{
             dataOperator: false,
-            dataType: false,
-            types: [],
-            operators: []
+            dataType: false
+        }
+    },
+    props: {
+        operators: {
+            type: Object,
+            req: true
+        },
+        types: {
+            type: Object,
+            req: true
         }
     },
     components: {
         OperatorPage,
         TypePage
+    }, 
+    computed: {
+        checkOperators(){
+            return this.operators.filter( (operator) => operator.androids.length == 0).length > 0;
+        }
     },
     methods: {
-        async getTypes() {
-            this.types = [];
-            await fetch(connection + "types")
-            .then(response => response.json())
-            .then(data =>{
-                this.types = data;
-            })
-        },
-        async getOperators() {
-            await fetch(connection + "operators")
-            .then(response => response.json())
-            .then(data =>{
-                this.operators = data;
-                
-            })
-        },
         show(typeData) {
 			switch (typeData) {
 				case "operator":
@@ -96,20 +92,7 @@ export default {
 				default:
 					break;
 			}
-		},
-        checkOperators(){
-            this.operators.forEach(operator => {
-                if(operator.androids.length == 0){
-                    return true
-                } else {
-                    return false
-                }
-            });
-        }
-    },
-    mounted() {
-        this.getTypes();
-        this.getOperators();
+		}
     }
 }
 </script>
