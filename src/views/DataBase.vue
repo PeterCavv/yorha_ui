@@ -5,31 +5,22 @@
 		<span>{{ $t('data_base.title') }}
 		<font size="4">{{ $t('data_base.subtitle') }}</font></span>
 	</h1>
+
 	<hr/> 
 
-		<nav>
-			<ul>
-				<li>
-					<button @click="show('android');" class="button button-menu" 
-					id="menu">{{ $t('data_base.androids' )}}</button>
-				</li>
-				<li>&nbsp;&nbsp;&nbsp;</li>
-				<li>
-					<button @click="show('report');" class="button button-menu" 
-					id="menu">{{ $t('data_base.reports' )}}</button>
-				</li>
-				<li>&nbsp;&nbsp;&nbsp;</li>
-			</ul>
-		</nav>
-		<br/><br/><br/>
-		
-		<AndroidPage :androids="androids" v-if="dataAndroids"/>
-		<ReportPage :reports="reports" v-if="dataReports"/>
+	<button @click="show('android');" class="button button-select"
+	id="menu">{{ $t('data_base.androids' )}}</button>
+
+	<button @click="show('report');" class="button button-select" 
+	id="menu">{{ $t('data_base.reports' )}}</button>
+	<br/>
+	
+	<AndroidPage :androids="androids" v-if="dataAndroids"/>
+	<ReportPage :reports="reports" v-if="dataReports"/>
 
 </template>
 
 <script>
-import { connection } from '@/services/ApiConnection'
 import ReportPage from '../components/ReportPage.vue'
 import AndroidPage from '../components/AndroidPage.vue'
 
@@ -87,4 +78,5 @@ export default {
 	min-width: 35rem;
     max-width: 35rem;
 }
+
 </style>

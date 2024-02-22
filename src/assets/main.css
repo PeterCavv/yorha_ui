@@ -339,6 +339,7 @@ body {
   .button:active:after {
     background-color: #dcd8c0;
   }
+
   ::-webkit-input-placeholder,
   ::-moz-placeholder,
   ::-ms-input-placeholder {

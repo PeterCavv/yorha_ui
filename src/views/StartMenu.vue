@@ -78,8 +78,7 @@
     .full { 
       width: 100% 
     }
-
-    
+ 
     #menu{
       text-transform: uppercase;
     }
