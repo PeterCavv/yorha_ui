@@ -75,11 +75,18 @@
 </template>
 
 <style>
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
     .full { 
       width: 100% 
     }
-
-    
+ 
     #menu{
       text-transform: uppercase;
     }

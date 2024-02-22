@@ -4,7 +4,7 @@ import AuthPage from "../views/AuthPage.vue"
 import axios from 'axios'
 import multiguard from 'vue-router-multiguard';
 
-const types = function getTypes(to, from, next) {
+const types = async function getTypes(to, from, next) {
   axios.get(connection + "types")
   .then(response => {
     to.params.types = response.data;
@@ -12,7 +12,7 @@ const types = function getTypes(to, from, next) {
   })
 }
 
-const models = function getModels(to, from, next) {
+const models = async function getModels(to, from, next) {
   axios.get(connection + "models")
   .then(response => {
     to.params.models = response.data;
@@ -20,7 +20,7 @@ const models = function getModels(to, from, next) {
   })
 }
 
-const androids = function getAndroids(to, from, next) {
+const androids = async function getAndroids(to, from, next) {
   axios.get(connection + "androids")
   .then(response => {
     to.params.androids = response.data;
@@ -28,7 +28,7 @@ const androids = function getAndroids(to, from, next) {
   })
 }
 
-const operators = function getOperators(to, from, next) {
+const operators = async function getOperators(to, from, next) {
   axios.get(connection + "operators")
   .then(response => {
     to.params.operators = response.data;
@@ -36,7 +36,7 @@ const operators = function getOperators(to, from, next) {
   })
 }
 
-const reports = function getReports(to, from, next) {
+const reports = async function getReports(to, from, next) {
   axios.get(connection + "reports")
   .then(response => {
     to.params.reports = response.data;
@@ -44,7 +44,7 @@ const reports = function getReports(to, from, next) {
   })
 }
 
-const appe = function getAppearances(to, from, next) {
+const appe = async function getAppearances(to, from, next) {
   axios.get(connection + "appearances")
   .then(response => {
     to.params.appe = response.data;

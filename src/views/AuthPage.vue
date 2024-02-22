@@ -121,17 +121,32 @@ import { connection } from '../services/ApiConnection'
   width: 100% 
 }
 
+@media only screen and (max-width: 602px){
+    .button-select{
+		display:block;
+		margin-bottom: 10px;
+		width: 100%;
+    }
+}
+
+@media only screen and (min-width: 602px){
+    .button-select{
+		margin-left: 40px;
+		margin-right: -20px;
+		width: 15em;
+		display:inline-block;
+    }
+}
 
 #menu{
   text-transform: uppercase;
 }
 
 .button-menu{
-  text-align: left;
   padding-right: 10rem; 
-  width: 10rem;
   text-align: center;
 }
+
 .button-list{
   text-align: left;
   padding-right: 10rem; 
