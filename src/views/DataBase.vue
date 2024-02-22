@@ -9,10 +9,13 @@
 	<hr/> 
 
 	<button @click="show('android');" class="button button-select"
-	id="menu">{{ $t('data_base.androids' )}}</button>
+	id="menu">{{ $t('data_base.androids') }}</button>
 
 	<button @click="show('report');" class="button button-select" 
-	id="menu">{{ $t('data_base.reports' )}}</button>
+	id="menu">{{ $t('data_base.reports') }}</button>
+
+	<button @click="show('report');" class="button button-select" 
+	id="menu">{{ $t('data_base.armory') }}</button>
 	<br/>
 	
 	<AndroidPage :androids="androids" v-if="dataAndroids"/>
