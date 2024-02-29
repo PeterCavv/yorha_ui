@@ -12,6 +12,7 @@
     },
     "start": {
         "title": "Men\u00fa de Inicio",
+        "title_nav": "Inicio",
         "subtitle": "スタートメニュー",
         "fabrication_title": "Fabricaci\u00f3n",
         "fabrication_subtitle1": "Creaci\u00f3n de Androides",
@@ -45,6 +46,7 @@
     },
     "data_base": {
         "title": "Base de datos",
+        "title_nav": "Datos",
         "subtitle": "データベース",
         "androids": "Androides",
         "reports": "Informes",

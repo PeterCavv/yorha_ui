@@ -12,6 +12,7 @@
     },
     "start": {
         "title": "Start Menu",
+        "title_nav": "Start Menu",
         "subtitle": "スタートメニュー",
         "fabrication_title": "Fabrication",
         "fabrication_subtitle1": "Android Manufacture",
@@ -45,6 +46,7 @@
     },
     "data_base": {
         "title": "Data Base",
+        "title_nav": "Data Base",
         "subtitle": "データベース",
         "androids": "Androids",
         "reports": "Reports",
