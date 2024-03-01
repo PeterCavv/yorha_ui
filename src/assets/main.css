@@ -95,6 +95,10 @@ table {
   border-collapse: collapse;
   font-weight: inherit;
 }
+li{
+  margin: 0;
+  padding: 0;
+}
 th {
   font-weight: normal;
   text-align: left;
@@ -276,7 +280,7 @@ button:not(:disabled),
   z-index: 1;
 }
 button:not(:disabled):hover,
-.button:hover {
+.button:hover{
   -webkit-box-shadow: 0.2em 0.2em 0.1em 0 #bab5a1;
   box-shadow: 0.2em 0.2em 0.1em 0 #bab5a1;
 }
@@ -338,6 +342,19 @@ button:not(:disabled):active,
 button:not(:disabled):active:after,
 .button:active:after {
   background-color: #dcd8c0;
+}
+
+button:not(:disabled):focus{
+  border: solid #454138;
+  border-width: 0.1rem 0;
+  background-color: #454138;
+  color: #dcd8c0;
+  -webkit-box-shadow: 0.2em 0.2em 0.1em 0 #bab5a1;
+  box-shadow: 0.2em 0.2em 0.1em 0 #bab5a1;
+  top: -0.2rem;
+  bottom: -0.2rem;
+  border: solid #454138;
+  border-width: 0.1rem 0;
 }
 
 ::-webkit-input-placeholder,
