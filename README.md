@@ -33,7 +33,7 @@ The app view look like this at the moment:
 
 ![Captura_Data_Base](https://github.com/PeterCavv/yorha_ui/assets/102232679/3013fd76-dc9e-44b3-9820-f33a3ba276e2)
 
-![Captura_Start_Menu](https://github.com/PeterCavv/yorha_ui/assets/102232679/6c549a69-4b7f-4283-82bb-03db175301bf)
+![Captura_Start_Menu](https://github.com/PeterCavv/yorha_ui/assets/102232679/6c549a69-4b7f-4283-82bb-03db175301bf) ![Captuta_Fabrication](https://github.com/PeterCavv/yorha_ui/assets/102232679/60f7d717-0179-4830-b55d-ef3ccf0b7436)
 
 ## CSS YoRHa
 
