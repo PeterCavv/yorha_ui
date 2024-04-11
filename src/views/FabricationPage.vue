@@ -90,7 +90,7 @@
                 <p>
                     <br/>
                     <label for="textarea">{{ $t('start.fabrication_desc2_info4') }}:</label>
-                    <textarea v-model="bio" class="full" id="textarea" rows="8" placeholder="This android..." :maxlength="500"
+                    <textarea v-model="bio" class="full" id="textarea" rows="8" placeholder="This android..." :maxlength="350"
                     style="padding-right: 0px;"></textarea>
                 </p>
 
@@ -253,6 +253,7 @@ import axios from "axios"
 
     .data-figure{
       background-color: #dcd8c06b;
+      
     }
 
     .android-attribute{

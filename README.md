@@ -27,6 +27,12 @@ Operators have other androids on their command and androids can only be created 
 This proyect is unfinished, being about 35% complete, there's still many implementations to be done.
 If you want to take a look to the proyect, you're free to do so! You can also see how the development goes by accessing to [my workspace on Trello](https://trello.com/b/osxteix8/yorha) where I log all the tasks.
 
+The app view look like this at the moment:
+
+![Captura_Inicio_Sesion](https://github.com/PeterCavv/yorha_ui/assets/102232679/9954e298-97e9-413e-89fc-27f0e8fd9b3f)
+
+![Captura_Data_Base](https://github.com/PeterCavv/yorha_ui/assets/102232679/3013fd76-dc9e-44b3-9820-f33a3ba276e2)
+
 ## CSS YoRHa
 
 The main CSS of this app is created by [Ethan Chan](https://github.com/metakirby5)! Go and see his GitHub too!
