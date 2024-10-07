@@ -9,21 +9,21 @@
                 <hr/>
                     <div v-if="androidList.length">
                         <div v-for="( android, index ) in androidList" :key="index">
-                                <button @click="showTypeInfo( android )" 
-                                class="button button-list" id="menu" style="margin-bottom: 6px; width: 100%;">
-                                    <img v-if="android.model.name == 'YoRHa'" src="../assets/android_icon.png" 
-                                    class="img-android"/>
-                                    <img v-else src="../assets/special_icon.png" 
-                                    class="img-nav"/>
+                            <button @click="showTypeInfo( android )" 
+                            class="button button-list" id="menu" style="margin-bottom: 6px; width: 100%;">
+                                <img v-if="android.model.name == 'YoRHa'" src="../assets/android_icon.png" 
+                                class="img-android"/>
+                                <img v-else src="../assets/special_icon.png" 
+                                class="img-nav"/>
 
-                                    {{ android.name }}
+                                {{ android.name }}
 
-                                    <img v-if="android.state.name === 'Operational'" 
-                                    src="../assets/Operative_Icon.png" width="12" height="10" 
-                                    style="vertical-align: middle; float:right"/>
-                                    <img v-else src="../assets/No_Operative_Icon.png" width="10" height="8" 
-                                    style="vertical-align: middle; float:right"/>
-                                </button>
+                                <img v-if="android.state.name === 'Operational'" 
+                                src="../assets/Operative_Icon.png" width="12" height="10" 
+                                style="vertical-align: middle; float:right"/>
+                                <img v-else src="../assets/No_Operative_Icon.png" width="10" height="8" 
+                                style="vertical-align: middle; float:right"/>
+                            </button>
                         </div>
                     </div>
                     <div v-else style="text-align: left;">{{ $t('data_search.reports_message')}}</div>

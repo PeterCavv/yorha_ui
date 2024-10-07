@@ -31,6 +31,15 @@
       </figure>
 
       <figure>
+        <figcaption>
+          {{ $t('start.fabrication_subtitle3')}}
+        </figcaption>
+        <p>
+          {{ $t('start.info_database', { n: totalAndroids, m: operationalAndroids}) }}     
+        </p>
+      </figure>
+
+      <figure>
           <figcaption>{{ $t('start.fabrication_subtitle2') }}</figcaption>
           <p>
             <b>{{ $t('start.fabrication_desc2_title1') }}</b>
@@ -73,6 +82,45 @@
       </table>
       <hr/>
 </template>
+
+<script>
+
+export default {
+    name: "StartMenu",
+    data() {
+      return {
+        operationalAndroids: 0,
+        totalAndroids: 0
+      }
+
+    },
+    props: {
+
+      androids: {
+        type: Object,
+        req: true
+		  },
+
+    },
+    methods: {
+      getOperationalAndroids() {
+
+        this.androids.forEach(android => {
+          this.totalAndroids++;
+          if( android.state.name === 'Operational' ){
+            this.operationalAndroids++;
+          }
+
+        });
+
+      }
+    },
+    mounted() {
+      this.getOperationalAndroids();
+    }
+  }
+
+</script>
 
 <style>
 
