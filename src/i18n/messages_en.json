@@ -21,6 +21,7 @@
         "fabrication_desc1_3": ". You will be able to create an android with the following features:",
         "fabrication_button": "Create an android",
         "fabrication_subtitle2": "Android Features",
+        "fabrication_subtitle3": "Created Androids Information",
         "fabrication_desc2_title1": "Appearance",
         "fabrication_desc2_appearance1": "Male",
         "fabrication_desc2_appearance2": "Female",
@@ -29,7 +30,11 @@
         "fabrication_desc2_info1": "Name",
         "fabrication_desc2_info2": "Model",
         "fabrication_desc2_info3": "Type",
-        "fabrication_desc2_info4": "Biography"
+        "fabrication_desc2_info4": "Biography",
+        "info_database": "In this moment, there is {n} registered androids, but only {m} are operational.",
+        "warning_message": "Warning!",
+        "operator_message": "There is Operators with any android asigned. It is very important that everyone have their androids assigned to send them tasks.",
+        "operator_button": "Update Operators"
     },
     "fabrication": {
         "subtitle": "製造",
