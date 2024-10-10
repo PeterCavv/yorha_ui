@@ -152,7 +152,7 @@ import axios from "axios"
     },
     methods: {
         /**
-         * This method is going to set an Android on point and send it to the API with a HTTP POST request using Axios.
+         * This method is going to set an Android on point to send it to the API.
          */
         async addAndroid(){
             //Initializes number to 0 because we want to now if there is another android of this type.
