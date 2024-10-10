@@ -13,6 +13,22 @@
     <h2>
         {{ $t('start.fabrication_title') }}
     </h2>
+
+    <div v-if="emptyOperator">
+      <figure class="warning">
+        <figcaption>
+          {{ $t('start.warning_message') }}
+        </figcaption>
+        <p>
+          {{ $t('start.operator_message') }}
+        </p>
+        <div style="text-align: center;">
+          <button class="full" @click="this.$router.push({name: 'system'})">
+            {{ $t('start.operator_button') }}
+          </button>
+        </div>
+      </figure>
+    </div>
       
       <figure>
           <figcaption>
@@ -90,7 +106,8 @@ export default {
     data() {
       return {
         operationalAndroids: 0,
-        totalAndroids: 0
+        totalAndroids: 0,
+        emptyOperator: false
       }
 
     },
@@ -101,8 +118,16 @@ export default {
         req: true
 		  },
 
+      operators: {
+        type: Object,
+        req: true
+      }
+
     },
     methods: {
+      /**
+       * Count all the Operational Androids. If there is some Operator android with no androids assigned, a warning message will appear.
+       */
       getOperationalAndroids() {
 
         this.androids.forEach(android => {
@@ -113,10 +138,21 @@ export default {
 
         });
 
+      },
+
+      getUnassignedOperators(){
+
+        this.operators.forEach(operator => {
+          if(operator.androids.length == 0 || operator.androids == undefined || operator.androids == null){
+            this.emptyOperator = true;
+          }
+        })
+
       }
     },
     mounted() {
       this.getOperationalAndroids();
+      this.getUnassignedOperators();
     }
   }
 
@@ -124,12 +160,16 @@ export default {
 
 <style>
 
-.center {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
+    .warning figcaption{
+      background-color: #794141;
+    }
+
+    .center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
 
     .full { 
       width: 100% 

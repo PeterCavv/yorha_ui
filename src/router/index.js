@@ -66,7 +66,7 @@ const router = createRouter({
       name: 'startmenu',
       component: () => import('../views/StartMenu.vue'),
       props: true,
-      beforeEnter: multiguard([androids])
+      beforeEnter: multiguard([androids, operators])
     },
     {
       path: '/startmenu/fabrication',
