@@ -33,7 +33,7 @@
         "fabrication_desc2_info4": "Biography",
         "info_database": "In this moment, there is {n} registered androids, but only {m} are operational.",
         "warning_message": "Warning!",
-        "operator_message": "There is Operators with any android asigned. It is very important that everyone have their androids assigned to send them tasks.",
+        "operator_message": "There is Operators with no android asigned. It is very important that every Operator have their androids assigned to send them tasks.",
         "operator_button": "Update Operators"
     },
     "fabrication": {

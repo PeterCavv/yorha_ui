@@ -1,4 +1,5 @@
 <template>
+
     <br/><br/><br/>
     <hr/>
     <h1 style="text-align:left; padding-left:2rem;">
@@ -32,6 +33,7 @@
         </p>
     </figure>
 
+    <form>
         <fieldset>
                 <legend>{{ $t('start.fabrication_desc2_title2') }}</legend>
 
@@ -50,9 +52,11 @@
 
                     &nbsp;
 
-                    <select v-if="selectedModel != 'YoRHa'" v-model="selectedType" class="android-attribute" disabled/>
+                    <select v-if="selectedModel != 'YoRHa'" v-model="selectedType" 
+                    class="android-attribute" disabled/>
 
-                    <select v-else-if="selectedModel == 'YoRHa'" v-model="selectedType" class="android-attribute">
+                    <select v-else-if="selectedModel == 'YoRHa'" v-model="selectedType" 
+                    class="android-attribute">
                         <option v-for="(typeA, index) in types" :key="index" >
                                 {{ typeA.name }}
                         </option>
@@ -64,8 +68,8 @@
 
                     &nbsp;
 
-                    <input v-if="(selectedModel != 'YoRHa' && selectedModel != 'Special')"  type="text" 
-                    class="android-attribute" disabled style="padding-right: 0px;"/>
+                    <input v-if="(selectedModel != 'YoRHa' && selectedModel != 'Special')"  
+                    type="text" class="android-attribute" disabled style="padding-right: 0px;"/>
                     
                     <input v-else-if="(selectedModel != 'YoRHa' && selectedModel == 'Special')" 
                     v-model="androidName" id="specialModel" type="text" class="android-attribute" 
@@ -90,11 +94,12 @@
                 <p>
                     <br/>
                     <label for="textarea">{{ $t('start.fabrication_desc2_info4') }}:</label>
-                    <textarea v-model="bio" class="full" id="textarea" rows="8" placeholder="This android..." :maxlength="350"
-                    style="padding-right: 0px;"></textarea>
+                    <textarea v-model="bio" class="full" id="textarea" rows="8" 
+                    placeholder="This android..." :maxlength="350" style="padding-right: 0px;"></textarea>
                 </p>
 
-                <p v-if="(selectedModel == 'YoRHa' && selectedType == 'Operator')" style="font-size:small; font-style: normal;">
+                <p v-if="(selectedModel == 'YoRHa' && selectedType == 'Operator')" 
+                style="font-size:small; font-style: normal;">
                     <cite>{{ $t('fabrication.operator_info') }}</cite>
                 </p>
 
@@ -102,17 +107,23 @@
                     {{ $t('form.submit') }}
                 </button>
 
-                <button v-else-if="(selectedModel == 'YoRHa' && selectedType == '')" type="submit" class="button-menu" disabled>
+                <button v-else-if="(selectedModel == 'YoRHa' && selectedType == '')" 
+                type="submit" class="button-menu" disabled>
                     {{ $t('form.submit') }}
                 </button>
 
-                <button v-else-if="selectedModel == 'Special' && androidName == ''" type="submit" class="button-menu" disabled>
+                <button v-else-if="selectedModel == 'Special' && androidName == ''" type="submit" 
+                class="button-menu" disabled>
                     {{ $t('form.submit') }}
                 </button>
 
                 <button v-else type="button" @click="addAndroid()" class="button-menu">{{ $t('form.submit') }}</button>
         </fieldset>
+    </form>
+
+    <cite v-if="succesfullMessage">TEEEEEST MEssage</cite>
     <hr/>
+
 </template>
 
 <script>
@@ -130,6 +141,8 @@ import axios from "axios"
             androidName: "",
             bio: "",
             noType: [],
+            newAndroid: {},
+            succesfullMessage: false
         }
     },
     props: {
@@ -161,19 +174,25 @@ import axios from "axios"
             console.log(this.selectedAppearance)
 
             //Search the complete object depends on the name selected on the view.
-            let androidAppearance = this.appe.find( element => element.name == this.selectedAppearance );
-            var androidModelSel = this.models.find( element => element.name == this.selectedModel );
+            let androidAppearance = this.appe.find( 
+                element => element.name == this.selectedAppearance );
+            var androidModelSel = this.models.find( 
+                element => element.name == this.selectedModel );
 
             //Set a value to the variable noType, it is going to save the object with the name NoType
             //to save a Special model if it is the case.
             if( this.noType.length == 0 ){
-                this.noType = this.types.filter(element => element.name == 'NoType');
-                let index = this.types.findIndex(element => element.name == 'NoType' );
+
+                this.noType = this.types.filter(
+                    element => element.name == 'NoType');
+                let index = this.types.findIndex(
+                    element => element.name == 'NoType' );
                 this.types.splice(index, 1);
+
             }
 
             var androidTypeSel = this.selectedModel == "YoRHa" ? 
-                this.types.find(element => element.name == this.selectedType) :
+                this.types.find( element => element.name == this.selectedType ) :
                 this.noType[0];
 
             //To set the number, needs to now if there is another android with this type created. The Special models doesn't
@@ -181,6 +200,7 @@ import axios from "axios"
             this.androids.forEach(android => {
                 if( android.type != null && android.type.name == this.selectedType && androidNumber <= android.type_number ){ 
                     androidNumber = android.type_number + 1;
+
                 }
             });
 
@@ -188,6 +208,7 @@ import axios from "axios"
             //it's going to be the first of its type.
             if( androidNumber == 0 && this.selectedModel == "YoRHa" ){
                 androidNumber = 1;
+                
             }
 
             //This boolean was created to see if the android is an Operator or not because the way the API treat the
@@ -209,19 +230,12 @@ import axios from "axios"
                     'Content-Type': 'application/json'
                 }
             })
-            .then((res) => console.log("API Answer: " + res))
-            .catch((error) => console.error("Error: " + error))
+            .then((res) => {
+                console.log("API Answer: " + res)
+                this.succesfullMessage = true;
 
-            /*await fetch(connection + "androids", {
-                method: "POST", 
-                body: JSON.stringify(newAndroid),
-                headers:{
-                    "Content-Type": "application/json"
-                }
             })
-            .then((res) => res.json())
             .catch((error) => console.error("Error: " + error))
-            .then((response) => console.log("Success: " + response))*/
 
         }
     }

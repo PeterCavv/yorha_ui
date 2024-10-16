@@ -1,8 +1,12 @@
+<script setup lang="ts">
+import { routeLocationKey } from 'vue-router';
+</script>
+
 <template>
     <div class="navegator">
-        <router-link class="button button-nav " id="menu" 
+        <router-link class="button button-nav" id="menu" 
         to="/startmenu" >
-            <img src="../assets/StartMenu_Icon.png" 
+            <img src="../../assets/StartMenu_icon.png" 
             class="img-nav"/>
             <span style=" vertical-align: middle;">
                 &nbsp;{{ $t('start.title_nav') }}&nbsp;
@@ -11,7 +15,7 @@
 
         <router-link class="button button-nav" id="menu" 
         to="/database" >
-            <img src="../assets/DataBase_icon.png" 
+            <img src="../../assets/DataBase_icon.png" 
             class="img-nav"/>
             <span style=" vertical-align: middle;">
                 &nbsp;{{ $t('data_base.title_nav') }}&nbsp;
@@ -20,7 +24,7 @@
 
         <router-link class="button button-nav" id="menu" 
         to="/system" >
-            <img src="../assets/System_Icon.png" 
+            <img src="../../assets/System_Icon.png" 
             class="img-nav"/>
             <span style=" vertical-align: middle;">
                 &nbsp;{{ $t('system.title') }}&nbsp;
@@ -29,7 +33,7 @@
 
         <router-link class="button button-nav" id="menu" 
         to="/system" >
-            <img src="../assets/Info_Icon.png" 
+            <img src="../../assets/Info_Icon.png" 
             class="img-nav"/>
             <span style=" vertical-align: middle;">
                 &nbsp;About&nbsp;

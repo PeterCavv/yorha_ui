@@ -407,4 +407,10 @@ iframe {
 .flex-container{
   display: flex;
 }
+.title{
+
+  text-align: left; 
+  padding-left: 2rem;
+
+}
 

@@ -1,7 +1,13 @@
+<script setup>
+import { ref } from 'vue'
+
+const open = ref(false)
+</script>
+
 <template>
   <br/><br/><br/>
   <hr/>
-    <h1 style="text-align: left; padding-left: 2rem;">
+    <h1 class="title">
         <span>
           {{ $t('start.title') }}
           <font size="4">
@@ -96,6 +102,7 @@
               </tr>
           </tbody>
       </table>
+
       <hr/>
 </template>
 
