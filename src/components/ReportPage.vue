@@ -9,14 +9,12 @@
                 <hr/>
                 <div v-if="reportList.length" class="dataScroll">
                     <div v-for="(report, index) in reportList" :key="index">
-                        <li style= "margin-top: 5px;">
-                            <button @click="showTypeInfo(report)" 
-                            class="button button-list" id="menu" style="margin-bottom: 10px;">
+                        <button @click="showTypeInfo(report)" 
+                        class="button button-list" id="menu" style="margin-bottom: 6px; width: 100%; height: 40px">
 
-                                {{ report.name }}
-                                
-                            </button>
-                        </li>
+                            {{ report.name }}
+
+                        </button>
                     </div>
                     </div>
                     <div v-else class="dataScroll" style="text-align: left;">{{ $t('data_search.reports_message')}}</div>
@@ -24,7 +22,7 @@
             </figure>
         </blockquote>
 
-        <InfoWindow :dataUse="selectedReport" :dataType="'report'" :addWindow="addWindow" style="margin-top: -35px;"/>
+        <InfoWindow :dataUse="selectedReport" :dataType="'report'" :addWindow="addWindow" />
     </div>
     <hr/>
 </template>

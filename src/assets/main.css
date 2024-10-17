@@ -343,7 +343,6 @@ button:not(:disabled):active:after,
 .button:active:after {
   background-color: #dcd8c0;
 }
-
 button:not(:disabled):focus{
   border: solid #454138;
   border-width: 0.1rem 0;
@@ -356,7 +355,22 @@ button:not(:disabled):focus{
   border: solid #454138;
   border-width: 0.1rem 0;
 }
-
+.button-menu{
+  padding-right: 10rem; 
+  text-align: center;
+}
+.button-list{
+  text-align: left;
+  padding-right: 10rem; 
+  margin-bottom: 6px; 
+  width: 100%; 
+  height: 40px
+}
+.button-submit{
+  text-align: center;
+  padding-right: 10rem; 
+  width: 6rem;
+}
 ::-webkit-input-placeholder,
 ::-moz-placeholder,
 ::-ms-input-placeholder {
@@ -401,6 +415,9 @@ figure > figcaption {
   background-color: #454138;
   color: #bab5a1;
 }
+.data-figure{
+  background-color: #dcd8c06b;
+}
 iframe {
   border: 0.1rem solid #bab5a1;
 }
@@ -415,7 +432,8 @@ iframe {
 }
 
 .inOneLine{
-  display: flex; gap: 1rem;
+  display: flex; 
+  gap: 1rem;
 }
 
 .dataScroll{
