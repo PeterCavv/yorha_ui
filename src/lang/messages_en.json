@@ -22,15 +22,11 @@
         "fabrication_button": "Create an android",
         "fabrication_subtitle2": "Android Features",
         "fabrication_subtitle3": "Created Androids Information",
-        "fabrication_desc2_title1": "Appearance",
         "fabrication_desc2_appearance1": "Male",
         "fabrication_desc2_appearance2": "Female",
         "fabrication_desc2_appearance3": "Androgyne",
         "fabrication_desc2_title2": "Basic Android Information",
         "fabrication_desc2_info1": "Name",
-        "fabrication_desc2_info2": "Model",
-        "fabrication_desc2_info3": "Type",
-        "fabrication_desc2_info4": "Biography",
         "info_database": "In this moment, there is {n} registered androids, but only {m} are operational.",
         "warning_message": "Warning!",
         "operator_message": "There is Operators with no android asigned. It is very important that every Operator have their androids assigned to send them tasks.",
@@ -49,6 +45,17 @@
         "operator_info": "Remember to assign an android if you create an Operator YoRHa model!",
         "insert_name": "Insert Name"
     },
+    "android": {
+        "state": "State",
+        "type_number": "Number",   
+        "short_name": "Short name",
+        "model": "Model",
+        "type": "Type",
+        "biography": "Biography",
+        "appearance": "Appearance",
+        "assigned_operator": "Assigned Operator"
+
+    },
     "data_base": {
         "title": "Data Base",
         "title_nav": "Data Base",
@@ -59,9 +66,6 @@
         "android_data": "Androids Data",
         "reports_data": "Reports Data",
         "android_info": "{n} Information",
-        "android_state": "State",
-        "android_type_number": "Number",
-        "short_name": "Short name",
         "types": "{n} (Type {m})",
         "type_desc": "Type Description",
         "btn_assing_android": "Assing an android",
