@@ -32,47 +32,50 @@
                     style="vertical-align: middle;"/>
                     {{ $t('data_base.android_info', { n: dataUse.name}) }}
                 </figcaption>
-                <table>
-                    <tr>
-                        <td style="padding-right: 10px;">
-                            <label><cite>{{ $t('start.fabrication_desc2_info2') }}</cite></label>
-                            <p>{{ dataUse.model.name }}</p>
-                        </td>
-                        <td style="width: 5rem;">
-                            <label><cite>{{ $t('start.fabrication_desc2_info3') }}</cite></label>
-                            <p v-if="dataUse.type !== null && dataUse.type.name !== 'NoType'">{{ dataUse.type.name }}</p>
-                            <p v-else>{{ $t('information.data_empty') }}</p>
-                        </td>
-                        <td>
-                            <label><cite>{{ $t('data_base.android_type_number') }}</cite></label>
-                            <p v-if="dataUse.type_number != '' && dataUse.type_number != 0">{{ dataUse.type_number}}</p>
-                            <p v-else>{{ $t('information.data_empty') }}</p>
-                        </td>
-                        <td>
-                            <label><cite>{{ $t('start.fabrication_desc2_title1') }}</cite></label>
-                            <p>{{ dataUse.appearance.name }}</p>
-                        </td>
-                        <td>
-                            <label><cite>{{ $t('data_base.short_name') }}</cite></label>
-                            <p v-if="dataUse.short_name != null">{{ dataUse.short_name}}</p>
-                            <p v-else>{{ $t('information.data_empty') }}</p>
-                        </td>
-                       <!--<div v-if="dataUse.type.name != 'Operator' && dataUse.model.name != 'Special'">
-                            <td>
-                                <label><cite>Assigned Operator</cite></label>
-                                <p v-if="dataUse.assigned_operator != null">{{ dataUse.short_name}}</p>
-                                <p v-else>{{ $t('information.data_empty') }}</p>
-                            </td>
-                        </div>-->
-                    </tr>
-                </table>
-                <label><cite>{{ $t('data_base.android_state') }}</cite></label>
-                <div v-if="dataUse.state.name === 'Operational'">
-                    <p style="color: #22c05f">{{ dataUse.state.name }}</p>
+                <div style="display: flex; gap: 1rem;">
+                    <div style="width: 5rem;">
+                        <label><cite>{{ $t('start.fabrication_desc2_info2') }}</cite></label>
+                        <p>{{ dataUse.model.name }}</p>
+                    </div>
+                    <div style="width: 5rem;">
+                        <label><cite>{{ $t('start.fabrication_desc2_info3') }}</cite></label>
+                        <p v-if="dataUse.type !== null && dataUse.type.name !== 'NoType'">{{ dataUse.type.name }}</p>
+                        <p v-else>{{ $t('information.data_empty') }}</p>
+                    </div>
+                    <div style="width: 5rem;">
+                        <label><cite>{{ $t('data_base.android_type_number') }}</cite></label>
+                        <p v-if="dataUse.type_number != '' && dataUse.type_number != 0">{{ dataUse.type_number}}</p>
+                        <p v-else>{{ $t('information.data_empty') }}</p>
+                    </div>
+                    <div style="width: 7rem;">
+                        <label><cite>{{ $t('start.fabrication_desc2_title1') }}</cite></label>
+                        <p>{{ dataUse.appearance.name }}</p>
+                    </div>
+                    <div>
+                        <label><cite>{{ $t('data_base.short_name') }}</cite></label>
+                        <p v-if="dataUse.short_name != null">{{ dataUse.short_name}}</p>
+                        <p v-else>{{ $t('information.data_empty') }}</p>
+                    </div>
+                    
                 </div>
-                <div v-else>
-                    <p style="color: #c02222">{{ dataUse.state.name }}</p>
+                <div style="display: flex; gap: 1rem;">
+                    <div style="width: 7rem;">
+                        <label><cite>{{ $t('data_base.android_state') }}</cite></label>
+                        <div v-if="dataUse.state.name === 'Operational'">
+                            <p style="color: #22c05f">{{ dataUse.state.name }}</p>
+                        </div>
+                        <div v-else>
+                            <p style="color: #c02222">{{ dataUse.state.name }}</p>
+                        </div>
+                    </div>
+                    <div style="margin-left: auto;" v-if="dataUse.type.name != 'Operator' && dataUse.model.name != 'Special'">
+                            <label><cite>Assigned Operator</cite></label>
+                            <p v-if="dataUse.assigned_operator != null">{{ dataUse.short_name}}</p>
+                            <p v-else>{{ $t('information.data_empty') }}</p>
+                    </div>
+
                 </div>
+                
                 <br/>
                 <label><cite>{{ $t('start.fabrication_desc2_info4') }}</cite></label>
                 <p v-if="dataUse.desc.length != 0">{{ dataUse.desc }}</p>
