@@ -105,7 +105,7 @@
         "android_message": "No se encontraron androides.",
         "reports_search": "Buscar informe",
         "reports_message": "No se encontraron informes.",
-        "operators": "Buscar un operador",
+        "operators_search": "Buscar un operador",
         "operator_message": "No se encontraron operadores",
         "types": "Buscar un tipo",
         "type_message": "No se encontraron tipos"

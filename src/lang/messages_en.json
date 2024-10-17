@@ -101,7 +101,7 @@
         "android_message": "No androids found.",
         "reports_search": "Search a report",
         "reports_message": "No reports found.",
-        "operators": "Search an Operator",
+        "operators_search": "Search an Operator",
         "operator_message": "No operators found",
         "types": "Search types",
         "type_message": "No types found"
