@@ -32,7 +32,7 @@
                     style="vertical-align: middle;"/>
                     {{ $t('data_base.android_info', { n: dataUse.name}) }}
                 </figcaption>
-                <div style="display: flex; gap: 1rem;">
+                <div class="inOneLine">
                     <div style="width: 5rem;">
                         <label><cite>{{ $t('start.fabrication_desc2_info2') }}</cite></label>
                         <p>{{ dataUse.model.name }}</p>
@@ -58,7 +58,7 @@
                     </div>
                     
                 </div>
-                <div style="display: flex; gap: 1rem;">
+                <div class="inOneLine">
                     <div style="width: 7rem;">
                         <label><cite>{{ $t('data_base.android_state') }}</cite></label>
                         <div v-if="dataUse.state.name === 'Operational'">
@@ -131,13 +131,11 @@
                 <label><cite>{{ $t('data_base.type_desc') }}</cite></label>
                 <p>{{ dataUse.desc }}</p>
                 <br/>
-                <div>
-                    <button class="button" id="menu"
-                    style="margin-bottom: 6px; text-align: center; float: right; text-transform: none; width: 30%"
-                    @click="changeEditBox()">
-                        {{ $t('data_base.edit_type') }}
-                    </button>
-                </div> 
+                <button class="button" id="menu"
+                style="margin-bottom: 6px; text-align: center; float: right; text-transform: none; width: 30%"
+                @click="changeEditBox()">
+                    {{ $t('data_base.edit_type') }}
+                </button>
             </figure>
         </div>
 

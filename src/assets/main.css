@@ -414,3 +414,30 @@ iframe {
 
 }
 
+.inOneLine{
+  display: flex; gap: 1rem;
+}
+
+.dataScroll{
+  overflow-y:scroll; 
+  height: 18rem;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #afac9a; 
+}
+  
+::-webkit-scrollbar-thumb {
+  background: #747266; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(73, 72, 61); 
+}
+
+
+

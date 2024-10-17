@@ -7,7 +7,7 @@
         <blockquote style="width: 25rem; margin-right: 8rem;">
             <figure class="data-figure" style="height: 100%;">
                 <hr/>
-                    <div v-if="androidList.length">
+                    <div v-if="androidList.length" class="dataScroll">
                         <div v-for="( android, index ) in androidList" :key="index">
                             <button @click="showTypeInfo( android )" 
                             class="button button-list" id="menu" style="margin-bottom: 6px; width: 100%;">
@@ -26,14 +26,13 @@
                             </button>
                         </div>
                     </div>
-                    <div v-else style="text-align: left;">{{ $t('data_search.reports_message')}}</div>
+                    <div v-else class="dataScroll" style="text-align: left;">{{ $t('data_search.android_message')}}</div>
                 <hr/>
             </figure>
         </blockquote>
 
         <InfoWindow :dataUse="selectedAndroid" :dataType="'android'" :addWindow="addWindow" style="margin-top: -35px;"/>
     </div>
-
     <hr/>
 </template>
 
