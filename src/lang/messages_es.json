@@ -20,16 +20,19 @@
         "fabrication_desc1_2": "formulario de creaci\u00f3n de androide.",
         "fabrication_desc1_3": "Ser\u00e1 capaz de producir androides con las posibles siguientes caracter\u00edsticas:",
         "fabrication_button": "Crear un androide",
-        "fabrication_subtitle2": "Caracter\u00edsticas de Androide",
-        "fabrication_desc2_title1": "Apariencia",
-        "fabrication_desc2_appearance1": "Masculina",
-        "fabrication_desc2_appearance2": "Femenina",
-        "fabrication_desc2_appearance3": "Andr\u00f3gina",
-        "fabrication_desc2_title2": "Informaci\u00f3n b\u00e1sica de un androide",
+        "fabrication_subtitle2": "Información general de YoRHa",
+        "fabrication_subtitle3": "Información de Androides Creados",
+        "fabrication_desc2_appearance1": "Masculino",
+        "fabrication_desc2_appearance2": "Femenino",
+        "fabrication_desc2_appearance3": "Andrógino",
+        "fabrication_desc2_title2": "Informaci\u00f3n B\u00e1sica de un Androide",
         "fabrication_desc2_info1": "Nombre",
-        "fabrication_desc2_info2": "Modelo",
-        "fabrication_desc2_info3": "Tipo",
-        "fabrication_desc2_info4": "Biograf\u00eda"
+        "fabrication_desc2_info": "Depende de si el androide creado es 'Executer' o no, ",
+        "info_database": "Actualmente existen {n} androides registrados, de los cuales solo {m} est\u00e1n activos.",
+        "warning_message": "¡Advertencia!",
+        "operator_message": "Existen Operadores que no tienen androides asignados. Es de suma importancia que todos tengan androides a sus \u00f3rdenes para asignarles tareas.",
+        "operator_button": "Actualizar Operadores"
+        
     },
     "fabrication": {
         "subtitle": "製造",
@@ -44,6 +47,17 @@
         "operator_info": "¡Recuerda asignar un androide al crear un 'Operator'!",
         "insert_name": "Inserte Nombre"
     },
+    "android": {
+        "state": "Estado",
+        "type_number": "N\u00famero",   
+        "short_name": "Nombre corto",
+        "model": "Modelo",
+        "type": "Tipo",
+        "biography": "Biograf\u00eda",
+        "appearance": "Apariencia",
+        "assigned_operator": "Operador Asignado"
+
+    },
     "data_base": {
         "title": "Base de datos",
         "title_nav": "Datos",
@@ -54,11 +68,8 @@
         "android_data": "Datos de Androides",
         "reports_data": "Datos de Informes",
         "android_info": "Informaci\u00f3n de {n}",
-        "android_state": "Estado",
         "android_null_desc": "No hay informaci\u00f3n.",
-        "android_type_number": "N\u00famero",
         "android_no_type": "-",
-        "short_name": "Nombre corto",
         "types": "{n} (Tipo {m})",
         "type_desc": "Descripci\u00f3n del tipo",
         "btn_assing_android": "Asignar un androide",
@@ -98,7 +109,7 @@
         "android_message": "No se encontraron androides.",
         "reports_search": "Buscar informe",
         "reports_message": "No se encontraron informes.",
-        "operators": "Buscar un operador",
+        "operators_search": "Buscar un operador",
         "operator_message": "No se encontraron operadores",
         "types": "Buscar un tipo",
         "type_message": "No se encontraron tipos"

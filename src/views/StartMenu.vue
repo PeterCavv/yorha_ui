@@ -1,7 +1,13 @@
+<script setup>
+import { ref } from 'vue'
+
+const open = ref(false)
+</script>
+
 <template>
   <br/><br/><br/>
   <hr/>
-    <h1 style="text-align: left; padding-left: 2rem;">
+    <h1 class="title">
         <span>
           {{ $t('start.title') }}
           <font size="4">
@@ -13,6 +19,22 @@
     <h2>
         {{ $t('start.fabrication_title') }}
     </h2>
+
+    <div v-if="emptyOperator">
+      <figure class="warning">
+        <figcaption>
+          {{ $t('start.warning_message') }}
+        </figcaption>
+        <p>
+          {{ $t('start.operator_message') }}
+        </p>
+        <div style="text-align: center;">
+          <button class="full" @click="this.$router.push({name: 'system'})">
+            {{ $t('start.operator_button') }}
+          </button>
+        </div>
+      </figure>
+    </div>
       
       <figure>
           <figcaption>
@@ -28,6 +50,15 @@
                 {{ $t('start.fabrication_button') }}
               </button>
           </div>
+      </figure>
+
+      <figure>
+        <figcaption>
+          {{ $t('start.fabrication_subtitle3')}}
+        </figcaption>
+        <p>
+          {{ $t('start.info_database', { n: totalAndroids, m: operationalAndroids}) }}     
+        </p>
       </figure>
 
       <figure>
@@ -71,17 +102,92 @@
               </tr>
           </tbody>
       </table>
+      
       <hr/>
 </template>
 
+<script>
+
+export default {
+    name: "StartMenu",
+    data() {
+      return {
+        operationalAndroids: 0,
+        totalAndroids: 0,
+        emptyOperator: false
+      }
+
+    },
+    props: {
+
+      androids: {
+        type: Object,
+        req: true
+		  },
+
+      operators: {
+        type: Object,
+        req: true
+      }
+
+    },
+    methods: {
+      /**
+       * Count all the Operational Androids. If there is some Operator android with no androids assigned, a warning message will appear.
+       */
+      getOperationalAndroids() {
+
+        this.androids.forEach(android => {
+          this.totalAndroids++;
+          if( android.state.name === 'Operational' ){
+            this.operationalAndroids++;
+          }
+
+        });
+
+      },
+
+      getUnassignedOperators(){
+
+        this.operators.forEach(operator => {
+          if(operator.androids.length == 0 || operator.androids == undefined || operator.androids == null){
+            this.emptyOperator = true;
+          }
+        })
+
+      }
+    },
+    mounted() {
+      this.getOperationalAndroids();
+      this.getUnassignedOperators();
+    }
+  }
+
+</script>
+
+<!--<style scoped>
+.modal {
+  position: fixed;
+  z-index: 999;
+  top: 20%;
+  left: 50%;
+  width: 300px;
+  margin-left: -150px;
+}
+</style>-->
+
 <style>
 
-.center {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
+    .warning figcaption{
+      background-color: #794141;
+    }
+
+    .center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
 
     .full { 
       width: 100% 

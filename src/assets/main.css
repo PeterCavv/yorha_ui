@@ -343,7 +343,6 @@ button:not(:disabled):active:after,
 .button:active:after {
   background-color: #dcd8c0;
 }
-
 button:not(:disabled):focus{
   border: solid #454138;
   border-width: 0.1rem 0;
@@ -356,7 +355,21 @@ button:not(:disabled):focus{
   border: solid #454138;
   border-width: 0.1rem 0;
 }
-
+.button-menu{
+  padding-right: 10rem; 
+  text-align: center;
+}
+.button-list{
+  text-align: left;
+  padding-right: 10rem; 
+  margin-bottom: 6px; 
+  height: 40px
+}
+.button-submit{
+  text-align: center;
+  padding-right: 10rem; 
+  width: 6rem;
+}
 ::-webkit-input-placeholder,
 ::-moz-placeholder,
 ::-ms-input-placeholder {
@@ -401,10 +414,47 @@ figure > figcaption {
   background-color: #454138;
   color: #bab5a1;
 }
+.data-figure{
+  background-color: #dcd8c06b;
+}
 iframe {
   border: 0.1rem solid #bab5a1;
 }
 .flex-container{
   display: flex;
 }
+.title{
+
+  text-align: left; 
+  padding-left: 2rem;
+
+}
+
+.inOneLine{
+  display: flex; 
+  gap: 1rem;
+}
+
+.dataScroll{
+  overflow-y:scroll; 
+  height: 18rem;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #afac9a; 
+}
+  
+::-webkit-scrollbar-thumb {
+  background: #747266; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(73, 72, 61); 
+}
+
+
 

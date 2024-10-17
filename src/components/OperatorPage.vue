@@ -1,45 +1,36 @@
 <template>
     <h2>{{ $t('system.operator_title') }}</h2>
-    <table>
-        <tr>
-            <td style="padding-right:10rem; ">
-                <input v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.operators')" 
-                style="width:20rem; margin-left: 3rem;">
+    <input v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.operators_search')"
+    style="width:20rem; margin-left: 3rem;">
 
-                <blockquote class="full">
-                    <figure class="data-figure">
-                        <ul>
-                            <div v-if="operatorList.length">
-                                <div v-for="(operator, index) in operatorList" :key="index">
-                                    <li style= "margin-top: 5px;">
-                                        <button v-if="operator.androids != 0" @click="showTypeInfo(operator)" 
-                                        class="button button-list" id="menu" style="margin-bottom: 10px;">
-                                            <img src="../assets/Operator_Icon.png" width="24" height="18" 
-                                            style="vertical-align: middle; float: left;"/>
-                                            &nbsp; {{ operator.name.name }}
-                                        </button>
+    <div class="flex-container">
+        <blockquote style="width: 25rem; margin-right: 8rem;">
+            <figure class="data-figure" style="height: 100%;">
+                <hr/>
+                <div v-if="operatorList.length" class="dataScroll">
+                    <div v-for="(operator, index) in operatorList" :key="index">
+                        <button v-if="operator.androids != 0" @click="showTypeInfo(operator)" 
+                        class="button button-list" id="menu" style="width: 100%;">
+                            <img src="../assets/Operator_Icon.png" width="24" height="18" 
+                            style="vertical-align: middle; float: left;"/>
+                            &nbsp; {{ operator.name.name }}
+                        </button>
 
-                                        <button v-else @click="showTypeInfo(operator)" 
-                                        class="button button-list" id="menu" style="margin-bottom: 10px;">
-                                            <img src="../assets/Operator_NoAndroid_Icon.png" width="23" height="18" 
-                                            style="vertical-align: middle; float: left;"/>
-                                            &nbsp;{{ operator.name.name }}
-                                            <img src="../assets/New_Icon.png" width="23" height="17" 
-                                            style="vertical-align: middle; float: right;"/>
-                                        </button>
-                                    </li>
-                                </div>
-                            </div>
-                            <div v-else style="text-align: left;">{{ $t('data_search.operator_message')}}</div>
-                        </ul>
-                    </figure>
-                </blockquote>
-            </td>
+                        <button v-else @click="showTypeInfo(operator)" 
+                        class="button button-list" id="menu" style="width: 100%;">
+                            <img src="../assets/Operator_NoAndroid_Icon.png" width="23" height="18" 
+                            style="vertical-align: middle; float: left;"/>
+                            &nbsp;{{ operator.name.name }}
+                            <img src="../assets/New_Icon.png" width="23" height="17" 
+                            style="vertical-align: middle; float: right;"/>
+                        </button>
+                    </div>
+                </div>
+            </figure>
+        </blockquote>
 
-            <InfoWindow :dataUse="selectedOperator" :dataType="'operator'" :addWindow="addWindow"/>
-
-        </tr>
-    </table>
+        <InfoWindow :dataUse="selectedOperator" :dataType="'operator'" :addWindow="addWindow" style="margin-top: -35px;"/>
+    </div>
     <hr/>
 </template>
 
