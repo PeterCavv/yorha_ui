@@ -10,7 +10,7 @@
                 <div v-if="reportList.length" class="dataScroll">
                     <div v-for="(report, index) in reportList" :key="index">
                         <button @click="showTypeInfo(report)" 
-                        class="button button-list" id="menu" style="margin-bottom: 6px; width: 100%; height: 40px">
+                        class="button button-list" id="menu" style="width: 100%;">
 
                             {{ report.name }}
 

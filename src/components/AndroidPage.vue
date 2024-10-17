@@ -10,7 +10,7 @@
                     <div v-if="androidList.length" class="dataScroll">
                         <div v-for="( android, index ) in androidList" :key="index">
                             <button @click="showTypeInfo( android )" 
-                            class="button button-list" id="menu" style="margin-bottom: 6px; width: 100%; height: 40px">
+                            class="button button-list" id="menu" style="width: 100%">
                                 <img v-if="android.model.name == 'YoRHa'" src="../assets/android_icon.png" 
                                 class="img-android"/>
                                 <img v-else src="../assets/special_icon.png" 

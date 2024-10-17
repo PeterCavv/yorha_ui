@@ -10,14 +10,14 @@
                 <div v-if="operatorList.length" class="dataScroll">
                     <div v-for="(operator, index) in operatorList" :key="index">
                         <button v-if="operator.androids != 0" @click="showTypeInfo(operator)" 
-                        class="button button-list" id="menu" style="margin-bottom: 6px; width: 100%;">
+                        class="button button-list" id="menu" style="width: 100%;">
                             <img src="../assets/Operator_Icon.png" width="24" height="18" 
                             style="vertical-align: middle; float: left;"/>
                             &nbsp; {{ operator.name.name }}
                         </button>
 
                         <button v-else @click="showTypeInfo(operator)" 
-                        class="button button-list" id="menu" style="margin-bottom: 6px; width: 100%;">
+                        class="button button-list" id="menu" style="width: 100%;">
                             <img src="../assets/Operator_NoAndroid_Icon.png" width="23" height="18" 
                             style="vertical-align: middle; float: left;"/>
                             &nbsp;{{ operator.name.name }}
