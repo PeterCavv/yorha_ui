@@ -22,7 +22,7 @@
             </figure>
         </blockquote>
 
-        <InfoWindow :dataUse="selectedReport" :dataType="'report'" :addWindow="addWindow" style="margin-top: -35px;"/>
+        <InfoWindow :dataUse="selectedReport" :dataType="'report'" :addWindow="addWindow" />
     </div>
     <hr/>
 </template>
