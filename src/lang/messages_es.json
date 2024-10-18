@@ -111,6 +111,8 @@
         "reports_message": "No se encontraron informes.",
         "operators_search": "Buscar un operador",
         "operator_message": "No se encontraron operadores",
+        "weapons_search": "Buscar un arma",
+        "weapon_message": "No se encontraron armas",
         "types": "Buscar un tipo",
         "type_message": "No se encontraron tipos"
     },
