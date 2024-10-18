@@ -35,89 +35,88 @@
 
     <form>
         <fieldset>
-                <legend>{{ $t('start.fabrication_desc2_title2') }}</legend>
+            <legend>{{ $t('start.fabrication_desc2_title2') }}</legend>
 
-                <span>
-                    <label>{{ $t('start.fabrication_desc2_info2') }}:</label>
+                <label>{{ $t('android.type') }}:</label>
 
-                    &nbsp;
+                &nbsp;
 
-                    <select v-model="selectedModel" class="android-attribute">
-                        <option v-for="model in models" :key="model">
-                            {{ model.name }}
-                        </option>
-                    </select>
+                <select v-model="selectedModel" class="android-attribute">
+                    <option v-for="model in models" :key="model">
+                        {{ model.name }}
+                    </option>
+                </select>
 
-                    <label>{{ $t('start.fabrication_desc2_info3') }}:</label>
+                <label>{{ $t('android.model') }}:</label>
 
-                    &nbsp;
+                &nbsp;
 
-                    <select v-if="selectedModel != 'YoRHa'" v-model="selectedType" 
-                    class="android-attribute" disabled/>
+                <select v-if="selectedModel != 'YoRHa'" v-model="selectedType" 
+                class="android-attribute" disabled/>
 
-                    <select v-else-if="selectedModel == 'YoRHa'" v-model="selectedType" 
-                    class="android-attribute">
-                        <option v-for="(typeA, index) in types" :key="index" >
-                                {{ typeA.name }}
-                        </option>
-                    </select>
+                <select v-else-if="selectedModel == 'YoRHa'" v-model="selectedType" 
+                class="android-attribute">
+                    <option v-for="(typeA, index) in types" :key="index" >
+                            {{ typeA.name }}
+                    </option>
+                </select>
+            
+                <br/><br/>
+
+                <label for="text">{{ $t('start.fabrication_desc2_info1') }}:</label>
+
+                &nbsp;
+
+                <input v-if="(selectedModel != 'YoRHa' && selectedModel != 'Special')"  
+                type="text" class="android-attribute" disabled style="padding-right: 0px;"/>
                 
-                    <br/><br/>
+                <input v-else-if="(selectedModel != 'YoRHa' && selectedModel == 'Special')" 
+                v-model="androidName" id="specialModel" type="text" class="android-attribute" 
+                :placeholder="$t('fabrication.insert_name')" :maxlength="25" style="padding-right: 0px;"/>
+                
+                <input v-else-if="(selectedModel == 'YoRHa' && selectedModel == undefinded)" 
+                :value="selectedType.name" type="text" class="android-attribute" disabled
+                style="padding-right: 0px;"/>
+                
+                <input v-else :value="selectedModel + ' Type ' + selectedType.charAt(0)"  
+                type="text" class="android-attribute" disabled style="padding-right: 0px;"/>
 
-                    <label for="text">{{ $t('start.fabrication_desc2_info1') }}:</label>
+                <label>{{ $t('android.appearance') }}:</label>
 
-                    &nbsp;
+                &nbsp;
 
-                    <input v-if="(selectedModel != 'YoRHa' && selectedModel != 'Special')"  
-                    type="text" class="android-attribute" disabled style="padding-right: 0px;"/>
-                    
-                    <input v-else-if="(selectedModel != 'YoRHa' && selectedModel == 'Special')" 
-                    v-model="androidName" id="specialModel" type="text" class="android-attribute" 
-                    :placeholder="$t('fabrication.insert_name')" :maxlength="25" style="padding-right: 0px;"/>
-                    
-                    <input v-else-if="(selectedModel == 'YoRHa' && selectedModel == undefinded)" 
-                    :value="selectedType.name" type="text" class="android-attribute" disabled
-                    style="padding-right: 0px;"/>
-                    
-                    <input v-else :value="selectedModel + ' Type ' + selectedType.charAt(0)"  
-                    type="text" class="android-attribute" disabled style="padding-right: 0px;"/>
+                <select v-model="selectedAppearance" class="android-attribute">
+                    <option v-for="a in appe" :key="a">{{ a.name }}</option>
+                </select>
 
-                    <label>{{ $t('start.fabrication_desc2_title1') }}:</label>
 
-                    &nbsp;
+            <p>
+                <br/>
+                <label for="textarea">{{ $t('android.biography') }}:</label>
+                <textarea v-model="bio" class="full" id="textarea" rows="8" 
+                placeholder="This android..." :maxlength="350" style="padding-right: 0px;"></textarea>
+            </p>
 
-                    <select v-model="selectedAppearance" class="android-attribute">
-                        <option v-for="a in appe" :key="a">{{ a.name }}</option>
-                    </select>
-                </span>
+            <p v-if="(selectedModel == 'YoRHa' && selectedType == 'Operator')" 
+            style="font-size:small; font-style: normal;">
+                <cite>{{ $t('fabrication.operator_info') }}</cite>
+            </p>
 
-                <p>
-                    <br/>
-                    <label for="textarea">{{ $t('start.fabrication_desc2_info4') }}:</label>
-                    <textarea v-model="bio" class="full" id="textarea" rows="8" 
-                    placeholder="This android..." :maxlength="350" style="padding-right: 0px;"></textarea>
-                </p>
+            <button v-if="selectedModel == '' " type="submit" class="button-menu" disabled>
+                {{ $t('form.submit') }}
+            </button>
 
-                <p v-if="(selectedModel == 'YoRHa' && selectedType == 'Operator')" 
-                style="font-size:small; font-style: normal;">
-                    <cite>{{ $t('fabrication.operator_info') }}</cite>
-                </p>
+            <button v-else-if="(selectedModel == 'YoRHa' && selectedType == '')" 
+            type="submit" class="button-menu" disabled>
+                {{ $t('form.submit') }}
+            </button>
 
-                <button v-if="selectedModel == '' " type="submit" class="button-menu" disabled>
-                    {{ $t('form.submit') }}
-                </button>
+            <button v-else-if="selectedModel == 'Special' && androidName == ''" type="submit" 
+            class="button-menu" disabled>
+                {{ $t('form.submit') }}
+            </button>
 
-                <button v-else-if="(selectedModel == 'YoRHa' && selectedType == '')" 
-                type="submit" class="button-menu" disabled>
-                    {{ $t('form.submit') }}
-                </button>
-
-                <button v-else-if="selectedModel == 'Special' && androidName == ''" type="submit" 
-                class="button-menu" disabled>
-                    {{ $t('form.submit') }}
-                </button>
-
-                <button v-else type="button" @click="addAndroid()" class="button-menu">{{ $t('form.submit') }}</button>
+            <button v-else type="button" @click="addAndroid()" class="button-menu">{{ $t('form.submit') }}</button>
         </fieldset>
     </form>
 

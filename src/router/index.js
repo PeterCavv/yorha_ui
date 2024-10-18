@@ -20,6 +20,14 @@ const models = async function getModels(to, from, next) {
   })
 }
 
+const weapons = async function getWeapons(to, from, next) {
+  axios.get(connection + "armory")
+  .then(response => {
+    to.params.weapons = response.data;
+    next()
+  })
+}
+
 const androids = async function getAndroids(to, from, next) {
   axios.get(connection + "androids")
   .then(response => {
@@ -80,7 +88,7 @@ const router = createRouter({
       name: 'database',
       component: () => import('../views/DataBase.vue'),
       props: true,
-      beforeEnter: multiguard([androids, reports])
+      beforeEnter: multiguard([androids, reports, weapons])
     },
     {
       path: '/system',

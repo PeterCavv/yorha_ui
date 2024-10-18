@@ -10,22 +10,27 @@ const searcher= {
             return this.androids;
         },
         reportList(){
-            if(this.searchValue.trim().length > 0) {
+            if( this.searchValue.trim().length > 0 ) {
                 return this.reports.filter((report) => report.name.toLowerCase().includes(this.searchValue.trim().toLowerCase()));
             }
             return this.reports;
         },
         operatorList(){
-            if(this.searchValue.trim().length > 0) {
+            if( this.searchValue.trim().length > 0 ) {
                 return this.operators.filter((operator) => operator.name.name.toLowerCase().includes(this.searchValue.trim().toLowerCase()));
             }
             return this.operators;
         },
         typeList(){
-            if(this.searchValue.trim().length > 0) {
+            if( this.searchValue.trim().length > 0 ) {
                 return this.types.filter((type) => type.name.toLowerCase().includes(this.searchValue.trim().toLowerCase()));
             }
             return this.types;
+        },
+        weaponList(){
+            if( this.searchValue.trim().length > 0 ){
+                return this.weaponList.filter((weapon) => weapon.name.toLowerCase().includes(this.searchValue.trim().toLowerCase()));
+            }
         }
     }
 }
