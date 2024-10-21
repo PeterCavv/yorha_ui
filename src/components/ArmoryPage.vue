@@ -22,7 +22,7 @@
             </figure>
         </blockquote>
 
-        <InfoWindow :dataUse="selectedAndroid" :dataType="'android'" :addWindow="addWindow" style="margin-top: -35px;"/>
+        <InfoWindow :dataUse="selectedWeapon" :dataType="'weapon'" :addWindow="addWindow" style="margin-top: -35px;"/>
     </div>
     <hr/>
 </template>
@@ -49,9 +49,9 @@ import InfoWindow from './InfoWindow.vue';
         },
         mixins: [searcher],
         methods: {
-            showWeapon(weapon){
+            showTypeInfo(weapon){
                 this.selectedWeapon = weapon;
-                this.addWindow = 0;
+                this.addWindow = 1;
             }
         }
 

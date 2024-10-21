@@ -23,6 +23,7 @@
                 <p>{{ dataUse.date }}</p>
             </figure>
         </div>
+        <!-- END REPORT INFO -->
 
         <!-- ANDROID INFO -->
         <div v-else-if="dataType=='android'">
@@ -84,6 +85,7 @@
                 
             </figure>
         </div>
+        <!-- END ANDROID INFO-->
 
         <!-- OPERATOR INFO -->
         <div v-else-if="dataType=='operator'">
@@ -119,6 +121,7 @@
                 </div>
             </figure>
         </div>
+        <!-- END OPERATOR INFO -->
 
         <!-- TYPES INFO -->
         <div v-else-if="dataType=='type'">
@@ -136,6 +139,18 @@
                 @click="changeEditBox()">
                     {{ $t('data_base.edit_type') }}
                 </button>
+            </figure>
+        </div>
+        <!-- END TYPE INFO -->
+
+        <div v-else-if="dataType == 'weapon'">
+            <figure class="innerbox">
+                <figcaption style="text-transform: uppercase;">
+                    <img src="../assets/Info_Icon.png" width="22" height="19"
+                    style="vertical-align: middle;"/>
+                    {{ dataUse.name }}
+                </figcaption>
+                <label><cite></cite></label>
             </figure>
         </div>
 
