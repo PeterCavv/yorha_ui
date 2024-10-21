@@ -29,8 +29,9 @@ const searcher= {
         },
         weaponList(){
             if( this.searchValue.trim().length > 0 ){
-                return this.weaponList.filter((weapon) => weapon.name.toLowerCase().includes(this.searchValue.trim().toLowerCase()));
+                return this.weapons.filter((weapon) => weapon.name.toLowerCase().includes(this.searchValue.trim().toLowerCase()));
             }
+            return this.weapons;
         }
     }
 }

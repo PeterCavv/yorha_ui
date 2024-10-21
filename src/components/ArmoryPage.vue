@@ -12,7 +12,7 @@
                             <button @click="showTypeInfo( weapon )" 
                             class="button button-list" id="menu" style="width: 100%">
 
-                                {{ android.name }}
+                                {{ weapon.name }}
 
                             </button>
                         </div>
