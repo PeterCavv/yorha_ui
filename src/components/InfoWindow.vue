@@ -143,14 +143,26 @@
         </div>
         <!-- END TYPE INFO -->
 
+        <!-- WEAPONS INFO -->
         <div v-else-if="dataType == 'weapon'">
             <figure class="innerbox">
                 <figcaption style="text-transform: uppercase;">
                     <img src="../assets/Info_Icon.png" width="22" height="19"
                     style="vertical-align: middle;"/>
-                    {{ dataUse.name }}
+                    {{ $t("weapon.info") }}
                 </figcaption>
-                <label><cite></cite></label>
+                <div class="imageBox">
+                    <p>img</p>  <!--Insertar imagenes de armas-->
+                </div>
+                <div class="inOneLine">
+                    <cite>{{ dataUse.name }}</cite>
+                    <cite style="margin-left: auto;">{{ dataUse.weapon_type.name }}</cite>
+                </div>
+                <hr/>
+                <p v-if="dataUse.desc.length != 0">{{ dataUse.desc }}</p>
+                <p v-else style="text-transform: uppercase;">{{ $t('information.null_desc') }}</p>
+                <p></p>
+
             </figure>
         </div>
 

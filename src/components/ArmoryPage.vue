@@ -32,7 +32,7 @@ import searcher from '../mixins/Searcher';
 import InfoWindow from './InfoWindow.vue';
 
 
-    export default{
+    export default {
         name: 'ArmoryPage',
         components: {
             InfoWindow
@@ -54,7 +54,6 @@ import InfoWindow from './InfoWindow.vue';
                 this.addWindow = 1;
             }
         }
-
-    }
+}
 
 </script>

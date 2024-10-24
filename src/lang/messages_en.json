@@ -56,6 +56,9 @@
         "assigned_operator": "Assigned Operator"
 
     },
+    "weapon": {
+        "info": "Weapon Information"
+    },
     "data_base": {
         "title": "Data Base",
         "title_nav": "Data Base",

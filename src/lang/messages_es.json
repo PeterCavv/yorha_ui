@@ -58,6 +58,9 @@
         "assigned_operator": "Operador Asignado"
 
     },
+    "weapon": {
+        "info": "Información de Arma"
+    },
     "data_base": {
         "title": "Base de datos",
         "title_nav": "Datos",
