@@ -7,17 +7,17 @@
         <blockquote style="width: 25rem; margin-right: 8rem;">
             <figure class="data-figure" style="height: 100%;">
                 <hr/>
-                    <div v-if="weaponList.length" class="dataScroll">
-                        <div v-for="( weapon, index ) in weaponList" :key="index">
-                            <button @click="showTypeInfo( weapon )" 
-                            class="button button-list" id="menu" style="width: 100%">
+                <div v-if="weaponList.length" class="dataScroll">
+                    <div v-for="( weapon, index ) in weaponList" :key="index">
+                        <button @click="showTypeInfo( weapon )" 
+                        class="button button-list" id="menu" style="width: 100%">
 
-                                {{ weapon.name }}
+                            {{ weapon.name }}
 
-                            </button>
-                        </div>
+                        </button>
                     </div>
-                    <div v-else class="dataScroll" style="text-align: left;">{{ $t('data_search.android_message')}}</div>
+                </div>
+                <div v-else class="dataScroll" style="text-align: left;">{{ $t('data_search.android_message')}}</div>
                 <hr/>
             </figure>
         </blockquote>

@@ -16,8 +16,8 @@
 
                         </button>
                     </div>
-                    </div>
-                    <div v-else class="dataScroll" style="text-align: left;">{{ $t('data_search.reports_message')}}</div>
+                </div>
+                <div v-else class="dataScroll" style="text-align: left;">{{ $t('data_search.reports_message')}}</div>
                 <hr/>
             </figure>
         </blockquote>
