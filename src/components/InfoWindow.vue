@@ -152,7 +152,7 @@
                     {{ $t("weapon.info") }}
                 </figcaption>
                 <div class="imageBox">
-                    <p>img</p>  <!--Insertar imagenes de armas-->
+                    <img class="weaponimg" src="../assets/cruel_oath_img.png">
                 </div>
                 <div class="inOneLine">
                     <cite>{{ dataUse.name }}</cite>
