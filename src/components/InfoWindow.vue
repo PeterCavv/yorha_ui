@@ -156,7 +156,7 @@
                 </div>
                 <div class="inOneLine">
                     <cite>{{ dataUse.name }}</cite>
-                    <cite style="margin-left: auto;">{{ dataUse.weapon_type.name }}</cite>
+                    <cite style="margin-left: auto;">{{ changeString(dataUse.weapon_type.name) }}</cite>
                 </div>
                 <hr/>
                 <p v-if="dataUse.desc.length != 0">{{ dataUse.desc }}</p>
@@ -191,6 +191,14 @@ export default {
     data: function() {
         return{
             editVal: "",   
+        }
+    }, 
+    methods: {
+        changeString(data){
+            return data.split('_').map(word =>
+                word.charAt(0).toUpperCase() + 
+                word.slice(1).toLowerCase()
+            ).join(' ');
         }
     }
 }
