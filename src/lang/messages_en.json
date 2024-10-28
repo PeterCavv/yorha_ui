@@ -7,7 +7,7 @@
         "error_user_message": "User not registered.",
         "error_pass_message": "Something went wrong. Please check the user and password.",
         "loading_message1": "loading - ",
-        "loading_message2": "Cheacking System",
+        "loading_message2": "Checking System",
         "loading_success": "Data Base Status: Green. Initializing..."
     },
     "start": {
