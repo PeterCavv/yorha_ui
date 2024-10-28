@@ -1,8 +1,11 @@
 <template>
     <h2>{{ $t('data_base.reports_data') }}</h2>
-    <input v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.reports_search')"
-    style="width:20rem; margin-left: 3rem;">
 
+    <div class="inOneLine">
+        <input v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.reports_search')"
+        style="width:20rem; margin-left: 3rem;">
+        <button><img class="img-add" src="../assets/AddButton_Icon.png"> Report</button>
+    </div>
     <div class="flex-container">
         <blockquote style="width: 25rem; margin-right: 8rem;">
             <figure class="data-figure" style="height: 100%;">
@@ -56,3 +59,11 @@ export default {
 
 }
 </script>
+
+<style>
+.img-android{
+    width: 20px;
+    height: 23px;
+    vertical-align: middle;
+}
+</style>
