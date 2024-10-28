@@ -56,6 +56,9 @@
         "assigned_operator": "Assigned Operator"
 
     },
+    "weapon": {
+        "info": "Weapon Information"
+    },
     "data_base": {
         "title": "Data Base",
         "title_nav": "Data Base",
@@ -63,8 +66,9 @@
         "androids": "Androids",
         "reports": "Reports",
         "armory": "Armory",
-        "android_data": "Androids Data",
-        "reports_data": "Reports Data",
+        "android_data": "Android's Data",
+        "reports_data": "Report's Data",
+        "armory_data": "Armory's Data",
         "android_info": "{n} Information",
         "types": "{n} (Type {m})",
         "type_desc": "Type Description",
@@ -107,6 +111,8 @@
         "reports_message": "No reports found.",
         "operators_search": "Search an Operator",
         "operator_message": "No operators found",
+        "weapons_search": "Search a weapon",
+        "weapon_message": "No weapons found",
         "types": "Search types",
         "type_message": "No types found"
         

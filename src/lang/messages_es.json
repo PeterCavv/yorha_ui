@@ -58,6 +58,9 @@
         "assigned_operator": "Operador Asignado"
 
     },
+    "weapon": {
+        "info": "Información de Arma"
+    },
     "data_base": {
         "title": "Base de datos",
         "title_nav": "Datos",
@@ -111,6 +114,8 @@
         "reports_message": "No se encontraron informes.",
         "operators_search": "Buscar un operador",
         "operator_message": "No se encontraron operadores",
+        "weapons_search": "Buscar un arma",
+        "weapon_message": "No se encontraron armas",
         "types": "Buscar un tipo",
         "type_message": "No se encontraron tipos"
     },

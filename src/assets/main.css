@@ -440,6 +440,32 @@ iframe {
   height: 18rem;
 }
 
+.imageBox, 
+.imageBoxBracers{
+  width: 100%; 
+  height: 15rem; 
+  margin: 0px; 
+  background-color: #bab5a1; 
+  margin-bottom: 5px;
+  display: flex;
+}
+
+.weaponimg{
+  width: 450px; 
+  padding: 15%; 
+  transform: rotate(-20deg);
+}
+
+.imageBoxBracers{
+  justify-content: center; 
+  align-items: center;    
+}
+
+.weaponbarefistimg{
+  width: 100px; 
+  height: 100px; 
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }

@@ -23,6 +23,7 @@
                 <p>{{ dataUse.date }}</p>
             </figure>
         </div>
+        <!-- END REPORT INFO -->
 
         <!-- ANDROID INFO -->
         <div v-else-if="dataType=='android'">
@@ -84,6 +85,7 @@
                 
             </figure>
         </div>
+        <!-- END ANDROID INFO-->
 
         <!-- OPERATOR INFO -->
         <div v-else-if="dataType=='operator'">
@@ -119,6 +121,7 @@
                 </div>
             </figure>
         </div>
+        <!-- END OPERATOR INFO -->
 
         <!-- TYPES INFO -->
         <div v-else-if="dataType=='type'">
@@ -136,6 +139,44 @@
                 @click="changeEditBox()">
                     {{ $t('data_base.edit_type') }}
                 </button>
+            </figure>
+        </div>
+        <!-- END TYPE INFO -->
+
+        <!-- WEAPONS INFO -->
+        <div v-else-if="dataType == 'weapon'">
+            <figure class="innerbox">
+                <figcaption style="text-transform: uppercase;">
+                    <img src="../assets/Info_Icon.png" width="22" height="19"
+                    style="vertical-align: middle;"/>
+                    {{ $t("weapon.info") }}
+                </figcaption>
+                <div v-if="dataUse.weapon_type.name !='COMBAT_BRACERS'" class="imageBox">
+                    <div v-if="dataUse.weapon_type.name == 'SMALL_SWORDS'">
+                        <img v-if="dataUse.name == 'YoRHa-issue Blade'" class="weaponimg" src="../assets/yorha-issue_blade_img.png">
+                        <img v-else-if="dataUse.name == 'Cruel Oath'" class="weaponimg" src="../assets/cruel_oath_img.png">
+                        <img v-else class="weaponimg" src="../assets/virtuous_contract_img.png">
+                    </div>
+                    <div v-else-if="dataUse.weapon_type.name == 'LARGE_SWORDS'">
+                        <img v-if="dataUse.name == 'Virtuous Treaty'" class="weaponimg" src="../assets/virtuous_treaty_img.png">
+                        <img v-else class="weaponimg" src="../assets/beastlord_img.png">
+                    </div>
+                    <div v-else>
+                        <img class="weaponimg" src="../assets/virtuous_dignity_img.png">
+                    </div>
+                </div>
+                <div v-else class="imageBoxBracers">
+                    <img class="weaponbarefistimg" src="../assets/barefist_img.png">
+                </div>
+                <div class="inOneLine">
+                    <cite>{{ dataUse.name }}</cite>
+                    <cite style="margin-left: auto;">{{ changeString(dataUse.weapon_type.name) }}</cite>
+                </div>
+                <hr/>
+                <p v-if="dataUse.desc.length != 0">{{ dataUse.desc }}</p>
+                <p v-else style="text-transform: uppercase;">{{ $t('information.null_desc') }}</p>
+                <p></p>
+
             </figure>
         </div>
 
@@ -164,6 +205,14 @@ export default {
     data: function() {
         return{
             editVal: "",   
+        }
+    }, 
+    methods: {
+        changeString(data){
+            return data.split('_').map(word =>
+                word.charAt(0).toUpperCase() + 
+                word.slice(1).toLowerCase()
+            ).join(' ');
         }
     }
 }
