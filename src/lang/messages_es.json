@@ -62,6 +62,7 @@
         "info": "Información de Arma"
     },
     "report": {
+        "subtitle": "レポート",
         "create": "Crear un Informe",
         "caution_message_1": "El informe se mandar\u00e1 a todos los androides disponibles.",
         "caution_message_2": "Cuando se env\u00ede el informe, ser\u00e1 firmado según la sesi\u00f3n iniciada. En este caso ser\u00e1 {n}.",

@@ -30,7 +30,7 @@
         </ul>
     </figure>
 
-    <ReportForm/>
+    <ReportForm :report="report"/>
 
     <cite v-if="succesfullMessage">TEEEEEST MEssage</cite>
     <hr/>
@@ -46,9 +46,14 @@ import ReportForm from '../components/ReportForm.vue';
         ReportForm
     },
     data(){
-        return{
-            succesfullMessage: false
-        }
+        const report = sessionStorage.getItem('report');
+        return {
+            report: report ? JSON.parse(report) : {} // Devuelve un objeto vacío si no existe
+        };
+    },
+    beforeRouteLeave(to, from, next) {
+        sessionStorage.removeItem('report');
+        next();
     }
   }
 </script>

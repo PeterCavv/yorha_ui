@@ -4,6 +4,10 @@
     <div class="inOneLine">
         <input v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.reports_search')"
         style="width:20rem; margin-left: 3rem;">
+
+        <button @click="createReport()">
+            Create Report
+        </button>
         
     </div>
     <div class="flex-container">
@@ -47,14 +51,21 @@ export default {
     },
     data: {
         selectedReport: null,
-        addWindow: 0
+        addWindow: 0,
+        report: {}
     },
     mixins: [searcher],
     methods: {
         showTypeInfo(report) {
                 this.selectedReport = report;
                 this.addWindow= 1;
-		}
+		},
+        createReport(){
+            this.report = {name: "hola", content: "", date: "", android: ""}
+
+            sessionStorage.setItem('report', JSON.stringify(this.report));
+            this.$router.push({name: 'create-report'})
+        }
     }
 
 }
