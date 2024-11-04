@@ -4,7 +4,7 @@
     <div class="inOneLine">
         <input v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.reports_search')"
         style="width:20rem; margin-left: 3rem;">
-        <button><img class="img-add" src="../assets/AddButton_Icon.png"> Report</button>
+        
     </div>
     <div class="flex-container">
         <blockquote style="width: 25rem; margin-right: 8rem;">

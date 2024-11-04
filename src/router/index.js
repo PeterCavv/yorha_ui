@@ -91,6 +91,12 @@ const router = createRouter({
       beforeEnter: multiguard([androids, reports, weapons])
     },
     {
+      path: '/database/create-report',
+      name: 'create-report',
+      component: () => import('../views/CreateReport.vue'),
+      props: true
+    },
+    {
       path: '/system',
       name: 'system',
       component: () => import('../views/SystemPage.vue'),
