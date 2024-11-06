@@ -57,7 +57,8 @@
 
     },
     "weapon": {
-        "info": "Weapon Information"
+        "info": "Weapon Information",
+        "assigned_weapon": "Weapon Equipped"
     },
     "report": {
         "subtitle": "レポート",
