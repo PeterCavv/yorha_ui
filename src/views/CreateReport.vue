@@ -50,10 +50,6 @@ import ReportForm from '../components/ReportForm.vue';
         return {
             report: report ? JSON.parse(report) : {} // Devuelve un objeto vacío si no existe
         };
-    },
-    beforeRouteLeave(to, from, next) {
-        sessionStorage.removeItem('report');
-        next();
     }
   }
 </script>

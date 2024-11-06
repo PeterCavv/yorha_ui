@@ -25,7 +25,7 @@
                 placeholder="This report is about..." :maxlength="350" style="padding-right: 0px;"></textarea>
             </p>
 
-            <button type="button" @click="console.log(report.name)" class="button-menu">{{ $t('form.submit') }}</button>
+            <button type="submit" @click="" class="button-menu">{{ $t('form.submit') }}</button>
         </fieldset>
     </form>
 </template>
@@ -44,6 +44,11 @@ export default {
         return{
             succesfullMessage: false
         }
+    },
+    beforeRouteLeave(to, from, next) {
+        this.report = {}
+        sessionStorage.removeItem('report');
+        next();
     }
 }
 

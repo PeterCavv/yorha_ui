@@ -61,7 +61,7 @@ export default {
                 this.addWindow= 1;
 		},
         createReport(){
-            this.report = {name: "hola", content: "", date: "", android: ""}
+            this.report = {name: "", content: "", date: "", android: ""}
 
             sessionStorage.setItem('report', JSON.stringify(this.report));
             this.$router.push({name: 'create-report'})
