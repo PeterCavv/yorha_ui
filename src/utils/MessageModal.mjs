@@ -20,14 +20,14 @@ const messageModal = {
         createMessage(httpMethod, object, status) {
             console.log(status)
             if( status == this.status.SUCCESSFUL ){
-                return this.checkobject(httpMethod, object);
+                return this.checkObject(httpMethod, object);
 
             } else {
                 return this.$t('messages.error');
 
             }
         },
-        checkobject(httpMethod, object){
+        checkObject(httpMethod, object){
             switch(object){
                 case this.object.ANDROID:
                     return this.createAndroidMessage(httpMethod);
