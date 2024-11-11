@@ -21,6 +21,12 @@
                 <br/>
                 <p>- {{ dataUse.android.name }}</p>
                 <p>{{ dataUse.date }}</p>
+
+                <button class="button" id="menu"
+                style="margin-bottom: 6px; text-align: center; margin-left: auto; text-transform: none; width: 30%"
+                @click="editReport(dataUse)">
+                    {{ $t('data_base.edit_type') }}
+                </button>
             </figure>
         </div>
         <!-- END REPORT INFO -->
@@ -71,7 +77,7 @@
                     </div>
                     <div style="margin-left: auto;" v-if="dataUse.type.name != 'Operator' && dataUse.model.name != 'Special'">
                             <label><cite>{{ $t('android.assigned_operator') }}</cite></label>
-                            <p v-if="dataUse.assigned_operator != null">{{ dataUse.short_name}}</p>
+                            <p v-if="dataUse.assigned_operator">{{ dataUse.short_name}}</p>
                             <p v-else>{{ $t('information.data_empty') }}</p>
                     </div>
 
@@ -213,6 +219,10 @@ export default {
                 word.charAt(0).toUpperCase() + 
                 word.slice(1).toLowerCase()
             ).join(' ');
+        },
+        editReport(report){
+            sessionStorage.setItem('report', JSON.stringify(report));
+            this.$router.push({name: 'create-report'})
         }
     }
 }

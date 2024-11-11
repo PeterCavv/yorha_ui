@@ -57,7 +57,21 @@
 
     },
     "weapon": {
-        "info": "Weapon Information"
+        "info": "Weapon Information",
+        "assigned_weapon": "Weapon Equipped"
+    },
+    "report": {
+        "subtitle": "レポート",
+        "create": "Create a Report",
+        "caution_message_1": "The report will be sent to every operative android.",
+        "caution_message_2": "When the report is sended, it will be signed by the connected user. In this case, it will be signed by {n}.",
+        "caution_message_3": "You can choose a publishing date.",
+        "caution_message_3_1": "If you don't choose any, it will be uploaded at the same time it's created.",
+        "create_legend": "Report Information",
+        "create_title": "Title:",
+        "create_content": "Report content:",
+        "create_date": "Publishing date:",
+        "create_signed": "Signed by:"
     },
     "data_base": {
         "title": "Data Base",

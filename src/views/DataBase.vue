@@ -2,10 +2,10 @@
 	<br/><br/><br/>
 	<hr/>
 	<h1 style="text-align:left; padding-left:2rem;">
-		<span>{{ $t('data_base.title') }}
-		<font size="4">{{ $t('data_base.subtitle') }}</font></span>
-	</h1>
-
+		{{ $t('data_base.title') }}
+		<font size="4">{{ $t('data_base.subtitle') }}</font>
+		</h1>
+		
 	<hr/> 
 
 	<button @click="show('android');" class="button button-select"
