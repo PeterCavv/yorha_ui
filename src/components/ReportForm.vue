@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+import messageModal from '../utils/MessageModal.mjs'
 
 export default {
     el: 'ReportForm',
@@ -43,6 +45,45 @@ export default {
     data(){
         return{
             succesfullMessage: false
+        }
+    },
+    mixins: [messageModal],
+    methods: {
+        sendReport(){
+            if(!report.id){
+                await axios.post(connection + "reports", JSON.stringify(report), {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+                })
+                .then((res) => {
+                    console.log("API Answer: " + res)
+                    this.msg = this.createMessage(
+                        messageModal.data.httpMethod.CREATE, 
+                        messageModal.data.object.REPORT, 
+                        messageModal.data.status.SUCCESSFUL
+                    );
+                })
+                .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
+                );
+                
+            } else {
+                await axios.patch(connection + "reports", JSON.stringify(report), {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+                })
+                .then((res) => {
+                    console.log("API Answer: " + res)
+                    this.msg = this.createMessage(
+                        messageModal.data.httpMethod.CREATE, 
+                        messageModal.data.object.REPORT, 
+                        messageModal.data.status.SUCCESSFUL
+                    );
+                })
+                .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
+                );
+            }
         }
     },
     beforeRouteLeave(to, from, next) {
