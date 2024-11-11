@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import searcher from '../mixins/Searcher'
+import searcher from '../utils/Searcher'
 import InfoWindow from './InfoWindow.vue'
 
 export default {

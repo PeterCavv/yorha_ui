@@ -120,13 +120,13 @@
         </fieldset>
     </form>
 
-    <cite v-if="succesfullMessage">TEEEEEST MEssage</cite>
     <hr/>
 
 </template>
 
 <script>
 import { connection } from '@/services/ApiConnection'
+import messageModal  from '../utils/MessageModal.mjs'
 import axios from "axios"
 
   export default {
@@ -140,8 +140,7 @@ import axios from "axios"
             androidName: "",
             bio: "",
             noType: [],
-            newAndroid: {},
-            succesfullMessage: false
+            newAndroid: {}
         }
     },
     props: {
@@ -162,6 +161,7 @@ import axios from "axios"
 			req: true
         }
     },
+    mixins: [messageModal],
     methods: {
         /**
          * This method is going to set an Android on point to send it to the API.
@@ -231,10 +231,14 @@ import axios from "axios"
             })
             .then((res) => {
                 console.log("API Answer: " + res)
-                this.succesfullMessage = true;
-
+                this.msg = this.createMessage(
+                    messageModal.data.httpMethod.CREATE, 
+                    messageModal.data.object.ANDROID, 
+                    messageModal.data.status.SUCCESSFUL
+                );
             })
-            .catch((error) => console.error("Error: " + error))
+            .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
+            );
 
         }
     }
