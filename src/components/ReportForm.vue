@@ -25,7 +25,7 @@
                 placeholder="This report is about..." :maxlength="350" style="padding-right: 0px;"></textarea>
             </p>
 
-            <button type="submit" @click="" class="button-menu">{{ $t('form.submit') }}</button>
+            <button @click="sendReport()" class="button-menu">{{ $t('form.submit') }}</button>
         </fieldset>
     </form>
 </template>
@@ -42,47 +42,14 @@ export default {
             required: true
         }
     },
-    data(){
-        return{
-            succesfullMessage: false
-        }
-    },
+    data(){},
     mixins: [messageModal],
     methods: {
         sendReport(){
             if(!report.id){
-                await axios.post(connection + "reports", JSON.stringify(report), {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-                })
-                .then((res) => {
-                    console.log("API Answer: " + res)
-                    this.msg = this.createMessage(
-                        messageModal.data.httpMethod.CREATE, 
-                        messageModal.data.object.REPORT, 
-                        messageModal.data.status.SUCCESSFUL
-                    );
-                })
-                .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
-                );
-                
+                console.log("hola")
             } else {
-                await axios.patch(connection + "reports", JSON.stringify(report), {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-                })
-                .then((res) => {
-                    console.log("API Answer: " + res)
-                    this.msg = this.createMessage(
-                        messageModal.data.httpMethod.CREATE, 
-                        messageModal.data.object.REPORT, 
-                        messageModal.data.status.SUCCESSFUL
-                    );
-                })
-                .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
-                );
+                
             }
         }
     },

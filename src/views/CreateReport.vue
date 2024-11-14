@@ -32,7 +32,6 @@
 
     <ReportForm :report="report"/>
 
-    <cite v-if="succesfullMessage">TEEEEEST MEssage</cite>
     <hr/>
 
 </template>
