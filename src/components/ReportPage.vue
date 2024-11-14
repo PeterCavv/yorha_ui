@@ -1,3 +1,9 @@
+<script setup>
+import { useReportData } from '../stores/ReportStore';
+
+const store = useReportData();
+</script>
+
 <template>
     <h2>{{ $t('data_base.reports_data') }}</h2>
 
