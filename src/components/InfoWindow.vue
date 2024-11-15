@@ -1,3 +1,9 @@
+<script setup>
+import { useReportData } from '../stores/ReportStore';
+
+const store = useReportData();
+</script>
+
 <template>
     <div v-if="addWindow == 0 || addWindow === null">
         <figure class="innerbox">
@@ -24,7 +30,7 @@
 
                 <button class="button" id="menu"
                 style="margin-bottom: 6px; text-align: center; margin-left: auto; text-transform: none; width: 30%"
-                @click="editReport(dataUse)">
+                @click="editReport => {store.editReport(dataUse); $router.push({name: 'create-report'})}">
                     {{ $t('data_base.edit_type') }}
                 </button>
             </figure>
@@ -221,7 +227,7 @@ export default {
             ).join(' ');
         },
         editReport(report){
-            sessionStorage.setItem('report', JSON.stringify(report));
+            store.editReport(report);
             this.$router.push({name: 'create-report'})
         }
     }

@@ -1,25 +1,28 @@
 import { defineStore } from "pinia";
 
 export const useReportData = defineStore("report", {
-    state: () =>{
-        title = "",
-        content= "",
-        date = "",
-        android =""
-    },
+    state: () => ({
+        options: {
+            title: "",
+            content: "",
+            date: "",
+            android: ""
+        }
+    }),
     actions: {
         createReport(){
-            this.title = "";
-            this.content = "";
-            this.date = "";
-            this.android = "";
+            this.options.title = "";
+            this.options.content = "";
+            this.options.date = "";
+            this.options.android = "";
 
         },
         editReport(report){
-            this.title = report.title;
-            this.content = report.content;
-            this.date = report.date;
-            this.android = report.android;
+            this.options.title = report.name;
+            this.options.content = report.content;
+            this.options.date = report.date;
+            this.options.android = report.android;
+
         }
     }
 
