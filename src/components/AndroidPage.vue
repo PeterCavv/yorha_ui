@@ -43,7 +43,7 @@ import InfoWindow from './InfoWindow.vue'
 export default {
     name: "AndroidPage",
     components: {
-        InfoWindow
+        InfoWindow,
     },
     props: {
         androids: {

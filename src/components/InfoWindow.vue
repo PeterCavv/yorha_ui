@@ -126,7 +126,7 @@ const store = useReportData();
                 </ul>
                 <br/>
                 <div>
-                    <button class="button" id="menu" 
+                    <button class="button" id="menu" @click="this.$router.push({name: 'assing-android'})"
                     style="margin-bottom: 6px; text-align: center; float: right; text-transform: none; width: 45%">
                         {{ $t('data_base.btn_assing_android') }}
                     </button>
