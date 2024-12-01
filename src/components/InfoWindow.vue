@@ -31,7 +31,7 @@ const store = useReportData();
                 <button class="button" id="menu"
                 style="margin-bottom: 6px; text-align: center; margin-left: auto; text-transform: none; width: 30%"
                 @click="editReport => {store.editReport(dataUse); $router.push({name: 'create-report'})}">
-                    {{ $t('data_base.edit_type') }}
+                    {{ $t('report.edit_report') }}
                 </button>
             </figure>
         </div>

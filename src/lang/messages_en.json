@@ -71,7 +71,9 @@
         "create_title": "Title:",
         "create_content": "Report content:",
         "create_date": "Publishing date:",
-        "create_signed": "Signed by:"
+        "create_signed": "Signed by:",
+        "edit_report": "Edit Report",
+        "create_report": "Create Report"
     },
     "data_base": {
         "title": "Data Base",

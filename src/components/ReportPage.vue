@@ -12,7 +12,7 @@ const store = useReportData();
         style="width:20rem; margin-left: 3rem;">
 
         <button @click="createReport => {store.createReport(); $router.push({name: 'create-report'})}">
-            Create Report
+            {{ $t("report.create_report")}}
         </button>
         
     </div>
