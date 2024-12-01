@@ -5,7 +5,7 @@
         <span>
           Operator Assignments
           <font size="4">
-              {{ $t('start.subtitle') }}
+             オペレーター割り当て
           </font>
         </span>
     </h1>
@@ -36,8 +36,9 @@
       <thead>
         <tr>
             <th width="40%">Name</th>
-            <th width="40%">Model</th>
-            <th>Available</th>
+            <th width="20%">Model</th>
+            <th width="20%">Available</th>
+            <th>Operator</th>
         </tr>
       </thead>
       <tbody>
@@ -46,8 +47,11 @@
               <tr class="interactive">
                 <td>{{android.name}}</td>
                 <td>{{android.model.name}}</td>
-                <td v-if="android.state.name == 'Operational'" style="color: #22c05f;">Yes</td>
+                <td v-if="android.state.name == 'Operational' && android.type.name != 'Operator'" style="color: #22c05f;">Yes</td>
                 <td v-else style="color: #c02222">No</td>
+                <td v-if="android.assigned_operator != null">{{android.assigned_operator.name}}</td>
+                <td v-else-if="android.type.name == 'Operator'">Cannot be assigned</td>
+                <td v-else>-</td>
             </tr>
           </template>
         </template> 
@@ -96,6 +100,10 @@
     .searcher-assign{
       width: 100%;
     }
+    .center-container{
+      margin-left: 0px;
+      margin-right: 0px;
+    }
   }
 </style>
 
@@ -123,7 +131,8 @@ export default {
 
       filteredAndroidList() {
         if (this.showAvailable) {
-          return this.androidList.filter(android => android.state.name === 'Operational');
+          var android = this.androidList.filter(android => android.state.name === 'Operational');
+          return android.filter(android => android.type.name != 'Operator');
         }
           return this.androidList;
       }
