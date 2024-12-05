@@ -3,20 +3,20 @@
   <hr/>
     <h1 class="title">
         <span>
-          Operator Assignments
+          {{ $t("operator.assg_title") }}
           <font size="4">
-             オペレーター割り当て
+            {{ $t("operator.subtitle") }}
           </font>
         </span>
     </h1>
 
     <h2>
-        Non Operator Androids
+      {{ $t("operator.other_androids") }}
     </h2>
 
     <figure>
       <figcaption>
-        Operator X Assignments
+        {{ $t("operator.this_data") }}
       </figcaption>
       <p>Add or remove androids to this Operator.</p>
       <cite style="font-size: small">An Operator must have at least one android assigned!</cite>
@@ -35,10 +35,10 @@
     <table style="width: 100%; margin: 0 auto">
       <thead>
         <tr>
-            <th width="40%">Name</th>
-            <th width="20%">Model</th>
-            <th width="20%">Available</th>
-            <th>Operator</th>
+            <th width="40%">{{ $t("start.fabrication_desc2_info1") }}</th>
+            <th width="20%">{{  $t("android.model") }}</th>
+            <th width="20%">{{  $t("android.available") }}</th>
+            <th>{{  $t("operator.name_type") }}</th>
         </tr>
       </thead>
       <tbody>
@@ -47,10 +47,9 @@
               <tr class="interactive">
                 <td>{{android.name}}</td>
                 <td>{{android.model.name}}</td>
-                <td v-if="android.state.name == 'Operational' && android.type.name != 'Operator'" style="color: #22c05f;">Yes</td>
+                <td v-if="android.state.name == 'Operational'" style="color: #22c05f;">Yes</td>
                 <td v-else style="color: #c02222">No</td>
                 <td v-if="android.assigned_operator != null">{{android.assigned_operator.name}}</td>
-                <td v-else-if="android.type.name == 'Operator'">Cannot be assigned</td>
                 <td v-else>-</td>
             </tr>
           </template>
@@ -70,7 +69,7 @@
 
   .center-container {
     display: flex;
-    flex-direction: column; /* Mantiene el resto en columna */
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
     margin-left: 10%;
@@ -79,8 +78,8 @@
 
   .input-group {
     display: flex;
-    gap: 10px;             /* Espacio entre los inputs */    
-    align-self: flex-start; /* Sobrescribe el alineamiento vertical al centro */
+    gap: 10px;                
+    align-self: flex-start; 
     margin-left: 0 auto;
     width: 50vw;
     margin-bottom: 10px;
@@ -117,6 +116,10 @@ export default {
             type: Object,
             required: true
         },
+        operator: {
+            type: Object,
+            required: true
+        }
     },
     data: {
         selectedAndroid: null,
@@ -130,11 +133,12 @@ export default {
 		  },
 
       filteredAndroidList() {
+        const android = this.androidList.filter(android => android.type.name != 'Operator' && android.name != 'Commander White');
+
         if (this.showAvailable) {
-          var android = this.androidList.filter(android => android.state.name === 'Operational');
-          return android.filter(android => android.type.name != 'Operator');
+          return android.filter(android => android.state.name === 'Operational');
         }
-          return this.androidList;
+          return android;
       }
     }
 }
