@@ -53,7 +53,8 @@
         "type": "Type",
         "biography": "Biography",
         "appearance": "Appearance",
-        "assigned_operator": "Assigned Operator"
+        "assigned_operator": "Assigned Operator",
+        "available": "Available"
 
     },
     "weapon": {
@@ -132,6 +133,15 @@
         "types": "Search types",
         "type_message": "No types found"
         
+    },
+    "operator": {
+        "assg_title": "Operator Assignments",
+        "subtitle": "オペレーター割り当て",
+        "other_androids": "Non Operator Androids",
+        "this_data": "{n} Assignments",
+        "description": "Add or remove androids to this Operator.",
+        "warning_text": "An Operator must have at least one android assigned!",
+        "name_type": "Operator"
     },
     "loggin": {
         "user": "User",
