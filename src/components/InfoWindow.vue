@@ -85,7 +85,7 @@ const operatorStore = useOperatorData();
                     </div>
                     <div style="margin-left: auto;" v-if="dataUse.type.name != 'Operator' && dataUse.model.name != 'Special'">
                             <label><cite>{{ $t('android.assigned_operator') }}</cite></label>
-                            <p v-if="dataUse.assigned_operator">{{ dataUse.short_name}}</p>
+                            <p v-if="dataUse.assigned_operator">{{ dataUse.assigned_operator.name.name }}</p>
                             <p v-else>{{ $t('information.data_empty') }}</p>
                     </div>
 
