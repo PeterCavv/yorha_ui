@@ -1,3 +1,9 @@
+<script setup>
+import { useOperatorData } from '../stores/OperatorStore';
+
+const store = useOperatorData();
+</script>
+
 <template>
 <br/><br/><br/>
   <hr/>
@@ -16,10 +22,10 @@
 
     <figure>
       <figcaption>
-        {{ $t("operator.this_data") }}
+        {{ $t("operator.this_data", { n: store.options['operator'].name.name }) }}
       </figcaption>
-      <p>Add or remove androids to this Operator.</p>
-      <cite style="font-size: small">An Operator must have at least one android assigned!</cite>
+      <p>{{ $t('operator.add_android_desc') }}</p>
+      <cite style="font-size: small">{{  $t('operator.cite_add_android') }}</cite>
     </figure>
 
   <div class="center-container">
@@ -47,13 +53,14 @@
               <tr class="interactive">
                 <td>{{android.name}}</td>
                 <td>{{android.model.name}}</td>
-                <td v-if="android.state.name == 'Operational'" style="color: #22c05f;">Yes</td>
-                <td v-else style="color: #c02222">No</td>
-                <td v-if="android.assigned_operator != null">{{android.assigned_operator.name}}</td>
+                <td v-if="android.state.name == 'Operational' && android.assigned_operator == null" 
+                style="color: #22c05f;">{{ $t('simple_response.affirmative') }}</td>
+                <td v-else style="color: #c02222">{{ $t('simple_response.negative') }}</td>
+                <td v-if="android.assigned_operator != null">{{android.assigned_operator.name.name}}</td>
                 <td v-else>-</td>
-            </tr>
-          </template>
-        </template> 
+              </tr>
+            </template>
+          </template> 
         <template v-else class="dataScroll">{{ $t('data_search.android_message')}}</template>
     </tbody>
     </table>
@@ -115,10 +122,6 @@ export default {
         androids: {
             type: Object,
             required: true
-        },
-        operator: {
-            type: Object,
-            required: true
         }
     },
     data: {
@@ -133,10 +136,14 @@ export default {
 		  },
 
       filteredAndroidList() {
-        const android = this.androidList.filter(android => android.type.name != 'Operator' && android.name != 'Commander White');
+        const android = this.androidList.filter(
+          android => android.type.name != 'Operator' && android.name != 'Commander White'
+        );
 
         if (this.showAvailable) {
-          return android.filter(android => android.state.name === 'Operational');
+          return android.filter(
+            android => android.state.name === 'Operational' && android.assigned_operator == null
+          );
         }
           return android;
       }

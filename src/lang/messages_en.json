@@ -141,7 +141,9 @@
         "this_data": "{n} Assignments",
         "description": "Add or remove androids to this Operator.",
         "warning_text": "An Operator must have at least one android assigned!",
-        "name_type": "Operator"
+        "name_type": "Operator",
+        "add_android_desc": "Add or remove androids to this Operator.",
+        "cite_add_android": "An Operator must have at least one android assigned!"
     },
     "loggin": {
         "user": "User",
@@ -155,5 +157,9 @@
         "success_report_created": "The Report was created successfully",
         "success_edited_report": "The Report {n} was edited successfully"
         
+    },
+    "simple_response": {
+        "affirmative": "Yes",
+        "negative": "No"
     }
 }
