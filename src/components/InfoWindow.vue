@@ -114,9 +114,7 @@ const operatorStore = useOperatorData();
                     <div v-if="dataUse.androids.length">
                         <div v-for="(android, index) in dataUse.androids" :key="index">
                             <li>
-                            <button class="button button-list" style="margin-bottom: 10px;">
-                                    {{ android.name }}
-                            </button>
+                                {{ android.name }}
                             </li>
                         </div>
                     </div>

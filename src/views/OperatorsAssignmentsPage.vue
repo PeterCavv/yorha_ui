@@ -33,7 +33,7 @@ const store = useOperatorData();
       <input class="searcher-assign" v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.android_search')">
       
       <div style="flex-direction: row;">
-        <label>Show Only Available</label>
+        <label>Only Available</label>
         <input type="checkbox" checked @change="changeShow()">
       </div>
     </div>
@@ -42,7 +42,7 @@ const store = useOperatorData();
       <thead>
         <tr>
             <th width="40%">{{ $t("start.fabrication_desc2_info1") }}</th>
-            <th width="20%">{{  $t("android.model") }}</th>
+            <th width="20%">{{  $t("android.type") }}</th>
             <th width="20%">{{  $t("android.available") }}</th>
             <th>{{  $t("operator.name_type") }}</th>
         </tr>
@@ -51,8 +51,8 @@ const store = useOperatorData();
         <template v-if="androidList.length">
           <template v-for="( android, index ) in filteredAndroidList()" :key="index">
               <tr class="interactive">
-                <td>{{android.name}}</td>
-                <td>{{android.model.name}}</td>
+                <td>{{ android.name }}</td>
+                <td>{{ android.type.name }}</td>
                 <td v-if="android.state.name == 'Operational' && android.assigned_operator == null" 
                 style="color: #22c05f;">{{ $t('simple_response.affirmative') }}</td>
                 <td v-else style="color: #c02222">{{ $t('simple_response.negative') }}</td>
@@ -137,10 +137,10 @@ export default {
 
       filteredAndroidList() {
         const android = this.androidList.filter(
-          android => android.type.name != 'Operator' && android.name != 'Commander White'
+          android => android.type.name != 'Operator' && android.name != 'Commander White' && android.model.name != 'Special'
         );
 
-        if (this.showAvailable) {
+        if ( this.showAvailable ) {
           return android.filter(
             android => android.state.name === 'Operational' && android.assigned_operator == null
           );
