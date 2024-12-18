@@ -41,16 +41,17 @@ const store = useOperatorData();
     <table style="width: 100%; margin: 0 auto">
       <thead>
         <tr>
-            <th width="40%">{{ $t("start.fabrication_desc2_info1") }}</th>
+            <th width="35%">{{ $t("start.fabrication_desc2_info1") }}</th>
             <th width="20%">{{  $t("android.type") }}</th>
             <th width="20%">{{  $t("android.available") }}</th>
-            <th>{{  $t("operator.name_type") }}</th>
+            <th width="20%">{{  $t("operator.name_type") }}</th>
+            <th></th>
         </tr>
       </thead>
       <tbody>
         <template v-if="androidList.length">
-          <template v-for="( android, index ) in filteredAndroidList()" :key="index">
-              <tr class="interactive">
+          <template v-if="showAllAndroids" v-for="( android, index ) in filteredAndroidList()" :key="index">
+              <tr class="interactive" style="height: 30px;">
                 <td>{{ android.name }}</td>
                 <td>{{ android.type.name }}</td>
                 <td v-if="android.state.name == 'Operational' && android.assigned_operator == null" 
@@ -58,20 +59,40 @@ const store = useOperatorData();
                 <td v-else style="color: #c02222">{{ $t('simple_response.negative') }}</td>
                 <td v-if="android.assigned_operator != null">{{android.assigned_operator.name.name}}</td>
                 <td v-else>-</td>
+                <td v-if="android.state.name == 'Operational' && android.assigned_operator == null">
+                  <a @click="() => {assingAndroid(android.id, store.options['operator'].id); $router.push({name: 'system'})}">
+                    <img src="../assets/assing_icon.png" style="width: 20px;">
+                  </a>
+                </td>
+                <td></td>
               </tr>
             </template>
-          </template> 
+          </template>
         <template v-else class="dataScroll">{{ $t('data_search.android_message')}}</template>
     </tbody>
     </table>
   </div>
+  <hr class="bottom-screen"/>
 </template>
 
 <style>
+
+  .bottom-screen{
+    position: fixed;
+    bottom: 5px; /* Ajusta la distancia desde la parte inferior */
+    left: 0;
+    width: 100%; /* No tiene que ocupar el 100% del ancho */
+
+  }
+
   .interactive:hover,
   .interactive:focus{
     background-color: #747266;
     color: #cac6b3;
+  }
+
+  .interactive td{
+    vertical-align: middle;
   }
 
   .center-container {
@@ -110,11 +131,19 @@ const store = useOperatorData();
       margin-left: 0px;
       margin-right: 0px;
     }
+    .bottom-screen{
+      position: none;
+      width: 0;
+      border: none;
+    }
   }
 </style>
 
 <script>
 import searcher from '../utils/Searcher'
+import messageModal from '../utils/MessageModal.mjs';
+import axios from 'axios';
+import { connection } from '@/services/ApiConnection'
 
 export default {
     name: "OperatorsAssigmentsPage",
@@ -126,7 +155,8 @@ export default {
     },
     data: {
         selectedAndroid: null,
-        showAvailable: true
+        showAvailable: true,
+        showAllAndroids: true
 
     },
     mixins: [searcher],
@@ -146,6 +176,19 @@ export default {
           );
         }
           return android;
+      },
+      async assingAndroid(androidId, operatorId){
+        await axios.put(connection + `androids/${androidId}/${operatorId}`)
+            .then((res) => {
+                console.log("API Answer: " + res)
+                this.msg = this.createMessage(
+                    messageModal.data.httpMethod.UPDATE, 
+                    messageModal.data.object.ANDROID, 
+                    messageModal.data.status.SUCCESSFUL
+                );
+            })
+            .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
+            );
       }
     }
 }
