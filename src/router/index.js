@@ -102,6 +102,13 @@ const router = createRouter({
       component: () => import('../views/SystemPage.vue'),
       props: true,
       beforeEnter: multiguard([operators, types])
+    },
+    {
+      path: '/system/assing-android',
+      name: 'assing-android',
+      component: () => import('../views/OperatorsAssigmentsPage.vue'),
+      props: true,
+      beforeEnter:  multiguard([androids])
     }
   ]
 })

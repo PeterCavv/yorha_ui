@@ -1,3 +1,9 @@
+<script setup>
+import { useReportData } from '../stores/ReportStore';
+
+const store = useReportData();
+</script>
+
 <template>
     <h2>{{ $t('data_base.reports_data') }}</h2>
 
@@ -5,8 +11,8 @@
         <input v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.reports_search')"
         style="width:20rem; margin-left: 3rem;">
 
-        <button @click="createReport()">
-            Create Report
+        <button @click="createReport => {store.createReport(); $router.push({name: 'create-report'})}">
+            {{ $t("report.create_report")}}
         </button>
         
     </div>
@@ -59,13 +65,7 @@ export default {
         showTypeInfo(report) {
                 this.selectedReport = report;
                 this.addWindow= 1;
-		},
-        createReport(){
-            this.report = {name: "", content: "", date: "", android: ""}
-
-            sessionStorage.setItem('report', JSON.stringify(this.report));
-            this.$router.push({name: 'create-report'})
-        }
+		}
     }
 
 }

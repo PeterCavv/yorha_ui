@@ -71,7 +71,9 @@
         "create_title": "Title:",
         "create_content": "Report content:",
         "create_date": "Publishing date:",
-        "create_signed": "Signed by:"
+        "create_signed": "Signed by:",
+        "edit_report": "Edit Report",
+        "create_report": "Create Report"
     },
     "data_base": {
         "title": "Data Base",
@@ -139,6 +141,7 @@
         "error": "Something went wrong. Please, try again",
         "success_created_android": "The Android was created successfully",
         "success_created_type": "The new Type was created successfully",
+        "success_edited_type": "The new Type was edited successfully",
         "success_report_created": "The Report was created successfully",
         "success_edited_report": "The Report {n} was edited successfully"
         

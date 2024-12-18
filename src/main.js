@@ -6,10 +6,8 @@ import i18n from "./lang"
 
 import "@/assets/main.css"
 
-pinia = createPinia()
-
 createApp(App).
 use(router).
 use(i18n).
-use(pinia).
+use(createPinia()).
 mount('#app')
