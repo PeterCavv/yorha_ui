@@ -26,6 +26,7 @@
                         </button>
                     </div>
                 </div>
+                <hr/>
             </figure>
         </blockquote>
 

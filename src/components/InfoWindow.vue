@@ -1,7 +1,9 @@
 <script setup>
 import { useReportData } from '../stores/ReportStore';
+import { useOperatorData } from '../stores/OperatorStore';
 
-const store = useReportData();
+const reportStore = useReportData();
+const operatorStore = useOperatorData();
 </script>
 
 <template>
@@ -30,7 +32,7 @@ const store = useReportData();
 
                 <button class="button" id="menu"
                 style="margin-bottom: 6px; text-align: center; margin-left: auto; text-transform: none; width: 30%"
-                @click="editReport => {store.editReport(dataUse); $router.push({name: 'create-report'})}">
+                @click="editReport => {reportStore.editReport(dataUse); $router.push({name: 'create-report'})}">
                     {{ $t('report.edit_report') }}
                 </button>
             </figure>
@@ -83,7 +85,7 @@ const store = useReportData();
                     </div>
                     <div style="margin-left: auto;" v-if="dataUse.type.name != 'Operator' && dataUse.model.name != 'Special'">
                             <label><cite>{{ $t('android.assigned_operator') }}</cite></label>
-                            <p v-if="dataUse.assigned_operator">{{ dataUse.short_name}}</p>
+                            <p v-if="dataUse.assigned_operator">{{ dataUse.assigned_operator.name.name }}</p>
                             <p v-else>{{ $t('information.data_empty') }}</p>
                     </div>
 
@@ -112,9 +114,7 @@ const store = useReportData();
                     <div v-if="dataUse.androids.length">
                         <div v-for="(android, index) in dataUse.androids" :key="index">
                             <li>
-                            <button class="button button-list" style="margin-bottom: 10px;">
-                                    {{ android.name }}
-                            </button>
+                                {{ android.name }}
                             </li>
                         </div>
                     </div>
@@ -126,8 +126,11 @@ const store = useReportData();
                 </ul>
                 <br/>
                 <div>
-                    <button class="button" id="menu" @click="this.$router.push({name: 'assing-android'})"
-                    style="margin-bottom: 6px; text-align: center; float: right; text-transform: none; width: 45%">
+                    <button class="button" id="menu" @click="editOperator => { 
+                        operatorStore.editOperator(dataUse);
+                        $router.push({name: 'assing-android'})
+                        }"
+                        style="margin-bottom: 6px; text-align: center; float: right; text-transform: none; width: 45%">
                         {{ $t('data_base.btn_assing_android') }}
                     </button>
                 </div>
@@ -225,10 +228,6 @@ export default {
                 word.charAt(0).toUpperCase() + 
                 word.slice(1).toLowerCase()
             ).join(' ');
-        },
-        editReport(report){
-            store.editReport(report);
-            this.$router.push({name: 'create-report'})
         }
     }
 }

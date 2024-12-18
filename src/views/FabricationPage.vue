@@ -56,9 +56,11 @@
 
                 <select v-else-if="selectedModel == 'YoRHa'" v-model="selectedType" 
                 class="android-attribute">
-                    <option v-for="(typeA, index) in types" :key="index" >
+                    <template v-for="(typeA, index) in types" :key="index">
+                        <option v-if="typeA.name != 'NoType'">
                             {{ typeA.name }}
-                    </option>
+                        </option>
+                    </template>
                 </select>
             
                 <br/><br/>
@@ -139,7 +141,6 @@ import axios from "axios"
             selectedAppearance: "Female",
             androidName: "",
             bio: "",
-            noType: [],
             newAndroid: {}
         }
     },
@@ -174,30 +175,21 @@ import axios from "axios"
 
             //Search the complete object depends on the name selected on the view.
             let androidAppearance = this.appe.find( 
-                element => element.name == this.selectedAppearance );
+                appearance => appearance.name == this.selectedAppearance );
             var androidModelSel = this.models.find( 
-                element => element.name == this.selectedModel );
-
-            //Set a value to the variable noType, it is going to save the object with the name NoType
-            //to save a Special model if it is the case.
-            if( this.noType.length == 0 ){
-
-                this.noType = this.types.filter(
-                    element => element.name == 'NoType');
-                let index = this.types.findIndex(
-                    element => element.name == 'NoType' );
-                this.types.splice(index, 1);
-
-            }
+                model => model.name == this.selectedModel );
 
             var androidTypeSel = this.selectedModel == "YoRHa" ? 
-                this.types.find( element => element.name == this.selectedType ) :
-                this.noType[0];
+                this.types.find( 
+                    type => type.name == this.selectedType ) :
+                this.types.find( 
+                    type => type.name == 'NoType');
 
             //To set the number, needs to now if there is another android with this type created. The Special models doesn't
             //have a number higher than 0.
             this.androids.forEach(android => {
-                if( android.type != null && android.type.name == this.selectedType && androidNumber <= android.type_number ){ 
+                if( android.type != null && android.type.name == this.selectedType 
+                && androidNumber <= android.type_number ){ 
                     androidNumber = android.type_number + 1;
 
                 }
