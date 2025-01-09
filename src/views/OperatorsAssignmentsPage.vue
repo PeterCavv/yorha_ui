@@ -51,23 +51,23 @@ const store = useOperatorData();
       <tbody>
         <template v-if="androidList.length">
           <template v-if="showAllAndroids" v-for="( android, index ) in filteredAndroidList()" :key="index">
-              <tr class="interactive" style="height: 30px;">
-                <td>{{ android.name }}</td>
-                <td>{{ android.type.name }}</td>
-                <td v-if="android.state.name == 'Operational' && android.assigned_operator == null" 
-                style="color: #22c05f;">{{ $t('simple_response.affirmative') }}</td>
-                <td v-else style="color: #c02222">{{ $t('simple_response.negative') }}</td>
-                <td v-if="android.assigned_operator != null">{{android.assigned_operator.name.name}}</td>
-                <td v-else>-</td>
-                <td v-if="android.state.name == 'Operational' && android.assigned_operator == null">
-                  <a @click="() => {assingAndroid(android.id, store.options['operator'].id); $router.push({name: 'system'})}">
-                    <img src="../assets/assing_icon.png" style="width: 20px;">
-                  </a>
-                </td>
-                <td></td>
-              </tr>
-            </template>
+            <tr class="interactive" style="height: 30px;">
+              <td>{{ android.name }}</td>
+              <td>{{ android.type.name }}</td>
+              <td v-if="android.state.name == 'Operational' && android.assigned_operator == null" 
+              style="color: #22c05f;">{{ $t('simple_response.affirmative') }}</td>
+              <td v-else style="color: #c02222">{{ $t('simple_response.negative') }}</td>
+              <td v-if="android.assigned_operator != null">{{android.assigned_operator.name.name}}</td>
+              <td v-else>-</td>
+              <td v-if="android.state.name == 'Operational' && android.assigned_operator == null">
+                <a @click="() => {assingAndroid(android.id, store.options['operator'].id); $router.push({name: 'system'})}">
+                  <img src="../assets/assing_icon.png" style="width: 20px;">
+                </a>
+              </td>
+              <td></td>
+            </tr>
           </template>
+        </template>
         <template v-else class="dataScroll">{{ $t('data_search.android_message')}}</template>
     </tbody>
     </table>
