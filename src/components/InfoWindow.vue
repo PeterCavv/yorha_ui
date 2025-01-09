@@ -112,11 +112,9 @@ const operatorStore = useOperatorData();
                 <label><cite>{{ $t('data_base.androids') }}</cite></label>
                 <ul>
                     <div v-if="dataUse.androids.length">
-                        <div v-for="(android, index) in dataUse.androids" :key="index">
-                            <li>
-                                {{ android.name }}
-                            </li>
-                        </div>
+                        <li>
+                            {{ $t("operator.androids_assigned", { n: dataUse.androids.length }) }}
+                        </li>
                     </div>
                     <div v-else>
                         <li style="text-transform: uppercase;">
