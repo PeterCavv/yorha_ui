@@ -33,7 +33,7 @@ const store = useOperatorData();
       <input class="searcher-assign" v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.android_search')">
       
       <div style="flex-direction: row;">
-        <label>Only Available</label>
+        <label>{{ $t("operator.available_search") }}</label>
         <input type="checkbox" checked @change="changeShow()">
       </div>
     </div>

@@ -27,12 +27,10 @@
         "fabrication_desc2_appearance3": "Andrógino",
         "fabrication_desc2_title2": "Informaci\u00f3n B\u00e1sica de un Androide",
         "fabrication_desc2_info1": "Nombre",
-        "fabrication_desc2_info": "Depende de si el androide creado es 'Executer' o no, ",
         "info_database": "Actualmente existen {n} androides registrados, de los cuales solo {m} est\u00e1n activos.",
         "warning_message": "¡Advertencia!",
         "operator_message": "Existen Operadores que no tienen androides asignados. Es de suma importancia que todos tengan androides a sus \u00f3rdenes para asignarles tareas.",
         "operator_button": "Actualizar Operadores"
-        
     },
     "fabrication": {
         "subtitle": "製造",
@@ -55,11 +53,13 @@
         "type": "Tipo",
         "biography": "Biograf\u00eda",
         "appearance": "Apariencia",
-        "assigned_operator": "Operador Asignado"
+        "assigned_operator": "Operador Asignado",
+        "available": "Disponible"
 
     },
     "weapon": {
-        "info": "Información de Arma"
+        "info": "Información de Arma",
+        "assigned_weapon": "Arma equipada"
     },
     "report": {
         "subtitle": "レポート",
@@ -68,12 +68,13 @@
         "caution_message_2": "Cuando se env\u00ede el informe, ser\u00e1 firmado según la sesi\u00f3n iniciada. En este caso ser\u00e1 {n}.",
         "caution_message_3": "Puedes elegir la fecha en la que el informe se enviar\u00e1.",
         "caution_message_3_1": "Si no eliges ninguna, se publicar\u00e1 al momento de crearlo.",
-        "create_legend": "Report Information",
-        "create_title": "Title:",
-        "create_content": "Report content:",
-        "create_date": "Publishing date:",
-        "create_signed": "Signed by:"
-
+        "create_legend": "Informaci\u00f3n del informe",
+        "create_title": "Titulo:",
+        "create_content": "Contenido:",
+        "create_date": "Fecha de publicaci\u00f3n:",
+        "create_signed": "Firmado por:",
+        "edit_report": "Editar Informe",
+        "create_report": "Crear Informe"
     },
     "data_base": {
         "title": "Base de datos",
@@ -84,9 +85,8 @@
         "armory": "Armer\u00eda",
         "android_data": "Datos de Androides",
         "reports_data": "Datos de Informes",
+        "armory_data": "Datos de la Armer\u00eda",
         "android_info": "Informaci\u00f3n de {n}",
-        "android_null_desc": "No hay informaci\u00f3n.",
-        "android_no_type": "-",
         "types": "{n} (Tipo {m})",
         "type_desc": "Descripci\u00f3n del tipo",
         "btn_assing_android": "Asignar un androide",
@@ -103,12 +103,12 @@
         "info_desc2": "y asignar a un androide uno de tipo 'Executioner'.",
         "caution": "*¡Atenci\u00f3n!",
         "caution_desc": "No puedes asignar un 'Executioner' a un 'Operator'.",
-        "operators": "Operators",
-        "operator_title": "Operator's Data",
-        "types": "Types",
-        "types_title": "Types's Data",
-        "execute": "Execute",
-        "execute_title": "Executers Data"
+        "operators": "Operadores",
+        "operator_title": "Datos de Operadores",
+        "types": "Tipos",
+        "types_title": "Datos de Tipos",
+        "execute": "Ejecutores",
+        "execute_title": "Datos de Ejecutores"
 
     },
     "information": {
@@ -133,8 +133,32 @@
         "types": "Buscar un tipo",
         "type_message": "No se encontraron tipos"
     },
+    "operator": {
+        "assg_title": "Asignaciones",
+        "subtitle": "オペレーター割り当て",
+        "other_androids": "Androides No Operadores",
+        "this_data": "Asignaciones de {n}",
+        "name_type": "Operador",
+        "add_android_desc": "A\u00f1ade o elimina androides de este Operador.",
+        "cite_add_android": "Un Operador debe de tener como mínimo un Androide asignado!",
+        "androids_assigned": "{n} androides bajo su cargo.",
+        "available_search": "Solo Disponibles"
+    },
     "loggin": {
         "user": "Usuario",
         "password": "Contraseña"
+    },
+    "messages": {
+        "error": "Algo ha ido mal. Por favor, vuelve a intentarlo m\u00e1s tarde",
+        "success_created_android": "El Androide ha sido creado correctamente",
+        "success_created_type": "El Tipo ha sido creado correctamente",
+        "success_edited_type": "El Tipo fue editado correctamente",
+        "success_report_created": "El Informe fue creado correctamente",
+        "success_edited_report": "El Informe {n} fue editado correctamente"
+        
+    },
+    "simple_response": {
+        "affirmative": "S\u00ed",
+        "negative": "No"
     }
 }
