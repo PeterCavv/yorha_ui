@@ -7,7 +7,7 @@ import i18n from "./lang"
 import "@/assets/main.css"
 
 createApp(App).
+use(createPinia()).
 use(router).
 use(i18n).
-use(createPinia()).
 mount('#app')
