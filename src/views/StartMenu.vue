@@ -29,7 +29,7 @@ const open = ref(false)
           {{ $t('start.operator_message') }}
         </p>
         <div style="text-align: center;">
-          <button class="full" @click="this.$router.push({name: 'system'})">
+          <button class="full" @click="$router.push({name: 'system'})">
             {{ $t('start.operator_button') }}
           </button>
         </div>
@@ -46,7 +46,7 @@ const open = ref(false)
             {{ $t('start.fabrication_desc1_3') }}
           </p>
           <div style="text-align:center">
-              <button class="full" @click="this.$router.push({name: 'fabrication'})">
+              <button class="full" @click="$router.push({name: 'fabrication'})">
                 {{ $t('start.fabrication_button') }}
               </button>
           </div>

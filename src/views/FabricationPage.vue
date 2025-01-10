@@ -130,10 +130,13 @@
 import { connection } from '@/services/ApiConnection'
 import messageModal  from '../utils/MessageModal.mjs'
 import axios from "axios"
+import { useLoadingStore } from '../stores/LoadingStore';
 
   export default {
     el: 'FabricationPage',
-    components: {},
+    components: {
+        
+    },
     data(){
         return{
             selectedType: "",
@@ -141,7 +144,7 @@ import axios from "axios"
             selectedAppearance: "Female",
             androidName: "",
             bio: "",
-            newAndroid: {}
+            newAndroid: {},
         }
     },
     props: {
@@ -168,6 +171,9 @@ import axios from "axios"
          * This method is going to set an Android on point to send it to the API.
          */
         async addAndroid(){
+            const loadingStore = useLoadingStore();
+            loadingStore.showLoader();
+
             //Initializes number to 0 because we want to now if there is another android of this type.
             let androidNumber = 0;
 
@@ -231,6 +237,8 @@ import axios from "axios"
             })
             .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
             );
+
+            loadingStore.hideLoader();;
 
         }
     }

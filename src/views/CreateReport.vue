@@ -30,7 +30,7 @@
         </ul>
     </figure>
 
-    <ReportForm :report="report"/>
+    <ReportForm/>
 
     <hr/>
 
@@ -43,12 +43,6 @@ import ReportForm from '../components/ReportForm.vue';
     el: 'FabricationPage',
     components: {
         ReportForm
-    },
-    data(){
-        const report = sessionStorage.getItem('report');
-        return {
-            report: report ? JSON.parse(report) : {} // Devuelve un objeto vacío si no existe
-        };
     }
   }
 </script>

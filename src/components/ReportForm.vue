@@ -43,6 +43,7 @@ const store = useReportData();
                     
                 }" 
                 class="button-menu">{{ $t('form.submit') }}</button>
+            
         </fieldset>
     </form>
 </template>
@@ -51,15 +52,23 @@ const store = useReportData();
 import { connection } from '@/services/ApiConnection'
 import axios from 'axios';
 import messageModal from '../utils/MessageModal.mjs'
+import { useLoadingStore } from '../stores/LoadingStore';
 
 export default {
     el: 'ReportForm',
+    components: {
+    },
     data(){
-
+        return{
+        }
     },
     mixins: [messageModal],
     methods: {
         async postReport(report){
+            const loadingStore = useLoadingStore();
+
+            loadingStore.showLoader();
+
             await axios.post(connection + "reports", JSON.stringify(report), {
                 headers: {
                     'Content-Type': 'application/json'
@@ -75,8 +84,14 @@ export default {
             })
             .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
             );
+
+            loadingStore.hideLoader();
         },
         async updateReport(report, reportId){
+            const loadingStore = useLoadingStore();
+
+            loadingStore.showLoader();
+
             await axios.put(connection + `reports/${reportId}`, JSON.stringify(report), {
                 headers : {
                     'Content-Type': 'application/json'
@@ -92,6 +107,8 @@ export default {
             })
             .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
             );
+
+            loadingStore.hideLoader();   
         }
     }
 }

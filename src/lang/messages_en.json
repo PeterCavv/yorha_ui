@@ -161,5 +161,8 @@
     "simple_response": {
         "affirmative": "Yes",
         "negative": "No"
+    },
+    "loading_modal": {
+        "message": "Loading"
     }
 }

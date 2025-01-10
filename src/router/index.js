@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { connection } from '@/services/ApiConnection'
+import { setActivePinia, createPinia } from 'pinia'
+import { useLoadingStore } from '../stores/LoadingStore'
 import AuthPage from "../views/AuthPage.vue"
 import axios from 'axios'
 import multiguard from 'vue-router-multiguard';
@@ -60,7 +62,6 @@ const appe = async function getAppearances(to, from, next) {
   })
 }
 
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
   routes: [
@@ -112,5 +113,20 @@ const router = createRouter({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  const pinia = createPinia();
+  setActivePinia(pinia); // Configurar Pinia globalmente en cada navegación
+
+  const loadingStore = useLoadingStore();
+  loadingStore.showLoader();
+
+  next();
+});
+
+router.afterEach(() => {
+  const loadingStore = useLoadingStore();
+  loadingStore.hideLoader(); // Ocultar el loader al completar la navegación
+});
 
 export default router
