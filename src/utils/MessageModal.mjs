@@ -57,7 +57,7 @@ const messageModal = {
                     return this.$t('messages.success_created_report');
 
                 case this.httpMethod.UPDATE:
-                    return this.$t('messages.success_edited_report')
+                    return this.$t('messages.success_edited_report');
 
                 default:
                     break;
