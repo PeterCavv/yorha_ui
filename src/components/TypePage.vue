@@ -1,37 +1,34 @@
 <template>
     <h2>{{ $t('system.types_title') }}</h2>
-    <table>
-        <tr>
-            <td style="padding-right:10rem; ">
-                <input v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.types')" 
-                style="width:20rem; margin-left: 3rem;">
 
-                <blockquote class="full">
-                    <figure class="data-figure">
-                        <ul>
-                            <div v-if="typeList.length">
-                                <div v-for="(type, index) in typeList" :key="index">
-                                    <div v-show="type.name != 'NoType'">
-                                        <li style= "margin-top: 5px;">
-                                            <button @click="showTypeInfo(type)" 
-                                            class="button button-list" id="menu" style="margin-bottom: 10px;">
-                                                {{ type.name }}
-                                            </button>
-                                        </li>
-                                    </div>
-                                </div> 
+        <div class="inOneLine">
+            <input v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.types')" 
+            style="width:20rem; margin-left: 3rem;">
+        </div>
+
+        <div class="flex-container">
+            <blockquote style="width: 25rem; margin-right: 8rem;">
+                <figure class="data-figure" style="height: 100%;">
+                    <hr/>
+                    <div v-if="typeList.length" class="dataScroll">
+                        <div v-for="(type, index) in typeList" :key="index">
+                            <div v-show="type.name != 'NoType'">
+                                <button @click="showTypeInfo(type)" 
+                                class="button button-list" id="menu" style="width: 100%;">
+                                    {{ type.name }}
+                                </button>
                             </div>
-                            <div v-else style="text-align: left;">{{ $t('data_search.type_message')}}</div>
-                        </ul>
-                    </figure>
-                </blockquote>
-            </td>
+                        </div> 
+                    </div>
+                    <div v-else class="dataScroll" style="text-align: left;">{{ $t('data_search.type_message')}}</div>
+                    <hr/>
+                </figure>
+            </blockquote>   
 
-            <InfoWindow :dataUse="selectedType" :dataType="'type'" :addWindow="addWindow" :edit="false"/>
-
-        </tr>
-    </table>
-    <hr/>
+            <InfoWindow :dataUse="selectedType" :dataType="'type'" :addWindow="addWindow" :edit="false" style="margin-top: -35px;"/>
+ 
+        </div>
+        <hr/>
 </template>
 
 <script>

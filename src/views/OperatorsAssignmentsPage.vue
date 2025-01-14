@@ -32,9 +32,13 @@ const store = useOperatorData();
     <div class="input-group">
       <input class="searcher-assign" v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.android_search')">
       
-      <div style="flex-direction: row;">
-        <label>{{ $t("operator.available_search") }}</label>
-        <input type="checkbox" checked @change="changeShow()">
+      <div class="showSelect" style="flex-direction: row;">
+        <label style="margin-right: 10px;">Show: </label>
+        <select v-model="showList" name="selectAndroidsToShow" style="width: 10rem;">
+          <option value="available">{{ $t("operator.available_search") }}</option>
+          <option value="owned">Owned</option>
+          <option value="every">Every Android</option>
+        </select>
       </div>
     </div>
 
@@ -57,7 +61,7 @@ const store = useOperatorData();
               <td v-if="android.state.name == 'Operational' && android.assigned_operator == null" 
               style="color: #22c05f;">{{ $t('simple_response.affirmative') }}</td>
               <td v-else style="color: #c02222">{{ $t('simple_response.negative') }}</td>
-              <td v-if="android.assigned_operator != null">{{android.assigned_operator.name.name}}</td>
+              <td v-if="android.assigned_operator != null">{{ android.assigned_operator.name.name }}</td>
               <td v-else>-</td>
               <td v-if="android.state.name == 'Operational' && android.assigned_operator == null">
                 <a @click="() => {assingAndroid(android.id, store.options['operator'].id); $router.push({name: 'system'})}">
@@ -79,9 +83,9 @@ const store = useOperatorData();
 
   .bottom-screen{
     position: fixed;
-    bottom: 5px; /* Ajusta la distancia desde la parte inferior */
+    bottom: 5px; 
     left: 0;
-    width: 100%; /* No tiene que ocupar el 100% del ancho */
+    width: 100%;
 
   }
 
@@ -136,6 +140,14 @@ const store = useOperatorData();
       width: 0;
       border: none;
     }
+    .showSelect{
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .interactive td{
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
   }
 </style>
 
@@ -155,27 +167,35 @@ export default {
     },
     data: {
         selectedAndroid: null,
-        showAvailable: true,
+        showList: "available",
         showAllAndroids: true
 
     },
     mixins: [searcher],
     methods: {
       changeShow() {
-        this.showAvailable = this.showAvailable ? false : true;
+        this.showList = this.showAvailable ? false : true;
 		  },
 
       filteredAndroidList() {
+        const store = useOperatorData();
         const android = this.androidList.filter(
           android => android.type.name != 'Operator' && android.name != 'Commander White' && android.model.name != 'Special'
         );
 
-        if ( this.showAvailable ) {
+        if ( this.showList == "available" ) {
           return android.filter(
             android => android.state.name === 'Operational' && android.assigned_operator == null
           );
         }
-          return android;
+
+        if( this.showList == "owned") {
+          return android.filter(
+            android => android.assigned_operator != null && android.assigned_operator.name.name === store.options['operator'].name.name
+          ); 
+        }
+
+        return android;
       },
       async assingAndroid(androidId, operatorId){
         await axios.put(connection + `androids/${androidId}/${operatorId}`)
