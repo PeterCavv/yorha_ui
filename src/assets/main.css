@@ -435,6 +435,41 @@ iframe {
   gap: 1rem;
 }
 
+.searcherInput{
+  width:20rem; 
+  margin-left: 3rem;
+}
+
+.innerbox{
+	min-width: 35rem;
+  max-width: 35rem;
+}
+
+.searcherWindow{
+  width: 25rem; 
+  margin-right: 8rem;
+}
+
+@media only screen and (max-width: 602px){
+  .infoWindow{
+      display: none;
+      
+  }
+  .searcherWindow{
+      margin-right: 0px;
+      width: 100%;
+  }
+
+  .searcherInput{
+      margin-left: 0px;
+      width: 95%;
+  }
+
+  .btn-createReport{
+    width: 200px;
+  }
+}
+
 .dataScroll{
   overflow-y:scroll; 
   height: 18rem;
