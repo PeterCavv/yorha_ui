@@ -1,10 +1,10 @@
 <template>
     <h2>{{ $t('data_base.armory_data') }}</h2>
     <input v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.weapons_search')"
-    style="width:20rem; margin-left: 3rem;">
+    class="searcherInput">
 
     <div class="flex-container">
-        <blockquote style="width: 25rem; margin-right: 8rem;">
+        <blockquote class="searcherWindow">
             <figure class="data-figure" style="height: 100%;">
                 <hr/>
                 <div v-if="weaponList.length" class="dataScroll">
@@ -22,7 +22,7 @@
             </figure>
         </blockquote>
 
-        <InfoWindow :dataUse="selectedWeapon" :dataType="'weapon'" :addWindow="addWindow" style="margin-top: -35px;"/>
+        <InfoWindow class="infoWindow" :dataUse="selectedWeapon" :dataType="'weapon'" :addWindow="addWindow" style="margin-top: -35px;"/>
     </div>
     <hr/>
 </template>

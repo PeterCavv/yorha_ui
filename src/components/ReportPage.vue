@@ -6,18 +6,18 @@ const store = useReportData();
 
 <template>
     <h2>{{ $t('data_base.reports_data') }}</h2>
-
     <div class="inOneLine">
         <input v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.reports_search')"
-        style="width:20rem; margin-left: 3rem;">
+        class="searcherInput">
 
-        <button @click="createReport => {store.createReport(); $router.push({name: 'create-report'})}">
+        <button @click="createReport => {store.createReport(); $router.push({name: 'create-report'})}"
+            class="btn-createReport">
             {{ $t("report.create_report")}}
         </button>
         
     </div>
     <div class="flex-container">
-        <blockquote style="width: 25rem; margin-right: 8rem;">
+        <blockquote class="searcherWindow">
             <figure class="data-figure" style="height: 100%;">
                 <hr/>
                 <div v-if="reportList.length" class="dataScroll">
@@ -35,7 +35,7 @@ const store = useReportData();
             </figure>
         </blockquote>
 
-        <InfoWindow :dataUse="selectedReport" :dataType="'report'" :addWindow="addWindow" style="margin-top: -35px;"/>
+        <InfoWindow class="infoWindow" :dataUse="selectedReport" :dataType="'report'" :addWindow="addWindow" style="margin-top: -35px;"/>
     </div>
     <hr/>
 </template>

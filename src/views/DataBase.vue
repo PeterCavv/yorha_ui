@@ -90,11 +90,3 @@ export default {
 	}
 }
 </script>
-
-<style>
-.innerbox{
-	min-width: 35rem;
-    max-width: 35rem;
-}
-
-</style>

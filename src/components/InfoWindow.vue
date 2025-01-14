@@ -198,7 +198,6 @@ const operatorStore = useOperatorData();
 
 
 <script>
-
 export default {
     name: "InfoWindow",
     props: {
@@ -230,3 +229,14 @@ export default {
     }
 }
 </script>
+
+<style>
+@media only screen and (max-width: 602px){
+  .innerBox{
+    display: flex;
+    width: 100%;
+    z-index: 9888;
+  }
+
+}
+</style>
