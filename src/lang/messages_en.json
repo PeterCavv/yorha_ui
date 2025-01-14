@@ -7,7 +7,7 @@
         "error_user_message": "User not registered.",
         "error_pass_message": "Something went wrong. Please check the user and password.",
         "loading_message1": "loading - ",
-        "loading_message2": "Cheacking System",
+        "loading_message2": "Checking System",
         "loading_success": "Data Base Status: Green. Initializing..."
     },
     "start": {
@@ -53,8 +53,28 @@
         "type": "Type",
         "biography": "Biography",
         "appearance": "Appearance",
-        "assigned_operator": "Assigned Operator"
+        "assigned_operator": "Assigned Operator",
+        "available": "Available"
 
+    },
+    "weapon": {
+        "info": "Weapon Information",
+        "assigned_weapon": "Weapon Equipped"
+    },
+    "report": {
+        "subtitle": "レポート",
+        "create": "Create a Report",
+        "caution_message_1": "The report will be sent to every operative android.",
+        "caution_message_2": "When the report is sended, it will be signed by the connected user. In this case, it will be signed by {n}.",
+        "caution_message_3": "You can choose a publishing date.",
+        "caution_message_3_1": "If you don't choose any, it will be uploaded at the same time it's created.",
+        "create_legend": "Report Information",
+        "create_title": "Title:",
+        "create_content": "Report content:",
+        "create_date": "Publishing date:",
+        "create_signed": "Signed by:",
+        "edit_report": "Edit Report",
+        "create_report": "Create Report"
     },
     "data_base": {
         "title": "Data Base",
@@ -63,8 +83,9 @@
         "androids": "Androids",
         "reports": "Reports",
         "armory": "Armory",
-        "android_data": "Androids Data",
-        "reports_data": "Reports Data",
+        "android_data": "Android's Data",
+        "reports_data": "Report's Data",
+        "armory_data": "Armory's Data",
         "android_info": "{n} Information",
         "types": "{n} (Type {m})",
         "type_desc": "Type Description",
@@ -107,12 +128,41 @@
         "reports_message": "No reports found.",
         "operators_search": "Search an Operator",
         "operator_message": "No operators found",
+        "weapons_search": "Search a weapon",
+        "weapon_message": "No weapons found",
         "types": "Search types",
         "type_message": "No types found"
         
     },
+    "operator": {
+        "assg_title": "Operator Assignments",
+        "subtitle": "オペレーター割り当て",
+        "other_androids": "Non Operator Androids",
+        "this_data": "{n} Assignments",
+        "name_type": "Operator",
+        "add_android_desc": "Add or remove androids to this Operator.",
+        "cite_add_android": "An Operator must have at least one android assigned!",
+        "androids_assigned": "{n} androids under its command.",
+        "available_search": "Only Available"
+    },
     "loggin": {
         "user": "User",
         "password": "Password"
+    },
+    "messages": {
+        "error": "Something went wrong. Please, try again",
+        "success_created_android": "The Android was created successfully",
+        "success_created_type": "The new Type was created successfully",
+        "success_edited_type": "The new Type was edited successfully",
+        "success_report_created": "The Report was created successfully",
+        "success_edited_report": "The Report {n} was edited successfully"
+        
+    },
+    "simple_response": {
+        "affirmative": "Yes",
+        "negative": "No"
+    },
+    "loading_modal": {
+        "message": "Loading"
     }
 }

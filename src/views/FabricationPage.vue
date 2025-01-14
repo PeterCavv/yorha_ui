@@ -35,104 +35,108 @@
 
     <form>
         <fieldset>
-                <legend>{{ $t('start.fabrication_desc2_title2') }}</legend>
+            <legend>{{ $t('start.fabrication_desc2_title2') }}</legend>
 
-                <span>
-                    <label>{{ $t('start.fabrication_desc2_info2') }}:</label>
+                <label>{{ $t('android.type') }}:</label>
 
-                    &nbsp;
+                &nbsp;
 
-                    <select v-model="selectedModel" class="android-attribute">
-                        <option v-for="model in models" :key="model">
-                            {{ model.name }}
+                <select v-model="selectedModel" class="android-attribute">
+                    <option v-for="model in models" :key="model">
+                        {{ model.name }}
+                    </option>
+                </select>
+
+                <label>{{ $t('android.model') }}:</label>
+
+                &nbsp;
+
+                <select v-if="selectedModel != 'YoRHa'" v-model="selectedType" 
+                class="android-attribute" disabled/>
+
+                <select v-else-if="selectedModel == 'YoRHa'" v-model="selectedType" 
+                class="android-attribute">
+                    <template v-for="(typeA, index) in types" :key="index">
+                        <option v-if="typeA.name != 'NoType'">
+                            {{ typeA.name }}
                         </option>
-                    </select>
+                    </template>
+                </select>
+            
+                <br/><br/>
 
-                    <label>{{ $t('start.fabrication_desc2_info3') }}:</label>
+                <label for="text">{{ $t('start.fabrication_desc2_info1') }}:</label>
 
-                    &nbsp;
+                &nbsp;
 
-                    <select v-if="selectedModel != 'YoRHa'" v-model="selectedType" 
-                    class="android-attribute" disabled/>
-
-                    <select v-else-if="selectedModel == 'YoRHa'" v-model="selectedType" 
-                    class="android-attribute">
-                        <option v-for="(typeA, index) in types" :key="index" >
-                                {{ typeA.name }}
-                        </option>
-                    </select>
+                <input v-if="(selectedModel != 'YoRHa' && selectedModel != 'Special')"  
+                type="text" class="android-attribute" disabled style="padding-right: 0px;"/>
                 
-                    <br/><br/>
+                <input v-else-if="(selectedModel != 'YoRHa' && selectedModel == 'Special')" 
+                v-model="androidName" id="specialModel" type="text" class="android-attribute" 
+                :placeholder="$t('fabrication.insert_name')" :maxlength="25" style="padding-right: 0px;"/>
+                
+                <input v-else-if="(selectedModel == 'YoRHa' && selectedModel == undefinded)" 
+                :value="selectedType.name" type="text" class="android-attribute" disabled
+                style="padding-right: 0px;"/>
+                
+                <input v-else :value="selectedModel + ' Type ' + selectedType.charAt(0)"  
+                type="text" class="android-attribute" disabled style="padding-right: 0px;"/>
 
-                    <label for="text">{{ $t('start.fabrication_desc2_info1') }}:</label>
+                <label>{{ $t('android.appearance') }}:</label>
 
-                    &nbsp;
+                &nbsp;
 
-                    <input v-if="(selectedModel != 'YoRHa' && selectedModel != 'Special')"  
-                    type="text" class="android-attribute" disabled style="padding-right: 0px;"/>
-                    
-                    <input v-else-if="(selectedModel != 'YoRHa' && selectedModel == 'Special')" 
-                    v-model="androidName" id="specialModel" type="text" class="android-attribute" 
-                    :placeholder="$t('fabrication.insert_name')" :maxlength="25" style="padding-right: 0px;"/>
-                    
-                    <input v-else-if="(selectedModel == 'YoRHa' && selectedModel == undefinded)" 
-                    :value="selectedType.name" type="text" class="android-attribute" disabled
-                    style="padding-right: 0px;"/>
-                    
-                    <input v-else :value="selectedModel + ' Type ' + selectedType.charAt(0)"  
-                    type="text" class="android-attribute" disabled style="padding-right: 0px;"/>
+                <select v-model="selectedAppearance" class="android-attribute">
+                    <option v-for="a in appe" :key="a">{{ a.name }}</option>
+                </select>
 
-                    <label>{{ $t('start.fabrication_desc2_title1') }}:</label>
 
-                    &nbsp;
+            <p>
+                <br/>
+                <label for="textarea">{{ $t('android.biography') }}:</label>
+                <textarea v-model="bio" class="full" id="textarea" rows="8" 
+                placeholder="This android..." :maxlength="350" style="padding-right: 0px;"></textarea>
+            </p>
 
-                    <select v-model="selectedAppearance" class="android-attribute">
-                        <option v-for="a in appe" :key="a">{{ a.name }}</option>
-                    </select>
-                </span>
+            <p v-if="(selectedModel == 'YoRHa' && selectedType == 'Operator')" 
+            style="font-size:small; font-style: normal;">
+                <cite>{{ $t('fabrication.operator_info') }}</cite>
+            </p>
 
-                <p>
-                    <br/>
-                    <label for="textarea">{{ $t('start.fabrication_desc2_info4') }}:</label>
-                    <textarea v-model="bio" class="full" id="textarea" rows="8" 
-                    placeholder="This android..." :maxlength="350" style="padding-right: 0px;"></textarea>
-                </p>
+            <button v-if="selectedModel == '' " type="submit" class="button-menu" disabled>
+                {{ $t('form.submit') }}
+            </button>
 
-                <p v-if="(selectedModel == 'YoRHa' && selectedType == 'Operator')" 
-                style="font-size:small; font-style: normal;">
-                    <cite>{{ $t('fabrication.operator_info') }}</cite>
-                </p>
+            <button v-else-if="(selectedModel == 'YoRHa' && selectedType == '')" 
+            type="submit" class="button-menu" disabled>
+                {{ $t('form.submit') }}
+            </button>
 
-                <button v-if="selectedModel == '' " type="submit" class="button-menu" disabled>
-                    {{ $t('form.submit') }}
-                </button>
+            <button v-else-if="selectedModel == 'Special' && androidName == ''" type="submit" 
+            class="button-menu" disabled>
+                {{ $t('form.submit') }}
+            </button>
 
-                <button v-else-if="(selectedModel == 'YoRHa' && selectedType == '')" 
-                type="submit" class="button-menu" disabled>
-                    {{ $t('form.submit') }}
-                </button>
-
-                <button v-else-if="selectedModel == 'Special' && androidName == ''" type="submit" 
-                class="button-menu" disabled>
-                    {{ $t('form.submit') }}
-                </button>
-
-                <button v-else type="button" @click="addAndroid()" class="button-menu">{{ $t('form.submit') }}</button>
+            <button v-else type="button" @click="addAndroid()" class="button-menu">{{ $t('form.submit') }}</button>
         </fieldset>
     </form>
 
-    <cite v-if="succesfullMessage">TEEEEEST MEssage</cite>
     <hr/>
 
 </template>
 
 <script>
 import { connection } from '@/services/ApiConnection'
+import messageModal  from '../utils/MessageModal.mjs'
 import axios from "axios"
+import { useLoadingStore } from '../stores/LoadingStore';
 
   export default {
     el: 'FabricationPage',
-    components: {},
+    components: {
+        
+    },
     data(){
         return{
             selectedType: "",
@@ -140,9 +144,7 @@ import axios from "axios"
             selectedAppearance: "Female",
             androidName: "",
             bio: "",
-            noType: [],
             newAndroid: {},
-            succesfullMessage: false
         }
     },
     props: {
@@ -163,11 +165,15 @@ import axios from "axios"
 			req: true
         }
     },
+    mixins: [messageModal],
     methods: {
         /**
          * This method is going to set an Android on point to send it to the API.
          */
         async addAndroid(){
+            const loadingStore = useLoadingStore();
+            loadingStore.showLoader();
+
             //Initializes number to 0 because we want to now if there is another android of this type.
             let androidNumber = 0;
 
@@ -175,30 +181,21 @@ import axios from "axios"
 
             //Search the complete object depends on the name selected on the view.
             let androidAppearance = this.appe.find( 
-                element => element.name == this.selectedAppearance );
+                appearance => appearance.name == this.selectedAppearance );
             var androidModelSel = this.models.find( 
-                element => element.name == this.selectedModel );
-
-            //Set a value to the variable noType, it is going to save the object with the name NoType
-            //to save a Special model if it is the case.
-            if( this.noType.length == 0 ){
-
-                this.noType = this.types.filter(
-                    element => element.name == 'NoType');
-                let index = this.types.findIndex(
-                    element => element.name == 'NoType' );
-                this.types.splice(index, 1);
-
-            }
+                model => model.name == this.selectedModel );
 
             var androidTypeSel = this.selectedModel == "YoRHa" ? 
-                this.types.find( element => element.name == this.selectedType ) :
-                this.noType[0];
+                this.types.find( 
+                    type => type.name == this.selectedType ) :
+                this.types.find( 
+                    type => type.name == 'NoType');
 
             //To set the number, needs to now if there is another android with this type created. The Special models doesn't
             //have a number higher than 0.
             this.androids.forEach(android => {
-                if( android.type != null && android.type.name == this.selectedType && androidNumber <= android.type_number ){ 
+                if( android.type != null && android.type.name == this.selectedType 
+                && androidNumber <= android.type_number ){ 
                     androidNumber = android.type_number + 1;
 
                 }
@@ -232,10 +229,16 @@ import axios from "axios"
             })
             .then((res) => {
                 console.log("API Answer: " + res)
-                this.succesfullMessage = true;
-
+                this.msg = this.createMessage(
+                    messageModal.data.httpMethod.CREATE, 
+                    messageModal.data.object.ANDROID, 
+                    messageModal.data.status.SUCCESSFUL
+                );
             })
-            .catch((error) => console.error("Error: " + error))
+            .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
+            );
+
+            loadingStore.hideLoader();;
 
         }
     }

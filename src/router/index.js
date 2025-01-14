@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { connection } from '@/services/ApiConnection'
+import { setActivePinia, createPinia } from 'pinia'
+import { useLoadingStore } from '../stores/LoadingStore'
 import AuthPage from "../views/AuthPage.vue"
 import axios from 'axios'
 import multiguard from 'vue-router-multiguard';
@@ -16,6 +18,14 @@ const models = async function getModels(to, from, next) {
   axios.get(connection + "models")
   .then(response => {
     to.params.models = response.data;
+    next()
+  })
+}
+
+const weapons = async function getWeapons(to, from, next) {
+  axios.get(connection + "armory")
+  .then(response => {
+    to.params.weapons = response.data;
     next()
   })
 }
@@ -52,7 +62,6 @@ const appe = async function getAppearances(to, from, next) {
   })
 }
 
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
   routes: [
@@ -80,7 +89,13 @@ const router = createRouter({
       name: 'database',
       component: () => import('../views/DataBase.vue'),
       props: true,
-      beforeEnter: multiguard([androids, reports])
+      beforeEnter: multiguard([androids, reports, weapons])
+    },
+    {
+      path: '/database/create-report',
+      name: 'create-report',
+      component: () => import('../views/CreateReport.vue'),
+      props: true
     },
     {
       path: '/system',
@@ -88,8 +103,30 @@ const router = createRouter({
       component: () => import('../views/SystemPage.vue'),
       props: true,
       beforeEnter: multiguard([operators, types])
+    },
+    {
+      path: '/system/assing-android',
+      name: 'assing-android',
+      component: () => import('../views/OperatorsAssignmentsPage.vue'),
+      props: true,
+      beforeEnter:  multiguard([androids])
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  const pinia = createPinia();
+  setActivePinia(pinia); // Configurar Pinia globalmente en cada navegación
+
+  const loadingStore = useLoadingStore();
+  loadingStore.showLoader();
+
+  next();
+});
+
+router.afterEach(() => {
+  const loadingStore = useLoadingStore();
+  loadingStore.hideLoader(); // Ocultar el loader al completar la navegación
+});
 
 export default router
