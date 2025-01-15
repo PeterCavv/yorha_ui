@@ -3,11 +3,11 @@
 
         <div class="inOneLine">
             <input v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.types')" 
-            style="width:20rem; margin-left: 3rem;">
+            class="searcherInput">
         </div>
 
         <div class="flex-container">
-            <blockquote style="width: 25rem; margin-right: 8rem;">
+            <blockquote class="searcherWindow">
                 <figure class="data-figure" style="height: 100%;">
                     <hr/>
                     <div v-if="typeList.length" class="dataScroll">
@@ -25,7 +25,7 @@
                 </figure>
             </blockquote>   
 
-            <InfoWindow :dataUse="selectedType" :dataType="'type'" :addWindow="addWindow" :edit="false" style="margin-top: -35px;"/>
+            <InfoWindow class="infoWindow" :dataUse="selectedType" :dataType="'type'" :addWindow="addWindow" :edit="false" style="margin-top: -35px;"/>
  
         </div>
         <hr/>
