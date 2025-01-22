@@ -209,6 +209,19 @@ export default {
             })
             .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
             );
+      },
+      async removeAssignedAndroid(androidId, operatorId){
+        await axios.put(connection + `androids/remove/${androidId}/${operatorId}`)
+            .then((res) => {
+              console.log("API Answer: " + res);
+              this.msg = this.createMessage(
+                    messageModal.data.httpMethod.DELETE, 
+                    messageModal.data.object.ANDROID, 
+                    messageModal.data.status.SUCCESSFUL
+                );
+            })
+            .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
+            );
       }
     }
 }
