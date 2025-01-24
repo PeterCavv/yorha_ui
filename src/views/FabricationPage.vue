@@ -238,7 +238,7 @@ import { useLoadingStore } from '../stores/LoadingStore';
             .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
             );
 
-            loadingStore.hideLoader();;
+            loadingStore.hideLoader();
 
         }
     }
