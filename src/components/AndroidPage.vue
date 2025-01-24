@@ -1,7 +1,7 @@
 <template>
     <h2>{{ $t('data_base.android_data') }}</h2>
     <input v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.android_search')"
-    class="searcherInput">
+    class="searcherInput" name="filter">
 
     <div class="flex-container">
         <blockquote class="searcherWindow">

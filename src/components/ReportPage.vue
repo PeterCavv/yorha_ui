@@ -8,7 +8,7 @@ const store = useReportData();
     <h2>{{ $t('data_base.reports_data') }}</h2>
     <div class="inOneLine">
         <input v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.reports_search')"
-        class="searcherInput">
+        class="searcherInput" name="filter">
 
         <button @click="createReport => {store.createReport(); $router.push({name: 'create-report'})}"
             class="btn-createReport">

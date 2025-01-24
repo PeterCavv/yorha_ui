@@ -3,7 +3,7 @@
 
         <div class="inOneLine">
             <input v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.types')" 
-            class="searcherInput">
+            class="searcherInput" name="filter">
         </div>
 
         <div class="flex-container">

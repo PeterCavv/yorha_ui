@@ -1,7 +1,7 @@
 <template>
     <h2>{{ $t('data_base.armory_data') }}</h2>
     <input v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.weapons_search')"
-    class="searcherInput">
+    class="searcherInput" name="filter">
 
     <div class="flex-container">
         <blockquote class="searcherWindow">
