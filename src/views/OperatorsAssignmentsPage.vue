@@ -64,7 +64,7 @@ const store = useOperatorData();
               <td v-if="android.assigned_operator != null">{{ android.assigned_operator.name.name }}</td>
               <td v-else>-</td>
               <td v-if="android.state.name == 'Operational' && android.assigned_operator == null">
-                <a @click="() => {assingAndroid(android.id, store.options['operator'].id); wait();}" name="add">
+                <a @click="() => {assingAndroid(android.id, store.options['operator'].id);}" name="add">
                   <img src="../assets/assing_icon.png" style="width: 20px;">
                 </a>
               </td>
@@ -103,7 +103,7 @@ export default {
         showAllAndroids: true
 
     },
-    mixins: [searcher],
+    mixins: [searcher, messageModal],
     methods: {
       changeShow() {
         this.showList = this.showAvailable ? false : true;
@@ -138,6 +138,7 @@ export default {
                     messageModal.data.object.ANDROID, 
                     messageModal.data.status.SUCCESSFUL
                 );
+                this.backToSystem();
             })
             .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
             );
@@ -146,11 +147,11 @@ export default {
         await axios.put(connection + `androids/remove/${androidId}/${operatorId}`)
             .then((res) => {
               console.log("API Answer: " + res);
-              // this.msg = this.createMessage(
-              //       messageModal.data.httpMethod.DELETE, 
-              //       messageModal.data.object.ANDROID, 
-              //       messageModal.data.status.SUCCESSFUL
-              // );
+              this.msg = this.createMessage(
+                    messageModal.data.httpMethod.DELETE, 
+                    messageModal.data.object.ANDROID, 
+                    messageModal.data.status.SUCCESSFUL
+              );
               this.backToSystem();
             })
             .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
