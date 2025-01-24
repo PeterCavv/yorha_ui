@@ -7,103 +7,103 @@ const open = ref(false)
 <template>
   <br/><br/><br/>
   <hr/>
-    <h1 class="title">
-        <span>
-          {{ $t('start.title') }}
-          <font size="4">
-              {{ $t('start.subtitle') }}
-          </font>
-        </span>
-    </h1>
+  <h1 class="title">
+      <span>
+        {{ $t('start.title') }}
+        <font size="4">
+            {{ $t('start.subtitle') }}
+        </font>
+      </span>
+  </h1>
 
-    <h2>
-        {{ $t('start.fabrication_title') }}
-    </h2>
+  <h2>
+      {{ $t('start.fabrication_title') }}
+  </h2>
 
-    <div v-if="emptyOperator">
-      <figure class="warning">
+  <div v-if="emptyOperator">
+    <figure class="warning">
+      <figcaption>
+        {{ $t('start.warning_message') }}
+      </figcaption>
+      <p>
+        {{ $t('start.operator_message') }}
+      </p>
+      <div style="text-align: center;">
+        <button class="full" @click="$router.push({name: 'system'})">
+          {{ $t('start.operator_button') }}
+        </button>
+      </div>
+    </figure>
+  </div>
+    
+    <figure>
         <figcaption>
-          {{ $t('start.warning_message') }}
+          {{ $t('start.fabrication_subtitle1') }}
         </figcaption>
         <p>
-          {{ $t('start.operator_message') }}
+          {{ $t('start.fabrication_desc1') }}
+          <mark>{{ $t('start.fabrication_desc1_2') }}</mark>
+          {{ $t('start.fabrication_desc1_3') }}
         </p>
-        <div style="text-align: center;">
-          <button class="full" @click="$router.push({name: 'system'})">
-            {{ $t('start.operator_button') }}
-          </button>
+        <div style="text-align:center">
+            <button class="full" @click="$router.push({name: 'fabrication'})">
+              {{ $t('start.fabrication_button') }}
+            </button>
         </div>
-      </figure>
-    </div>
-      
-      <figure>
-          <figcaption>
-            {{ $t('start.fabrication_subtitle1') }}
-          </figcaption>
-          <p>
-            {{ $t('start.fabrication_desc1') }}
-            <mark>{{ $t('start.fabrication_desc1_2') }}</mark>
-            {{ $t('start.fabrication_desc1_3') }}
-          </p>
-          <div style="text-align:center">
-              <button class="full" @click="$router.push({name: 'fabrication'})">
-                {{ $t('start.fabrication_button') }}
-              </button>
-          </div>
-      </figure>
+    </figure>
 
-      <figure>
-        <figcaption>
-          {{ $t('start.fabrication_subtitle3')}}
-        </figcaption>
+    <figure>
+      <figcaption>
+        {{ $t('start.fabrication_subtitle3')}}
+      </figcaption>
+      <p>
+        {{ $t('start.info_database', { n: totalAndroids, m: operationalAndroids}) }}     
+      </p>
+    </figure>
+
+    <figure>
+        <figcaption>{{ $t('start.fabrication_subtitle2') }}</figcaption>
         <p>
-          {{ $t('start.info_database', { n: totalAndroids, m: operationalAndroids}) }}     
+          <b>{{ $t('start.fabrication_desc2_title1') }}</b>
         </p>
-      </figure>
+        <hr/>
+        <ul>
+            <li>{{ $t('start.fabrication_desc2_appearance1') }}</li>
+            <li>{{ $t('start.fabrication_desc2_appearance2') }}</li>
+            <li>{{ $t('start.fabrication_desc2_appearance3') }}</li>
+        </ul>
+        <br/>
+        <p><b>{{ $t('start.fabrication_desc2_title2') }}</b></p>
+        <hr/>
+        <ul>
+            <li>{{ $t('start.fabrication_desc2_info1') }}</li>
+            <li>{{ $t('android.model') }}</li>
+            <li>{{ $t('android.type') }}</li>
+            <li>{{ $t('android.biography') }}</li>
+        </ul>
+    </figure>
 
-      <figure>
-          <figcaption>{{ $t('start.fabrication_subtitle2') }}</figcaption>
-          <p>
-            <b>{{ $t('start.fabrication_desc2_title1') }}</b>
-          </p>
-          <hr/>
-          <ul>
-              <li>{{ $t('start.fabrication_desc2_appearance1') }}</li>
-              <li>{{ $t('start.fabrication_desc2_appearance2') }}</li>
-              <li>{{ $t('start.fabrication_desc2_appearance3') }}</li>
-          </ul>
-          <br/>
-          <p><b>{{ $t('start.fabrication_desc2_title2') }}</b></p>
-          <hr/>
-          <ul>
-              <li>{{ $t('start.fabrication_desc2_info1') }}</li>
-              <li>{{ $t('start.fabrication_desc2_info2') }}</li>
-              <li>{{ $t('start.fabrication_desc2_info3') }}</li>
-              <li>{{ $t('start.fabrication_desc2_info4') }}</li>
-          </ul>
-      </figure>
+    <h3>Example</h3>
+    <table style="margin: 0 auto;">
+        <thead>
+            <tr>
+                <th width="15%">Name</th>
+                <th width="15%">Appearance</th>
+                <th width="15%">Type</th>
+                <th>Biography</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Dévola</td>
+                <td>Female</td>
+                <td>Scanner</td>
+                <td>Androide de tipo escaner con un caracter muy fuerte que viaja por el mundo para recolectar información sobre la vida inteligente que reside en planeta que habita.</td>
+            </tr>
+        </tbody>
+    </table>
 
-      <h3>Example</h3>
-      <table style="margin: 0 auto;">
-          <thead>
-              <tr>
-                  <th width="15%">Name</th>
-                  <th width="15%">Appearance</th>
-                  <th width="15%">Type</th>
-                  <th>Biography</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>Dévola</td>
-                  <td>Female</td>
-                  <td>Scanner</td>
-                  <td>Androide de tipo escaner con un caracter muy fuerte que viaja por el mundo para recolectar información sobre la vida inteligente que reside en planeta que habita.</td>
-              </tr>
-          </tbody>
-      </table>
-
-      <hr/>
+    <hr/>
 </template>
 
 <script>
