@@ -116,7 +116,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const pinia = createPinia();
-  setActivePinia(pinia); // Configurar Pinia globalmente en cada navegación
+  setActivePinia(pinia); 
 
   const loadingStore = useLoadingStore();
   loadingStore.showLoader();
@@ -126,7 +126,7 @@ router.beforeEach((to, from, next) => {
 
 router.afterEach(() => {
   const loadingStore = useLoadingStore();
-  loadingStore.hideLoader(); // Ocultar el loader al completar la navegación
+  loadingStore.hideLoader(); 
 });
 
 export default router

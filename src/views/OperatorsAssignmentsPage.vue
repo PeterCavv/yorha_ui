@@ -64,8 +64,13 @@ const store = useOperatorData();
               <td v-if="android.assigned_operator != null">{{ android.assigned_operator.name.name }}</td>
               <td v-else>-</td>
               <td v-if="android.state.name == 'Operational' && android.assigned_operator == null">
-                <a @click="() => {assingAndroid(android.id, store.options['operator'].id); $router.push({name: 'system'})}">
+                <a @click="() => {assingAndroid(android.id, store.options['operator'].id); wait();}" name="add">
                   <img src="../assets/assing_icon.png" style="width: 20px;">
+                </a>
+              </td>
+              <td v-else-if="android.assigned_operator != null && android.assigned_operator.name.name === store.options['operator'].name.name">
+                <a @click="() => {removeAssignedAndroid(android.id, store.options['operator'].id);} ">
+                  <img src="../assets/Block_Icon.png" style="width: 20px; margin-top: 5px;">
                 </a>
               </td>
               <td></td>
@@ -78,7 +83,85 @@ const store = useOperatorData();
   </div>
   <hr class="bottom-screen"/>
 </template>
+<script>
+import searcher from '../utils/Searcher'
+import messageModal from '../utils/MessageModal.mjs';
+import axios from 'axios';
+import { connection } from '@/services/ApiConnection'
 
+export default {
+    name: "OperatorsAssigmentsPage",
+    props: {
+        androids: {
+            type: Object,
+            required: true
+        }
+    },
+    data: {
+        selectedAndroid: null,
+        showList: "available",
+        showAllAndroids: true
+
+    },
+    mixins: [searcher],
+    methods: {
+      changeShow() {
+        this.showList = this.showAvailable ? false : true;
+		  },
+
+      filteredAndroidList() {
+        const store = useOperatorData();
+        const android = this.androidList.filter(
+          android => android.type.name != 'Operator' && android.name != 'Commander White' && android.model.name != 'Special'
+        );
+
+        if ( this.showList == "available" ) {
+          return android.filter(
+            android => android.state.name === 'Operational' && android.assigned_operator == null
+          );
+        }
+
+        if( this.showList == "owned") {
+          return android.filter(
+            android => android.assigned_operator != null && android.assigned_operator.name.name === store.options['operator'].name.name
+          ); 
+        }
+
+        return android;
+      },
+      async assingAndroid(androidId, operatorId){
+        await axios.put(connection + `androids/add/${androidId}/${operatorId}`)
+            .then((res) => {
+                console.log("API Answer: " + res)
+                this.msg = this.createMessage(
+                    messageModal.data.httpMethod.UPDATE, 
+                    messageModal.data.object.ANDROID, 
+                    messageModal.data.status.SUCCESSFUL
+                );
+            })
+            .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
+            );
+      },
+      async removeAssignedAndroid(androidId, operatorId){
+        await axios.put(connection + `androids/remove/${androidId}/${operatorId}`)
+            .then((res) => {
+              console.log("API Answer: " + res);
+              // this.msg = this.createMessage(
+              //       messageModal.data.httpMethod.DELETE, 
+              //       messageModal.data.object.ANDROID, 
+              //       messageModal.data.status.SUCCESSFUL
+              // );
+              this.backToSystem();
+            })
+            .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
+            );
+      },
+      backToSystem(){
+        this.$router.push({name: 'system'});
+      }
+    }
+}
+</script>
 <style>
 
   .bottom-screen{
@@ -150,79 +233,3 @@ const store = useOperatorData();
     }
   }
 </style>
-
-<script>
-import searcher from '../utils/Searcher'
-import messageModal from '../utils/MessageModal.mjs';
-import axios from 'axios';
-import { connection } from '@/services/ApiConnection'
-
-export default {
-    name: "OperatorsAssigmentsPage",
-    props: {
-        androids: {
-            type: Object,
-            required: true
-        }
-    },
-    data: {
-        selectedAndroid: null,
-        showList: "available",
-        showAllAndroids: true
-
-    },
-    mixins: [searcher],
-    methods: {
-      changeShow() {
-        this.showList = this.showAvailable ? false : true;
-		  },
-
-      filteredAndroidList() {
-        const store = useOperatorData();
-        const android = this.androidList.filter(
-          android => android.type.name != 'Operator' && android.name != 'Commander White' && android.model.name != 'Special'
-        );
-
-        if ( this.showList == "available" ) {
-          return android.filter(
-            android => android.state.name === 'Operational' && android.assigned_operator == null
-          );
-        }
-
-        if( this.showList == "owned") {
-          return android.filter(
-            android => android.assigned_operator != null && android.assigned_operator.name.name === store.options['operator'].name.name
-          ); 
-        }
-
-        return android;
-      },
-      async assingAndroid(androidId, operatorId){
-        await axios.put(connection + `androids/${androidId}/${operatorId}`)
-            .then((res) => {
-                console.log("API Answer: " + res)
-                this.msg = this.createMessage(
-                    messageModal.data.httpMethod.UPDATE, 
-                    messageModal.data.object.ANDROID, 
-                    messageModal.data.status.SUCCESSFUL
-                );
-            })
-            .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
-            );
-      },
-      async removeAssignedAndroid(androidId, operatorId){
-        await axios.put(connection + `androids/remove/${androidId}/${operatorId}`)
-            .then((res) => {
-              console.log("API Answer: " + res);
-              this.msg = this.createMessage(
-                    messageModal.data.httpMethod.DELETE, 
-                    messageModal.data.object.ANDROID, 
-                    messageModal.data.status.SUCCESSFUL
-                );
-            })
-            .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
-            );
-      }
-    }
-}
-</script>
