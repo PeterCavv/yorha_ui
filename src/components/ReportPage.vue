@@ -14,7 +14,6 @@ const store = useReportData();
             class="btn-createReport">
             {{ $t("report.create_report")}}
         </button>
-        
     </div>
     <div class="flex-container">
         <blockquote class="searcherWindow">

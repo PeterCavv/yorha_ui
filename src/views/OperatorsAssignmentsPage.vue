@@ -33,8 +33,8 @@ const store = useOperatorData();
       <input class="searcher-assign" v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.android_search')">
       
       <div class="showSelect" style="flex-direction: row;">
-        <label style="margin-right: 10px;">Show: </label>
-        <select v-model="showList" name="selectAndroidsToShow" style="width: 10rem;">
+        <label for="selectShow" style="margin-right: 10px;">Show: </label>
+        <select v-model="showList" name="selectAndroidsToShow" id="selectShow" style="width: 10rem;">
           <option value="available">{{ $t("operator.available_search") }}</option>
           <option value="owned">Owned</option>
           <option value="every">Every Android</option>

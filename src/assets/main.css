@@ -435,6 +435,12 @@ iframe {
   gap: 1rem;
 }
 
+.inOneLine-form{
+  display: flex; 
+  gap: 1rem;
+  margin-bottom: 10px;
+}
+
 .searcherInput{
   width:20rem; 
   margin-left: 3rem;
@@ -464,6 +470,10 @@ iframe {
       margin-left: 0px;
       width: 95%;
   }
+
+  .inOneLine-form{
+    display: inline;
+}
 
   .btn-createReport{
     width: 200px;
