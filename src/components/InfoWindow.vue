@@ -109,8 +109,8 @@ const operatorStore = useOperatorData();
                     style="vertical-align: middle;"/>
                     {{ $t('data_base.android_info', { n: dataUse.name.name}) }}
                 </figcaption>
-                <label><cite>{{ $t('data_base.androids') }}</cite></label>
-                <ul>
+                <p for="androidList"><cite>{{ $t('data_base.androids') }}</cite></p>
+                <ul id="androidList">
                     <div v-if="dataUse.androids.length">
                         <li>
                             {{ $t("operator.androids_assigned", { n: dataUse.androids.length }) }}
@@ -144,7 +144,7 @@ const operatorStore = useOperatorData();
                     style="vertical-align: middle;"/>
                     {{ $t('data_base.types', { n: dataUse.name, m: dataUse.resume }) }}
                 </figcaption>
-                <label><cite>{{ $t('data_base.type_desc') }}</cite></label>
+                <p><cite>{{ $t('data_base.type_desc') }}</cite></p>
                 <p>{{ dataUse.desc }}</p>
                 <br/>
                 <button class="button" id="menu"
