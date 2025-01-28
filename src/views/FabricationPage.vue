@@ -203,13 +203,21 @@ import { useLoadingStore } from '../stores/LoadingStore';
             //This boolean was created to see if the android is an Operator or not because the way the API treat the
             //data.
             let isOperator = androidTypeSel.name === "Operator";
+            let isExecutioner = androidTypeSel.name === "Executioner";
 
             //The YoRHa model doesn't have any name because it's going to be created at the API with all the android 
             //data obtained from the view.
             var name = androidModelSel.name === "Special" ? this.androidName : "";
 
-            var newAndroid = {name: name, modelId: androidModelSel.id, typeId: androidTypeSel.id, 
-            type_number: androidNumber, appearanceId: androidAppearance.id, desc: this.bio, isOperator: isOperator};
+            var newAndroid = {
+                name: name, modelId: androidModelSel.id, 
+                typeId: androidTypeSel.id, 
+                type_number: androidNumber, 
+                appearanceId: androidAppearance.id, 
+                desc: this.bio, 
+                isOperator: isOperator,
+                isExecutioner: isExecutioner
+            };
 
             console.log(newAndroid)
 
