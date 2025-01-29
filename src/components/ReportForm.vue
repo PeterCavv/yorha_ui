@@ -16,7 +16,7 @@ const store = useReportData();
 
                 <label for="inputDate">{{ $t('report.create_date') }}</label>
                 <input v-model="store.options['date']" type="date" class="android-attribute" id="inputDate"
-                style="padding-right: 0px;">
+                style="padding-right: 0px;" :min="minDate">
             </div>
 
             <label for="textarea">{{ $t('report.create_content') }}</label>
@@ -28,6 +28,7 @@ const store = useReportData();
                     let report = {
                         name: store.options['title'],
                         content: store.options['content'],
+                        publishDate: formatDateToDDMMYYYY(store.options['date']),
                         androidId: '65d76f4fe2fdc5580b0482bc'
                     }
                     
@@ -52,6 +53,7 @@ export default {
     },
     data(){
         return{
+            minDate: "",
         }
     },
     mixins: [messageModal],
@@ -101,8 +103,22 @@ export default {
             );
 
             loadingStore.hideLoader();   
+        },
+        formatDateToDDMMYYYY(date) {
+            const [year, month, day] = date.split('-');
+            return `${day}/${month}/${year}`;
+        },
+        setMinDate() {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0'); 
+            const day = String(today.getDate()).padStart(2, '0');
+            this.minDate = `${year}-${month}-${day}`;  
         }
-    }
+    },
+    created() {
+        this.setMinDate();
+    },
 }
 
 </script>

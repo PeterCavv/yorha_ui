@@ -26,9 +26,8 @@ const operatorStore = useOperatorData();
                 </figcaption>
                 <p><cite>{{ $t('information.content') }}</cite></p>
                 <p>{{ dataUse.content }}</p>
-                <br/>
-                <p>- {{ dataUse.android.name }}</p>
-                <p>{{ dataUse.date }}</p>
+
+                <p style="margin-top: 10px;">- {{ dataUse.android.name }} {{ dataUse.publish_date }} </p>
 
                 <button class="button" id="menu"
                 style="margin-bottom: 6px; text-align: center; margin-left: auto; text-transform: none; width: 30%"
