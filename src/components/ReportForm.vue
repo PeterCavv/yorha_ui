@@ -15,13 +15,19 @@ const store = useReportData();
                 style="padding-right: 0px;" placeholder="Report Title"/>
 
                 <label for="inputDate">{{ $t('report.create_date') }}</label>
-                <input v-model="store.options['date']" type="date" class="android-attribute" id="inputDate"
+                <input v-if="store.options['id'] === null || compareDates(store.options['date'])" v-model="store.options['date']" type="date" class="android-attribute" id="inputDate"
                 style="padding-right: 0px;" :min="minDate">
+                <input v-else v-model="store.options['date']" type="date" class="android-attribute" id="inputDate"
+                style="padding-right: 0px;" :min="minDate" disabled>
             </div>
 
             <label for="textarea">{{ $t('report.create_content') }}</label>
             <textarea v-model="store.options['content']" class="full" id="textarea" rows="8" 
             placeholder="This report is about..." :maxlength="350" style="padding-right: 0px;"></textarea>
+
+            <div class="inOneLine">
+                
+            </div>
 
             <button style="margin-top: 10px;" @click="() => {
                     //While auth isn't applied, it going to send commander's ID.
@@ -36,6 +42,8 @@ const store = useReportData();
                     
                 }" 
                 class="button-menu">{{ $t('form.submit') }}</button>
+
+            <button v-if="!compareDates(store.options['date']) || store.options['id'] !== null" class="button-menu" style="float: right; margin-top: 10px;">Delete</button>
             
         </fieldset>
     </form>
@@ -75,6 +83,8 @@ export default {
                     messageModal.data.object.REPORT, 
                     messageModal.data.status.SUCCESSFUL
                 );
+
+                this.backToSystem();
             })
             .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
             );
@@ -98,6 +108,8 @@ export default {
                     messageModal.data.object.REPORT, 
                     messageModal.data.status.SUCCESSFUL
                 );
+
+                this.backToSystem();
             })
             .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
             );
@@ -114,6 +126,24 @@ export default {
             const month = String(today.getMonth() + 1).padStart(2, '0'); 
             const day = String(today.getDate()).padStart(2, '0');
             this.minDate = `${year}-${month}-${day}`;  
+        },
+        compareDates(date){
+            if(date === null){
+                return false;
+            }
+
+            const inputDate = new Date(date);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            if(inputDate < today || inputDate === today){
+                return false;
+            } else {
+                return true;
+            }
+        },
+        backToSystem(){
+            this.$router.push({name: 'database'});
         }
     },
     created() {

@@ -29,7 +29,7 @@ const operatorStore = useOperatorData();
 
                 <p style="margin-top: 10px;">- {{ dataUse.android.name }} {{ dataUse.publish_date }} </p>
 
-                <button class="button" id="menu"
+                <button v-if="compareDates(dataUse.publish_date)" class="button" id="menu"
                 style="margin-bottom: 6px; text-align: center; margin-left: auto; text-transform: none; width: 30%"
                 @click="editReport => {reportStore.editReport(dataUse); $router.push({name: 'create-report'})}">
                     {{ $t('report.edit_report') }}
@@ -224,7 +224,29 @@ export default {
                 word.charAt(0).toUpperCase() + 
                 word.slice(1).toLowerCase()
             ).join(' ');
-        }
+        },
+        compareDates(date){
+            if(date === null){
+                return false;
+            }
+
+            const formatDateToYYYYMMDD = () => {
+                const [day, month, year] = this.dataUse.publish_date.split('/');
+                return `${year}-${month}-${day}`;
+            }
+
+            date = formatDateToYYYYMMDD();
+
+            const inputDate = new Date(date);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            if(inputDate < today || inputDate === today){
+                return false;
+            } else {
+                return true;
+            }
+        },
     }
 }
 </script>
