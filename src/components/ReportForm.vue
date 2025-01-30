@@ -43,10 +43,16 @@ const store = useReportData();
                 }" 
                 class="button-menu">{{ $t('form.submit') }}</button>
 
-            <button v-if="!compareDates(store.options['date']) || store.options['id'] !== null" class="button-menu" style="float: right; margin-top: 10px;">Delete</button>
+            <button v-if="!compareDates(store.options['date']) || store.options['id'] !== null" class="button-menu" 
+            style="float: right; margin-top: 10px;" @click="showModal = true;">Delete</button>
             
         </fieldset>
     </form>
+
+    <ConfirmationModal
+      :isVisible="showModal"
+      @update:isVisible="showModal = $event"
+    />
 </template>
 
 <script>
@@ -54,14 +60,17 @@ import { connection } from '@/services/ApiConnection'
 import axios from 'axios';
 import messageModal from '../utils/MessageModal.mjs'
 import { useLoadingStore } from '../stores/LoadingStore';
+import ConfirmationModal from './partials/ConfirmationModal.vue';
 
 export default {
     el: 'ReportForm',
     components: {
+        ConfirmationModal
     },
     data(){
         return{
             minDate: "",
+            showModal: false,
         }
     },
     mixins: [messageModal],
@@ -84,7 +93,7 @@ export default {
                     messageModal.data.status.SUCCESSFUL
                 );
 
-                this.backToSystem();
+                this.backToDatabase();
             })
             .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
             );
@@ -109,7 +118,7 @@ export default {
                     messageModal.data.status.SUCCESSFUL
                 );
 
-                this.backToSystem();
+                this.backToDatabase();
             })
             .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
             );
@@ -142,7 +151,7 @@ export default {
                 return true;
             }
         },
-        backToSystem(){
+        backToDatabase(){
             this.$router.push({name: 'database'});
         }
     },
