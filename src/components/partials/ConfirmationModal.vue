@@ -18,11 +18,11 @@
 </template>
   
 <script>
-// import { connection } from '../../services/ApiConnection';
-// import axios from 'axios';
-// import messageModal from '../../utils/MessageModal.mjs';
-// import { useLoadingStore } from '../../stores/LoadingStore';
-// import { useReportData } from '../../stores/ReportStore';
+import { connection } from '../../services/ApiConnection';
+import axios from 'axios';
+import messageModal from '../../utils/MessageModal.mjs';
+import { useLoadingStore } from '../../stores/LoadingStore';
+import { useReportData } from '../../stores/ReportStore';
 
 export default {
     props: {
@@ -31,42 +31,44 @@ export default {
             required: true
         }
     },
-    // mixins: [messageModal],
+    mixins: [messageModal],
     methods: {
         closeModal(){
             this.$emit('update:isVisible', false); 
         },
-        // async deleteReport(){
+        async deleteReport(){
 
-        //     const loadingStore = useLoadingStore();
-        //     const reportStore = useReportData();
+            const loadingStore = useLoadingStore();
+            const reportStore = useReportData();
 
-        //     loadingStore.showLoader();
+            console.log(reportStore.options['id'])
+        
 
-        //     await axios.delete(connection + `reports/${reportStore.options['id']}`, {
-        //         headers : {
-        //             'Content-Type': 'application/json'
-        //         }
-        //     })
-        //     .then((res) => {
-        //         console.log("API Answer: " + res)
-        //         this.msg = this.createMessage(
-        //             messageModal.data.httpMethod.DELETE, 
-        //             messageModal.data.object.REPORT, 
-        //             messageModal.data.status.SUCCESSFUL
-        //         );
+            loadingStore.showLoader();
 
-        //         this.backToDatabase();
-        //     })
-        //     .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
-        //     );
+            await axios.delete(connection + `reports/${reportStore.options['id']}`, {
+                headers : {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then((res) => {
+                console.log("API Answer: " + res)
+                this.msg = this.createMessage(
+                    messageModal.data().httpMethod.DELETE, 
+                    messageModal.data().object.REPORT, 
+                    messageModal.data().status.SUCCESSFUL
+                );
 
-        //     loadingStore.hideLoader();
-            
-        // },
-        // backToDatabase(){
-        //     this.$router.push({name: 'database'});
-        // }
+                this.backToDatabase();
+            })
+            .catch((error) => this.msg = this.createMessage("", "", messageModal.data().status.ERROR)
+            );
+
+            loadingStore.hideLoader();
+        },
+        backToDatabase(){
+            this.$router.push({name: 'database'});
+        }
     }
 }
 

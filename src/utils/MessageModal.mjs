@@ -1,19 +1,21 @@
 const messageModal = {
-    data: {
-        msg: "",
-        status: {
-            SUCCESSFUL: 'SUCCESSFUL',
-            ERROR: 'ERROR'
-        },
-        httpMethod: {
-            CREATE: 'CREATE',
-            DELETE: 'DELETE',
-            UPDATE: 'UPDATE'
-        },
-        object: {
-            ANDROID: 'ANDROID',
-            REPORT: 'REPORT',
-            OPERATOR_ADD_ANDROID: 'OPERATOR_ADD_ANDROID'
+    data() {
+        return{
+            msg: "",
+            status: {
+                SUCCESSFUL: 'SUCCESSFUL',
+                ERROR: 'ERROR'
+            },
+            httpMethod: {
+                CREATE: 'CREATE',
+                DELETE: 'DELETE',
+                UPDATE: 'UPDATE'
+            },
+            object: {
+                ANDROID: 'ANDROID',
+                REPORT: 'REPORT',
+                OPERATOR_ADD_ANDROID: 'OPERATOR_ADD_ANDROID'
+            }
         }
     },
     methods: {
