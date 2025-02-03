@@ -423,6 +423,9 @@ iframe {
 .flex-container{
   display: flex;
 }
+.warning figcaption{
+  background-color: #794141;
+}
 .title{
 
   text-align: left; 

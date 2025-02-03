@@ -167,10 +167,6 @@ export default {
 
 <style>
 
-    .warning figcaption{
-      background-color: #794141;
-    }
-
     .center {
       position: absolute;
       left: 50%;

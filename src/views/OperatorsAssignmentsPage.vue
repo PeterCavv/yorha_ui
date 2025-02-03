@@ -36,8 +36,8 @@ const store = useOperatorData();
         <label for="selectShow" style="margin-right: 10px;">Show: </label>
         <select v-model="showList" name="selectAndroidsToShow" id="selectShow" style="width: 10rem;">
           <option value="available">{{ $t("operator.available_search") }}</option>
-          <option value="owned">Owned</option>
-          <option value="every">Every Android</option>
+          <option value="owned">{{ $t("operator.owned_search") }}</option>
+          <option value="every">{{ $t("operator.every_search") }}</option>
         </select>
       </div>
     </div>
