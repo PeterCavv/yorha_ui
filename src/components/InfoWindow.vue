@@ -240,12 +240,9 @@ export default {
             const inputDate = new Date(date);
             const today = new Date();
             today.setHours(0, 0, 0, 0);
+            inputDate.setHours(0, 0, 0, 0);
 
-            if(inputDate < today || inputDate === today){
-                return false;
-            } else {
-                return true;
-            }
+            return inputDate.getTime() > today.getTime();
         },
     }
 }
