@@ -44,7 +44,7 @@ const store = useReportData();
                 class="button-menu">{{ $t('form.submit') }}</button>
 
             <button v-if="!compareDates(store.options['date']) || store.options['id'] !== null" class="button-menu" 
-            style="float: right; margin-top: 10px;" @click="showModal = true;">Delete</button>
+            style="float: right; margin-top: 10px;" @click="showModal = true;">{{ $t('report.delete_report') }}</button>
             
         </fieldset>
     </form>

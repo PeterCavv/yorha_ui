@@ -5,12 +5,12 @@
             <figcaption style="text-align: center;">
                 {{ $t('start.warning_message') }}
             </figcaption>
-            <p>
-                {{ $t('start.operator_message') }}
-            </p>
+            <p><b>
+                {{ $t('modal.delete_message') }}
+            </b></p>
             <div class="inOneLine" style="margin-top: 10px;">
-                <button class="button-menu" @click="closeModal">Go back</button>
-                <button class="button-menu" style="margin-left: auto;" @click="deleteReport">Delete</button>
+                <button class="button-menu" @click="closeModal">{{ $t('report.back_btn') }}</button>
+                <button class="button-menu" style="margin-left: auto;" @click="deleteReport">{{ $t('report.delete_report') }}</button>
             </div>
         </figure>
       </div>

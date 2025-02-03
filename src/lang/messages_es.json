@@ -67,15 +67,17 @@
         "create": "Crear un Informe",
         "caution_message_1": "El informe se mandar\u00e1 a todos los androides disponibles.",
         "caution_message_2": "Cuando se env\u00ede el informe, ser\u00e1 firmado según la sesi\u00f3n iniciada. En este caso ser\u00e1 {n}.",
-        "caution_message_3": "Puedes elegir la fecha en la que el informe se enviar\u00e1.",
-        "caution_message_3_1": "Si no eliges ninguna, se publicar\u00e1 al momento de crearlo.",
+        "caution_message_3": "Es necesario elegir la fecha en la que el informe ser\u00e1 publicado.",
+        "caution_message_3_1": "Si eliges la fecha de hoy, se publicar\u00e1 al momento de crearlo.",
         "create_legend": "Informaci\u00f3n del informe",
         "create_title": "Titulo:",
         "create_content": "Contenido:",
         "create_date": "Fecha de publicaci\u00f3n:",
         "create_signed": "Firmado por:",
         "edit_report": "Editar Informe",
-        "create_report": "Crear Informe"
+        "create_report": "Crear Informe",
+        "back_btn": "Volver",
+        "delete_report": "Borrar"
     },
     "data_base": {
         "title": "Base de datos",
@@ -143,7 +145,9 @@
         "add_android_desc": "A\u00f1ade o elimina androides de este Operador.",
         "cite_add_android": "Un Operador debe de tener como mínimo un Androide asignado!",
         "androids_assigned": "{n} androides bajo su cargo.",
-        "available_search": "Solo Disponibles"
+        "available_search": "Solo Disponibles",
+        "owned_search": "Propios",
+        "every_search": "Todos"
     },
     "loggin": {
         "user": "Usuario",
@@ -162,7 +166,8 @@
         "affirmative": "S\u00ed",
         "negative": "No"
     },
-    "loading_modal": {
-        "message": "Cargando"
+    "modal": {
+        "loading_message": "Cargando",
+        "delete_message": "Estás a punto de borrar el reporte. Si lo haces no podrás volver a acceder a él. ¿Seguro que quieres continuar?"
     }
 }
