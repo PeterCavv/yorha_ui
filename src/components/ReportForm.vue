@@ -11,8 +11,8 @@ const store = useReportData();
 
             <div class="inOneLine-form">
                 <label for="inputTitle">{{ $t('report.create_title') }}</label>
-                <input v-model="store.options['title']" type="text" class="android-attribute" id="inputTitle" 
-                style="padding-right: 0px;" placeholder="Report Title"/>
+                <input v-model="store.options['title']" type="text" class="android-attribute" :maxlength="35" 
+                id="inputTitle" style="padding-right: 0px;" placeholder="Report Title"/>
 
                 <label for="inputDate">{{ $t('report.create_date') }}</label>
                 <input v-if="store.options['id'] === null || compareDates(store.options['date'])" v-model="store.options['date']" type="date" class="android-attribute" id="inputDate"
@@ -24,10 +24,6 @@ const store = useReportData();
             <label for="textarea">{{ $t('report.create_content') }}</label>
             <textarea v-model="store.options['content']" class="full" id="textarea" rows="8" 
             placeholder="This report is about..." :maxlength="800" style="padding-right: 0px;"></textarea>
-
-            <div class="inOneLine">
-                
-            </div>
 
             <button style="margin-top: 10px;" @click="() => {
                     //While auth isn't applied, it going to send commander's ID.

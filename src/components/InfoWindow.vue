@@ -135,6 +135,37 @@ const operatorStore = useOperatorData();
         </div>
         <!-- END OPERATOR INFO -->
 
+        <!-- EXECUTIONER INFO -->
+        <div v-else-if="dataType=='executioner'">
+            <figure class="innerbox2">
+                <figcaption style="text-transform: uppercase;">
+                    <img src="../assets/Info_Icon.png" width="22" height="19" 
+                    style="vertical-align: middle;"/>
+                    {{ $t('data_base.android_info', { n: dataUse.name.name}) }}
+                </figcaption>
+                <p><cite>Status: <span style="color: #22c05f">OK</span></cite></p>
+                <p><cite>Equipment: {{ dataUse.equipment.name }}</cite></p>
+                <hr/>
+                <p v-if="dataUse.history.length != 0">
+                    This executioner have executed {{ dataUse.history.length }} android/s. 
+                </p>
+                <p v-else>
+                    This executioner didn't executed an android yet. 
+                </p>
+                <div class="inOneLine">
+                    <button class="button" id="menu"
+                        style="margin-bottom: 6px; text-align: center; text-transform: none; width: 45%">
+                        View Details
+                    </button>
+                    <button class="button" id="menu"
+                        style="margin-bottom: 6px; text-align: center; margin-left: auto; text-transform: none; width: 45%">
+                        Execute Android
+                    </button>
+                </div>
+            </figure>
+        </div>
+        <!-- END EXECUTIONER INFO -->
+
         <!-- TYPES INFO -->
         <div v-else-if="dataType=='type'">
             <figure class="innerbox">
@@ -191,6 +222,7 @@ const operatorStore = useOperatorData();
 
             </figure>
         </div>
+        <!-- END WEAPONS INFO -->
 
     </div>
 </template>

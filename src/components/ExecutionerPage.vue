@@ -9,7 +9,7 @@
                 <hr/>
                 <div v-if="executeList.length" class="dataScroll">
                     <div v-for="( executioner, index ) in executeList" :key="index">
-                        <button @click="showTypeInfo( weexecutionerapon )" 
+                        <button @click="showTypeInfo( executioner )" 
                         class="button button-list" id="menu" style="width: 100%">
                             <!-- <img src="../assets/executioner_icon.png" width="18" height="22" 
                             style="vertical-align: middle; float: left; margin-right: 10px;"/> -->
