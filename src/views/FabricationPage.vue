@@ -230,12 +230,12 @@ import { useLoadingStore } from '../stores/LoadingStore';
             .then((res) => {
                 console.log("API Answer: " + res)
                 this.msg = this.createMessage(
-                    messageModal.data.httpMethod.CREATE, 
-                    messageModal.data.object.ANDROID, 
-                    messageModal.data.status.SUCCESSFUL
+                    messageModal.data().httpMethod.CREATE, 
+                    messageModal.data().object.ANDROID, 
+                    messageModal.data().status.SUCCESSFUL
                 );
             })
-            .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
+            .catch((error) => this.msg = this.createMessage("", "", messageModal.data().status.ERROR)
             );
 
             loadingStore.hideLoader();

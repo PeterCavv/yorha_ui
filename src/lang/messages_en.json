@@ -114,7 +114,7 @@
         "types": "Types",
         "types_title": "Types's Data",
         "execute": "Execute",
-        "execute_title": "Executers Data"
+        "execute_title": "Executioner's Data"
 
     },
     "information": {
@@ -136,6 +136,8 @@
         "operator_message": "No operators found",
         "weapons_search": "Search a weapon",
         "weapon_message": "No weapons found",
+        "execute_search": "Search an executioner",
+        "execute_message": "No executioners found",
         "types": "Search types",
         "type_message": "No types found"
         

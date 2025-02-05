@@ -28,15 +28,17 @@
 
     <button @click="show('type');" class="button button-select" id="menu">{{ $t('system.types') }}</button>
 
-    <button @click="show('report');" class="button button-select" id="menu">{{ $t('system.execute') }}</button>
+    <button @click="show('executioner');" class="button button-select" id="menu">{{ $t('system.execute') }}</button>
     <br/>
 
     <OperatorPage :operators="operators" v-if="dataOperator"/>
     <TypePage :types="types" v-if="dataType"/>
+    <ExecutionerPage :executioners="executioners" v-if="dataExectioner"/>
 
 </template>
 
 <script>
+import ExecutionerPage from '../components/ExecutionerPage.vue';
 import OperatorPage from '../components/OperatorPage.vue';
 import TypePage from '../components/TypePage.vue';
 
@@ -45,7 +47,8 @@ export default {
     data() {
         return{
             dataOperator: false,
-            dataType: false
+            dataType: false,
+            dataExectioner: false
         }
     },
     props: {
@@ -56,11 +59,16 @@ export default {
         types: {
             type: Object,
             req: true
+        },
+        executioners: {
+            type: Object,
+            req: true  
         }
     },
     components: {
         OperatorPage,
-        TypePage
+        TypePage,
+        ExecutionerPage
     }, 
     computed: {
         checkOperators(){
@@ -72,12 +80,18 @@ export default {
 			switch (typeData) {
 				case "operator":
 					this.dataType = false;
+                    this.dataExectioner = false;
 					this.dataOperator = true;
 					break;
 				case "type":
 					this.dataOperator = false;
+                    this.dataExectioner = false;
 					this.dataType = true;
 					break;
+                case "executioner":
+                    this.dataType = false;
+                    this.dataOperator = false;
+                    this.dataExectioner = true;
 				default:
 					break;
 			}

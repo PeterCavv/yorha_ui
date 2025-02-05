@@ -134,13 +134,13 @@ export default {
             .then((res) => {
                 console.log("API Answer: " + res)
                 this.msg = this.createMessage(
-                    messageModal.data.httpMethod.UPDATE, 
-                    messageModal.data.object.ANDROID, 
-                    messageModal.data.status.SUCCESSFUL
+                    messageModal.data().httpMethod.UPDATE, 
+                    messageModal.data().object.ANDROID, 
+                    messageModal.data().status.SUCCESSFUL
                 );
                 this.backToSystem();
             })
-            .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
+            .catch((error) => this.msg = this.createMessage("", "", messageModal.data().status.ERROR)
             );
       },
       async removeAssignedAndroid(androidId, operatorId){
@@ -148,13 +148,13 @@ export default {
             .then((res) => {
               console.log("API Answer: " + res);
               this.msg = this.createMessage(
-                    messageModal.data.httpMethod.DELETE, 
-                    messageModal.data.object.ANDROID, 
-                    messageModal.data.status.SUCCESSFUL
+                    messageModal.data().httpMethod.DELETE, 
+                    messageModal.data().object.ANDROID, 
+                    messageModal.data().status.SUCCESSFUL
               );
               this.backToSystem();
             })
-            .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
+            .catch((error) => this.msg = this.createMessage("", "", messageModal.data().status.ERROR)
             );
       },
       backToSystem(){

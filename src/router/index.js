@@ -62,6 +62,14 @@ const appe = async function getAppearances(to, from, next) {
   })
 }
 
+const executioners = async function getExecutioners(to, from, next) {
+  axios.get(connection + "executioners")
+  .then(response => {
+    to.params.executioners = response.data;
+    next()
+  })
+}
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
   routes: [
@@ -102,7 +110,7 @@ const router = createRouter({
       name: 'system',
       component: () => import('../views/SystemPage.vue'),
       props: true,
-      beforeEnter: multiguard([operators, types])
+      beforeEnter: multiguard([operators, types, executioners])
     },
     {
       path: '/system/assing-android',

@@ -32,6 +32,12 @@ const searcher= {
                 return this.weapons.filter((weapon) => weapon.name.toLowerCase().includes(this.searchValue.trim().toLowerCase()));
             }
             return this.weapons;
+        },
+        executeList(){
+            if( this.searchValue.trim().length > 0 ){
+                return this.executioners.filter((executioner) => executioner.name.name.toLowerCase().includes(this.searchValue.trim().toLowerCase()));
+            }
+            return this.executioners;
         }
     }
 }
