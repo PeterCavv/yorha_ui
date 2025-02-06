@@ -3,12 +3,12 @@
       <div class="modal-content" @click.stop>
         <hr class="modal-hr"/>
         <figure class="warning">
-            <figcaption style="text-align: center; letter-spacing: 12px; text-transform: uppercase; font-size: 30px;">
+            <figcaption style="text-align: center; letter-spacing: 12px; text-transform: uppercase; font-size: 30px; color: #8B0000">
                 - {{ $t('start.warning_message') }} -
-                <hr/>
+                <hr style="border-color: #454138"/>
             </figcaption>
             <div class="modal-text">
-                <p>
+                <p style="padding-bottom: 30px;">
                     {{ $t('modal.delete_message') }}
                 </p>
                 <div class="inOneLine" style="margin-top: 10px;">
@@ -17,7 +17,7 @@
                 </div>
             </div>
         </figure>
-        <hr style="height: 4px; background-color: #454138; border-top: none;"/>
+        <hr class="modal-hr"/>
       </div>
     </div>
 </template>
@@ -83,9 +83,8 @@ export default {
 
     .modal-hr {
         border: none;
-        height: 4px; 
-        background-color: #454138;
-        
+        height: 6px; 
+        background-color: #dcd8c0;
     }
 
     .modal-overlay {
@@ -109,8 +108,8 @@ export default {
     }
 
     .warning, .warning figcaption{
-        background-color: #454138;
-        color: #bab5a1;
+        background-color: #dcd8c0;
+        color: #454138;
     }
 
 </style>
