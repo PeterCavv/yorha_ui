@@ -48,7 +48,7 @@ const operatorStore = useOperatorData();
                 </figcaption>
                 <div class="inOneLine">
                     <div style="width: 5rem;">
-                        <label><cite>{{ $t('android.state') }}</cite></label>
+                        <label><cite>{{ $t('android.model') }}</cite></label>
                         <p>{{ dataUse.model.name }}</p>
                     </div>
                     <div style="width: 5rem;">
