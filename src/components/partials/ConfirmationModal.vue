@@ -1,18 +1,23 @@
 <template>
     <div v-if="isVisible" class="modal-overlay">
       <div class="modal-content" @click.stop>
+        <hr class="modal-hr"/>
         <figure class="warning">
-            <figcaption style="text-align: center;">
-                {{ $t('start.warning_message') }}
+            <figcaption style="text-align: center; letter-spacing: 12px; text-transform: uppercase; font-size: 30px;">
+                - {{ $t('start.warning_message') }} -
+                <hr/>
             </figcaption>
-            <p><b>
-                {{ $t('modal.delete_message') }}
-            </b></p>
-            <div class="inOneLine" style="margin-top: 10px;">
-                <button class="button-menu" @click="closeModal">{{ $t('report.back_btn') }}</button>
-                <button class="button-menu" style="margin-left: auto;" @click="deleteReport">{{ $t('report.delete_report') }}</button>
+            <div class="modal-text">
+                <p>
+                    {{ $t('modal.delete_message') }}
+                </p>
+                <div class="inOneLine" style="margin-top: 10px;">
+                    <button class="button-menu" @click="closeModal">{{ $t('report.back_btn') }}</button>
+                    <button class="button-menu" style="margin-left: auto;" @click="deleteReport">{{ $t('report.delete_report') }}</button>
+                </div>
             </div>
         </figure>
+        <hr style="height: 4px; background-color: #454138; border-top: none;"/>
       </div>
     </div>
 </template>
@@ -75,6 +80,14 @@ export default {
 </script>
   
 <style scoped>
+
+    .modal-hr {
+        border: none;
+        height: 4px; 
+        background-color: #454138;
+        
+    }
+
     .modal-overlay {
         position: fixed;
         top: 0;
@@ -91,7 +104,13 @@ export default {
     .modal-content {
         padding: 20px;
         border-radius: 5px;
-        width: 500px;
+        width: 100%;
+        padding: 0px;
+    }
+
+    .warning, .warning figcaption{
+        background-color: #454138;
+        color: #bab5a1;
     }
 
 </style>
