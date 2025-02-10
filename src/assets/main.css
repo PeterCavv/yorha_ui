@@ -459,6 +459,20 @@ iframe {
   margin-right: 8rem;
 }
 
+.modal-text{
+  padding-left: 250px;
+  padding-right: 250px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 870px){
+  .modal-text{
+      padding-left: 100px;
+      padding-right: 100px;
+      
+  }
+}
+
 @media only screen and (max-width: 602px){
   .infoWindow{
       display: none;
@@ -476,10 +490,15 @@ iframe {
 
   .inOneLine-form{
     display: inline;
-}
+  }
 
   .btn-createReport{
     width: 200px;
+  }
+
+  .modal-text{
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }
 

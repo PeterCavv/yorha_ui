@@ -1,28 +1,29 @@
 <template>
     <div v-if="isVisible" class="modal-overlay">
       <div class="modal-content" @click.stop>
+        <hr class="modal-hr"/>
         <figure class="warning">
-            <figcaption style="text-align: center;">
-                {{ $t('start.warning_message') }}
+            <figcaption style="text-align: center; letter-spacing: 12px; text-transform: uppercase; font-size: 30px; color: #8B0000;
+            margin-top: 0px;">
+                - {{ $t('start.warning_message') }} -
+                <hr style="border-color: #454138"/>
             </figcaption>
-            <p><b>
-                {{ $t('modal.delete_message') }}
-            </b></p>
-            <div class="inOneLine" style="margin-top: 10px;">
-                <button class="button-menu" @click="closeModal">{{ $t('report.back_btn') }}</button>
-                <button class="button-menu" style="margin-left: auto;" @click="deleteReport">{{ $t('report.delete_report') }}</button>
+            <div class="modal-text">
+                <slot name="text"></slot>
+                <div class="inOneLine" style="margin-top: 10px;">
+                    <button class="button-menu" @click="closeModal">{{ $t('report.back_btn') }}</button>
+                    <slot name="button"></slot>
+                </div>
+                
             </div>
         </figure>
+        <hr class="modal-hr"/>
       </div>
     </div>
 </template>
   
 <script>
-import { connection } from '../../services/ApiConnection';
-import axios from 'axios';
 import messageModal from '../../utils/MessageModal.mjs';
-import { useLoadingStore } from '../../stores/LoadingStore';
-import { useReportData } from '../../stores/ReportStore';
 
 export default {
     props: {
@@ -35,39 +36,6 @@ export default {
     methods: {
         closeModal(){
             this.$emit('update:isVisible', false); 
-        },
-        async deleteReport(){
-
-            const loadingStore = useLoadingStore();
-            const reportStore = useReportData();
-
-            console.log(reportStore.options['id'])
-        
-
-            loadingStore.showLoader();
-
-            await axios.delete(connection + `reports/${reportStore.options['id']}`, {
-                headers : {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then((res) => {
-                console.log("API Answer: " + res)
-                this.msg = this.createMessage(
-                    messageModal.data().httpMethod.DELETE, 
-                    messageModal.data().object.REPORT, 
-                    messageModal.data().status.SUCCESSFUL
-                );
-
-                this.backToDatabase();
-            })
-            .catch((error) => this.msg = this.createMessage("", "", messageModal.data().status.ERROR)
-            );
-
-            loadingStore.hideLoader();
-        },
-        backToDatabase(){
-            this.$router.push({name: 'database'});
         }
     }
 }
@@ -75,6 +43,13 @@ export default {
 </script>
   
 <style scoped>
+
+    .modal-hr {
+        border: none;
+        height: 6px; 
+        background-color: #dcd8c0;
+    }
+
     .modal-overlay {
         position: fixed;
         top: 0;
@@ -91,7 +66,13 @@ export default {
     .modal-content {
         padding: 20px;
         border-radius: 5px;
-        width: 500px;
+        width: 100%;
+        padding: 0px;
+    }
+
+    .warning, .warning figcaption{
+        background-color: #dcd8c0;
+        color: #454138;
     }
 
 </style>
