@@ -34,7 +34,11 @@ const store = useReportData();
             </figure>
         </blockquote>
 
-        <InfoWindow class="infoWindow" :dataUse="selectedReport" :dataType="'report'" :addWindow="addWindow" style="margin-top: -35px;"/>
+        <InfoWindow class="infoWindow" :dataUse="selectedReport" :addWindow="addWindow" style="margin-top: -35px;">
+            <template #title>
+                {{ selectedReport.name }}
+            </template>
+        </InfoWindow>
     </div>
     <hr/>
 </template>

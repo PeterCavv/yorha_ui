@@ -15,6 +15,15 @@ const operatorStore = useOperatorData();
     </div>
 
     <div class="infoModal" v-else-if="addWindow == 1" >
+        <figure class="innerbox">
+            <figcaption>
+                <img src="../assets/Info_Icon.png" width="22" height="21" 
+                style="vertical-align: middle;"/>
+                <slot name="title"></slot>
+            </figcaption>
+            <slot name="body"></slot>
+        </figure>
+
 
         <!--REPORT INFO -->
         <div v-if="dataType=='report'">
