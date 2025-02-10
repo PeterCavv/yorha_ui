@@ -356,6 +356,7 @@ button:not(:disabled):focus{
   border-width: 0.1rem 0;
 }
 .button-menu{
+  width: 10rem;
   padding-right: 10rem; 
   text-align: center;
 }

@@ -82,7 +82,7 @@ const content = computed({
         </template>
         
         <template #button>
-            <button class="button-menu" style="margin-left: auto;" @click="deleteReport(id)">{{ $t('report.delete_report') }}</button>
+            <button class="button button-menu" style="margin-left: auto;" @click="deleteReport(id)">{{ $t('report.delete_report') }}</button>
         </template>
     </ConfirmationModal>
     

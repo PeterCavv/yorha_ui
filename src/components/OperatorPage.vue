@@ -90,8 +90,10 @@ export default {
             req: true
         }
     },
-    data: {
-        selectedOperator: null,
+    data() {
+        return {
+            selectedOperator: null,
+        }
     },
     mixins: [searcher],
     methods: {
