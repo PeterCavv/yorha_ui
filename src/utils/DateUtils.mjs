@@ -4,6 +4,10 @@ const dateUtils = {
             const [year, month, day] = date.split('-');
             return `${day}/${month}/${year}`;
         },
+        formatDateToYYYYMMDD(date){
+            const [day, month, year] = date.split('/');
+            return `${year}-${month}-${day}`;
+        },
         setMinDate() {
             const today = new Date();
             const year = today.getFullYear();
@@ -25,7 +29,7 @@ const dateUtils = {
             } else {
                 return true;
             }
-        },
+        }
     },
 }
 
