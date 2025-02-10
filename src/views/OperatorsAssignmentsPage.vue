@@ -1,7 +1,14 @@
 <script setup>
+import { ref } from 'vue';
 import { useOperatorData } from '../stores/OperatorStore';
+import { storeToRefs } from 'pinia';
 
 const store = useOperatorData();
+
+const showModal = ref(false);
+
+const { options } = storeToRefs(store);
+const operator = options.value.operator;
 </script>
 
 <template>
@@ -22,7 +29,7 @@ const store = useOperatorData();
 
     <figure>
       <figcaption>
-        {{ $t("operator.this_data", { n: store.options['operator'].name.name }) }}
+        {{ $t("operator.this_data", { n: operator.name.name }) }}
       </figcaption>
       <p>{{ $t('operator.add_android_desc') }}</p>
       <cite style="font-size: small">{{  $t('operator.cite_add_android') }}</cite>
@@ -33,11 +40,11 @@ const store = useOperatorData();
       <input class="searcher-assign" v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.android_search')">
       
       <div class="showSelect" style="flex-direction: row;">
-        <label style="margin-right: 10px;">Show: </label>
-        <select v-model="showList" name="selectAndroidsToShow" style="width: 10rem;">
+        <label for="selectShow" style="margin-right: 10px;">Show: </label>
+        <select v-model="showList" name="selectAndroidsToShow" id="selectShow" style="width: 10rem;">
           <option value="available">{{ $t("operator.available_search") }}</option>
-          <option value="owned">Owned</option>
-          <option value="every">Every Android</option>
+          <option value="owned">{{ $t("operator.owned_search") }}</option>
+          <option value="every">{{ $t("operator.every_search") }}</option>
         </select>
       </div>
     </div>
@@ -54,7 +61,7 @@ const store = useOperatorData();
       </thead>
       <tbody>
         <template v-if="androidList.length">
-          <template v-if="showAllAndroids" v-for="( android, index ) in filteredAndroidList()" :key="index">
+          <template v-if="showAllAndroids" v-for="( android, index ) in filteredAndroidList(operator)" :key="index">
             <tr class="interactive" style="height: 30px;">
               <td>{{ android.name }}</td>
               <td>{{ android.type.name }}</td>
@@ -64,15 +71,29 @@ const store = useOperatorData();
               <td v-if="android.assigned_operator != null">{{ android.assigned_operator.name.name }}</td>
               <td v-else>-</td>
               <td v-if="android.state.name == 'Operational' && android.assigned_operator == null">
-                <a @click="() => {assingAndroid(android.id, store.options['operator'].id);}" name="add">
+                <a @click="() => {assingAndroid(android.id, operator.id);}" name="add">
                   <img src="../assets/assing_icon.png" style="width: 20px;">
                 </a>
               </td>
-              <td v-else-if="android.assigned_operator != null && android.assigned_operator.name.name === store.options['operator'].name.name">
-                <a @click="() => {removeAssignedAndroid(android.id, store.options['operator'].id);} ">
+              <td v-else-if="android.assigned_operator != null && android.assigned_operator.name.name === operator.name.name">
+                <a @click="showModal = true;">
                   <img src="../assets/Block_Icon.png" style="width: 20px; margin-top: 5px;">
                 </a>
               </td>
+
+              <ConfirmationModal :isVisible="showModal" @update:isVisible="showModal = $event">
+                <template #text>
+                    <p style="padding-bottom: 30px;">
+                        You are going to unassing an Android from this Operator. Are you sure you want to continue?
+                    </p>
+                </template>
+                
+                <template #button>
+                    <button class="button-menu" style="margin-left: auto;" 
+                    @click="removeAssignedAndroid(android.id, operator.id);">Unassing</button>
+                </template>
+              </ConfirmationModal>
+
               <td></td>
             </tr>
           </template>
@@ -81,9 +102,11 @@ const store = useOperatorData();
     </tbody>
     </table>
   </div>
+
   <hr class="bottom-screen"/>
 </template>
 <script>
+import ConfirmationModal from '../components/partials/ConfirmationModal.vue';
 import searcher from '../utils/Searcher'
 import messageModal from '../utils/MessageModal.mjs';
 import axios from 'axios';
@@ -97,6 +120,9 @@ export default {
             required: true
         }
     },
+    components: {
+      ConfirmationModal
+    },
     data: {
         selectedAndroid: null,
         showList: "available",
@@ -108,9 +134,7 @@ export default {
       changeShow() {
         this.showList = this.showAvailable ? false : true;
 		  },
-
-      filteredAndroidList() {
-        const store = useOperatorData();
+      filteredAndroidList(operator) {
         const android = this.androidList.filter(
           android => android.type.name != 'Operator' && android.name != 'Commander White' && android.model.name != 'Special'
         );
@@ -123,7 +147,7 @@ export default {
 
         if( this.showList == "owned") {
           return android.filter(
-            android => android.assigned_operator != null && android.assigned_operator.name.name === store.options['operator'].name.name
+            android => android.assigned_operator != null && android.assigned_operator.name.name === operator.name.name
           ); 
         }
 
@@ -134,13 +158,13 @@ export default {
             .then((res) => {
                 console.log("API Answer: " + res)
                 this.msg = this.createMessage(
-                    messageModal.data.httpMethod.UPDATE, 
-                    messageModal.data.object.ANDROID, 
-                    messageModal.data.status.SUCCESSFUL
+                    messageModal.data().httpMethod.UPDATE, 
+                    messageModal.data().object.ANDROID, 
+                    messageModal.data().status.SUCCESSFUL
                 );
                 this.backToSystem();
             })
-            .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
+            .catch((error) => this.msg = this.createMessage("", "", messageModal.data().status.ERROR)
             );
       },
       async removeAssignedAndroid(androidId, operatorId){
@@ -148,13 +172,13 @@ export default {
             .then((res) => {
               console.log("API Answer: " + res);
               this.msg = this.createMessage(
-                    messageModal.data.httpMethod.DELETE, 
-                    messageModal.data.object.ANDROID, 
-                    messageModal.data.status.SUCCESSFUL
+                    messageModal.data().httpMethod.DELETE, 
+                    messageModal.data().object.ANDROID, 
+                    messageModal.data().status.SUCCESSFUL
               );
               this.backToSystem();
             })
-            .catch((error) => this.msg = this.createMessage("", "", messageModal.data.status.ERROR)
+            .catch((error) => this.msg = this.createMessage("", "", messageModal.data().status.ERROR)
             );
       },
       backToSystem(){

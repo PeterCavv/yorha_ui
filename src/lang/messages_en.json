@@ -32,7 +32,7 @@
         "fabrication_desc2_info3": "Type",
         "fabrication_desc2_info4": "Description",
         "info_database": "In this moment, there is {n} registered androids, but only {m} are operational.",
-        "warning_message": "Warning!",
+        "warning_message": "Warning",
         "operator_message": "There is Operators with no android asigned. It is very important that every Operator have their androids assigned to send them tasks.",
         "operator_button": "Update Operators"
     },
@@ -70,15 +70,17 @@
         "create": "Create a Report",
         "caution_message_1": "The report will be sent to every operative android.",
         "caution_message_2": "When the report is sended, it will be signed by the connected user. In this case, it will be signed by {n}.",
-        "caution_message_3": "You can choose a publishing date.",
-        "caution_message_3_1": "If you don't choose any, it will be uploaded at the same time it's created.",
+        "caution_message_3": "You nedd to choose a publishing date.",
+        "caution_message_3_1": "If you choose today's date, it will be uploaded when you submit the form.",
         "create_legend": "Report Information",
         "create_title": "Title:",
         "create_content": "Report content:",
         "create_date": "Publishing date:",
         "create_signed": "Signed by:",
         "edit_report": "Edit Report",
-        "create_report": "Create Report"
+        "create_report": "Create Report",
+        "back_btn": "Go back",
+        "delete_report": "Delete"
     },
     "data_base": {
         "title": "Data Base",
@@ -147,7 +149,9 @@
         "add_android_desc": "Add or remove androids to this Operator.",
         "cite_add_android": "An Operator must have at least one android assigned!",
         "androids_assigned": "{n} androids under its command.",
-        "available_search": "Only Available"
+        "available_search": "Only Available",
+        "owned_search": "Owned",
+        "every_search": "Every Android"
     },
     "loggin": {
         "user": "User",
@@ -166,7 +170,8 @@
         "affirmative": "Yes",
         "negative": "No"
     },
-    "loading_modal": {
-        "message": "Loading"
+    "modal": {
+        "loading_message": "Loading",
+        "delete_message": "You are going to delete this Report. If you delete it, you cannot go back. Are you sure you want to do it?"
     }
 }

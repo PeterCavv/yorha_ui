@@ -8,7 +8,10 @@
 <template>
   <Nav></Nav>
   <router-view/>
-  <LoadingModal :visible="store.isLoading" />
+  <Transition name="fade">
+    <LoadingModal :visible="store.isLoading" />
+  </Transition>
+
 </template>
 
 <script>
@@ -20,6 +23,15 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.15s ease;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+</style>
 
 
 

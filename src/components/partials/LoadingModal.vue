@@ -1,7 +1,7 @@
 <template>
     <div v-if="visible" class="loading-modal">
       <div class="loading-row">
-        <p>{{ $t("loading_modal.message") }}</p>
+        <p>{{ $t("modal.loading_message") }}</p>
         <div class="spinner"></div>
       </div>
     </div>

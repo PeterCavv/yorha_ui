@@ -1,7 +1,9 @@
 <script setup>
+import { ref } from 'vue';
 import { useReportData } from '../stores/ReportStore';
 
 const store = useReportData();
+const addWindow = ref(false);
 </script>
 
 <template>
@@ -14,7 +16,6 @@ const store = useReportData();
             class="btn-createReport">
             {{ $t("report.create_report")}}
         </button>
-        
     </div>
     <div class="flex-container">
         <blockquote class="searcherWindow">
@@ -22,7 +23,7 @@ const store = useReportData();
                 <hr/>
                 <div v-if="reportList.length" class="dataScroll">
                     <div v-for="(report, index) in reportList" :key="index">
-                        <button @click="showTypeInfo(report)" 
+                        <button @click="() => {showTypeInfo(report); addWindow = true}" 
                         class="button button-list" id="menu" style="width: 100%;">
 
                             {{ report.name }}
@@ -35,14 +36,31 @@ const store = useReportData();
             </figure>
         </blockquote>
 
-        <InfoWindow class="infoWindow" :dataUse="selectedReport" :dataType="'report'" :addWindow="addWindow" style="margin-top: -35px;"/>
+        <InfoWindow class="infoWindow" :addWindow="addWindow" style="margin-top: -35px;">
+            <template #title>
+                {{ selectedReport.name }}
+            </template>
+            <template #body>
+                <p><cite>{{ $t('information.content') }}</cite></p>
+                <p>{{ selectedReport.content }}</p>
+
+                <p style="margin-top: 10px;">- {{ selectedReport.android.name }} {{ selectedReport.publish_date }} </p>
+
+                <button v-if="compareDates(formatDateToYYYYMMDD(selectedReport.publish_date))" class="button" id="menu"
+                style="margin-bottom: 6px; text-align: center; margin-left: auto; text-transform: none; width: 30%"
+                @click="() => {store.editReport(selectedReport); $router.push({name: 'create-report'})}">
+                    {{ $t('report.edit_report') }}
+                </button>
+            </template>
+        </InfoWindow>
     </div>
     <hr/>
 </template>
 
 <script>
-import searcher from '../utils/Searcher'
+import searcher from '../utils/Searcher.mjs'
 import InfoWindow from './InfoWindow.vue'
+import dateUtils  from '../utils/DateUtils.mjs'
 
 export default {
     name: "Report",
@@ -57,14 +75,12 @@ export default {
     },
     data: {
         selectedReport: null,
-        addWindow: 0,
         report: {}
     },
-    mixins: [searcher],
+    mixins: [searcher, dateUtils],
     methods: {
         showTypeInfo(report) {
                 this.selectedReport = report;
-                this.addWindow= 1;
 		}
     }
 

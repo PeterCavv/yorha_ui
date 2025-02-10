@@ -356,6 +356,7 @@ button:not(:disabled):focus{
   border-width: 0.1rem 0;
 }
 .button-menu{
+  width: 10rem;
   padding-right: 10rem; 
   text-align: center;
 }
@@ -423,6 +424,9 @@ iframe {
 .flex-container{
   display: flex;
 }
+.warning figcaption{
+  background-color: #794141;
+}
 .title{
 
   text-align: left; 
@@ -433,6 +437,12 @@ iframe {
 .inOneLine{
   display: flex; 
   gap: 1rem;
+}
+
+.inOneLine-form{
+  display: flex; 
+  gap: 1rem;
+  margin-bottom: 10px;
 }
 
 .searcherInput{
@@ -450,6 +460,20 @@ iframe {
   margin-right: 8rem;
 }
 
+.modal-text{
+  padding-left: 250px;
+  padding-right: 250px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 870px){
+  .modal-text{
+      padding-left: 100px;
+      padding-right: 100px;
+      
+  }
+}
+
 @media only screen and (max-width: 602px){
   .infoWindow{
       display: none;
@@ -465,8 +489,17 @@ iframe {
       width: 95%;
   }
 
+  .inOneLine-form{
+    display: inline;
+  }
+
   .btn-createReport{
     width: 200px;
+  }
+
+  .modal-text{
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }
 

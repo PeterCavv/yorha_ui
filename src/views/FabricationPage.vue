@@ -37,88 +37,80 @@
         <fieldset>
             <legend>{{ $t('start.fabrication_desc2_title2') }}</legend>
 
-                <label>{{ $t('android.type') }}:</label>
+            <div class="inOneLine-form">
+                <label for="modelSelect">{{ $t('android.type') }}:</label>
 
-                &nbsp;
-
-                <select v-model="selectedModel" class="android-attribute">
+                <select v-model="selectedModel" class="android-attribute" id="modelSelect">
                     <option v-for="model in models" :key="model">
                         {{ model.name }}
                     </option>
                 </select>
 
-                <label>{{ $t('android.model') }}:</label>
-
-                &nbsp;
+                <label for="typeSelect">{{ $t('android.model') }}:</label>
 
                 <select v-if="selectedModel != 'YoRHa'" v-model="selectedType" 
-                class="android-attribute" disabled/>
+                class="android-attribute" id="typeSelect" disabled/>
 
                 <select v-else-if="selectedModel == 'YoRHa'" v-model="selectedType" 
-                class="android-attribute">
+                class="android-attribute" id="typeSelect">
                     <template v-for="(typeA, index) in types" :key="index">
                         <option v-if="typeA.name != 'NoType'">
                             {{ typeA.name }}
                         </option>
                     </template>
                 </select>
-            
-                <br/><br/>
-
-                <label for="text">{{ $t('start.fabrication_desc2_info1') }}:</label>
-
-                &nbsp;
+            </div>
+                
+            <div class="inOneLine-form">
+                <label class="margin-right-input" for="inputText">{{ $t('start.fabrication_desc2_info1') }}:</label>
 
                 <input v-if="(selectedModel != 'YoRHa' && selectedModel != 'Special')"  
-                type="text" class="android-attribute" disabled style="padding-right: 0px;"/>
-                
+                type="text" class="android-attribute" id="inputText" style="padding-right: 0px;" disabled/>
+
                 <input v-else-if="(selectedModel != 'YoRHa' && selectedModel == 'Special')" 
-                v-model="androidName" id="specialModel" type="text" class="android-attribute" 
-                :placeholder="$t('fabrication.insert_name')" :maxlength="25" style="padding-right: 0px;"/>
-                
-                <input v-else-if="(selectedModel == 'YoRHa' && selectedModel == undefinded)" 
-                :value="selectedType.name" type="text" class="android-attribute" disabled
+                v-model="androidName" type="text" class="android-attribute" 
+                :placeholder="$t('fabrication.insert_name')" :maxlength="25" id="inputText" 
                 style="padding-right: 0px;"/>
-                
+
+                <input v-else-if="(selectedModel == 'YoRHa' && selectedModel == undefinded)" 
+                :value="selectedType.name" type="text" class="android-attribute" 
+                id="inputText" style="padding-right: 0px;" disabled/>
+
                 <input v-else :value="selectedModel + ' Type ' + selectedType.charAt(0)"  
-                type="text" class="android-attribute" disabled style="padding-right: 0px;"/>
+                type="text" class="android-attribute" id="inputText" style="padding-right: 0px;" 
+                disabled/>
 
-                <label>{{ $t('android.appearance') }}:</label>
+                <label for="selectAppearance" class="margin-right-input">{{ $t('android.appearance') }}:</label>
 
-                &nbsp;
-
-                <select v-model="selectedAppearance" class="android-attribute">
+                <select v-model="selectedAppearance" class="android-attribute" id="selectAppearance">
                     <option v-for="a in appe" :key="a">{{ a.name }}</option>
                 </select>
-
-
-            <p>
-                <br/>
-                <label for="textarea">{{ $t('android.biography') }}:</label>
-                <textarea v-model="bio" class="full" id="textarea" rows="8" 
-                placeholder="This android..." :maxlength="350" style="padding-right: 0px;"></textarea>
-            </p>
+            </div>
+                
+            <label for="textarea">{{ $t('android.biography') }}:</label>
+            <textarea v-model="bio" class="full" id="textarea" rows="8" 
+            placeholder="This android..." :maxlength="350" style="padding-right: 0px;"></textarea>
 
             <p v-if="(selectedModel == 'YoRHa' && selectedType == 'Operator')" 
             style="font-size:small; font-style: normal;">
                 <cite>{{ $t('fabrication.operator_info') }}</cite>
             </p>
 
-            <button v-if="selectedModel == '' " type="submit" class="button-menu" disabled>
+            <button v-if="selectedModel == '' " type="submit" class="button-menu" style="margin-top: 10px;" disabled>
                 {{ $t('form.submit') }}
             </button>
 
             <button v-else-if="(selectedModel == 'YoRHa' && selectedType == '')" 
-            type="submit" class="button-menu" disabled>
+            type="submit" class="button-menu" style="margin-top: 10px;" disabled>
                 {{ $t('form.submit') }}
             </button>
 
             <button v-else-if="selectedModel == 'Special' && androidName == ''" type="submit" 
-            class="button-menu" disabled>
+            class="button-menu" style="margin-top: 10px;" disabled>
                 {{ $t('form.submit') }}
             </button>
 
-            <button v-else type="button" @click="addAndroid()" class="button-menu">{{ $t('form.submit') }}</button>
+            <button v-else type="button" @click="addAndroid()" class="button-menu" style="margin-top: 10px;">{{ $t('form.submit') }}</button>
         </fieldset>
     </form>
 
@@ -211,13 +203,21 @@ import { useLoadingStore } from '../stores/LoadingStore';
             //This boolean was created to see if the android is an Operator or not because the way the API treat the
             //data.
             let isOperator = androidTypeSel.name === "Operator";
+            let isExecutioner = androidTypeSel.name === "Executioner";
 
             //The YoRHa model doesn't have any name because it's going to be created at the API with all the android 
             //data obtained from the view.
             var name = androidModelSel.name === "Special" ? this.androidName : "";
 
-            var newAndroid = {name: name, modelId: androidModelSel.id, typeId: androidTypeSel.id, 
-            type_number: androidNumber, appearanceId: androidAppearance.id, desc: this.bio, isOperator: isOperator};
+            var newAndroid = {
+                name: name, modelId: androidModelSel.id, 
+                typeId: androidTypeSel.id, 
+                type_number: androidNumber, 
+                appearanceId: androidAppearance.id, 
+                desc: this.bio, 
+                isOperator: isOperator,
+                isExecutioner: isExecutioner
+            };
 
             console.log(newAndroid)
 
@@ -247,25 +247,14 @@ import { useLoadingStore } from '../stores/LoadingStore';
 
 <style>
 
+    
+
     .full { 
       width: 100% 
     }
 
     #menu{
       text-transform: uppercase;
-    }
-
-    .button-menu{
-      text-align: left;
-      padding-right: 10rem; 
-      width: 10rem;
-      text-align: center;
-    }
-
-    .button-list{
-      text-align: left;
-      padding-right: 10rem; 
-      width: 15rem;
     }
 
     .data-figure{
@@ -301,12 +290,6 @@ import { useLoadingStore } from '../stores/LoadingStore';
         }
     } 
 
-    .button-submit{
-      text-align: center;
-      padding-right: 10rem; 
-      width: 6rem;
-    }
-
     .info{
         font-weight: bold;
     } 
@@ -328,6 +311,8 @@ import { useLoadingStore } from '../stores/LoadingStore';
       text-transform: uppercase;
 
     }
-
     
+    .margin-right-input{
+        margin-right: 15px;
+    }
 </style>
