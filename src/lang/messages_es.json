@@ -143,8 +143,8 @@
         "this_data": "Asignaciones de {n}",
         "name_type": "Operador",
         "add_android_desc": "A\u00f1ade o elimina androides de este Operador.",
-        "cite_add_android": "Un Operador debe de tener como mínimo un Androide asignado!",
-        "androids_assigned": "{n} androides bajo su cargo.",
+        "cite_add_android": "¡Un Operador debe de tener como mínimo un Androide asignado!",
+        "androids_assigned": "{n} androide/s bajo su cargo.",
         "available_search": "Solo Disponibles",
         "owned_search": "Propios",
         "every_search": "Todos"
@@ -168,6 +168,9 @@
     },
     "modal": {
         "loading_message": "Cargando",
-        "delete_message": "Estás a punto de borrar el reporte. Si lo haces no podrás volver a acceder a él. ¿Seguro que quieres continuar?"
+        "delete_message": "Est\u00e1s a punto de borrar el reporte. Si lo haces no podr\u00e1s volver a acceder a \u00E9l. ¿Seguro que quieres continuar?",
+        "unassing_message": "Est\u00e1s a punto de revocar la asignaci\u00F3n del Androide a este Operador. ¿Seguro que quieras continuar?",
+        "delete_btn": "Eliminar",
+        "unassing_btn": "Retirar"
     }
 }

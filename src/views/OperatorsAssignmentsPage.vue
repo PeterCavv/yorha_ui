@@ -84,13 +84,13 @@ const operator = options.value.operator;
               <ConfirmationModal :isVisible="showModal" @update:isVisible="showModal = $event">
                 <template #text>
                     <p style="padding-bottom: 30px;">
-                        You are going to unassing an Android from this Operator. Are you sure you want to continue?
+                        {{ $t("modal.unassing_message") }}
                     </p>
                 </template>
                 
                 <template #button>
                     <button class="button-menu" style="margin-left: auto;" 
-                    @click="removeAssignedAndroid(android.id, operator.id);">Unassing</button>
+                    @click="removeAssignedAndroid(android.id, operator.id);">{{ $t("modal.unassing_btn") }}</button>
                 </template>
               </ConfirmationModal>
 
