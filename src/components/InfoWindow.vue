@@ -7,14 +7,23 @@ const operatorStore = useOperatorData();
 </script>
 
 <template>
-    <div v-if="addWindow == 0 || addWindow === null">
+    <div v-if="!addWindow || addWindow === null">
         <figure class="innerbox">
             <figcaption>{{ $t('information.title') }}</figcaption>
             <p>{{ $t('information.desc') }}</p>
         </figure>
     </div>
 
-    <div class="infoModal" v-else-if="addWindow == 1" >
+    <div class="infoModal" v-else-if="addWindow" >
+
+        <figure class="innerbox">
+            <figcaption>
+                <img src="../assets/Info_Icon.png" width="22" height="21" 
+                style="vertical-align: middle;"/>
+                    <slot name="title"></slot>
+                </figcaption>
+                <slot name="body"></slot>
+            </figure>
 
         <!--REPORT INFO -->
         <div v-if="dataType=='report'">
@@ -37,68 +46,6 @@ const operatorStore = useOperatorData();
             </figure>
         </div>
         <!-- END REPORT INFO -->
-
-        <!-- ANDROID INFO -->
-        <div v-else-if="dataType=='android'">
-            <figure class="innerbox">
-                <figcaption style="text-transform: uppercase;">
-                    <img src="../assets/Info_Icon.png" width="22" height="21" 
-                    style="vertical-align: middle;"/>
-                    {{ $t('data_base.android_info', { n: dataUse.name}) }}
-                </figcaption>
-                <div class="inOneLine">
-                    <div style="width: 5rem;">
-                        <label><cite>{{ $t('android.state') }}</cite></label>
-                        <p>{{ dataUse.model.name }}</p>
-                    </div>
-                    <div style="width: 5rem;">
-                        <label><cite>{{ $t('android.type') }}</cite></label>
-                        <p v-if="dataUse.type !== null && dataUse.type.name !== 'NoType'">{{ dataUse.type.name }}</p>
-                        <p v-else>{{ $t('information.data_empty') }}</p>
-                    </div>
-                    <div style="width: 5rem;">
-                        <label><cite>{{ $t('android.type_number') }}</cite></label>
-                        <p v-if="dataUse.type_number != '' && dataUse.type_number != 0">{{ dataUse.type_number}}</p>
-                        <p v-else>{{ $t('information.data_empty') }}</p>
-                    </div>
-                    <div style="width: 7rem;">
-                        <label><cite>{{ $t('android.appearance') }}</cite></label>
-                        <p>{{ dataUse.appearance.name }}</p>
-                    </div>
-                    <div>
-                        <label><cite>{{ $t('android.short_name') }}</cite></label>
-                        <p v-if="dataUse.short_name != null">{{ dataUse.short_name}}</p>
-                        <p v-else>{{ $t('information.data_empty') }}</p>
-                    </div>
-                    
-                </div>
-                <div class="inOneLine">
-                    <div style="width: 7rem;">
-                        <label><cite>{{ $t('android.state') }}</cite></label>
-                        <div v-if="dataUse.state.name === 'Operational'">
-                            <p style="color: #22c05f">{{ dataUse.state.name }}</p>
-                        </div>
-                        <div v-else>
-                            <p style="color: #c02222">{{ dataUse.state.name }}</p>
-                        </div>
-                    </div>
-                    <div style="margin-left: auto;" v-if="dataUse.type.name != 'Operator' && dataUse.model.name != 'Special'">
-                            <label><cite>{{ $t('android.assigned_operator') }}</cite></label>
-                            <p v-if="dataUse.assigned_operator">{{ dataUse.assigned_operator.name.name }}</p>
-                            <p v-else>{{ $t('information.data_empty') }}</p>
-                    </div>
-
-                </div>
-                
-                <br/>
-                <label><cite>{{ $t('android.biography') }}</cite></label>
-                <p v-if="dataUse.desc.length != 0">{{ dataUse.desc }}</p>
-                <p v-else style="text-transform: uppercase;">{{ $t('information.null_desc') }}</p>
-                <p></p>
-                
-            </figure>
-        </div>
-        <!-- END ANDROID INFO-->
 
         <!-- OPERATOR INFO -->
         <div v-else-if="dataType=='operator'">
@@ -209,7 +156,7 @@ export default {
             required: true
         },
         addWindow: {
-            type: Number,
+            type: Boolean,
             required: false
         }
     },
