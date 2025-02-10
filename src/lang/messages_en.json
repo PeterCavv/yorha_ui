@@ -79,8 +79,7 @@
         "create_signed": "Signed by:",
         "edit_report": "Edit Report",
         "create_report": "Create Report",
-        "back_btn": "Go back",
-        "delete_report": "Delete"
+        "back_btn": "Go back"
     },
     "data_base": {
         "title": "Data Base",
@@ -172,6 +171,9 @@
     },
     "modal": {
         "loading_message": "Loading",
-        "delete_message": "You are going to delete this Report. If you delete it, you cannot go back. Are you sure you want to do it?"
+        "delete_message": "You are going to delete this Report. If you delete it, you cannot go back. Are you sure you want to do it?",
+        "unassing_message": "You are going to unassing an Android from this Operator. Are you sure you want to continue?",
+        "delete_btn": "Delete",
+        "unassing_btn": "Unassing"
     }
 }
