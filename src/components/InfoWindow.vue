@@ -15,75 +15,25 @@ const operatorStore = useOperatorData();
     </div>
 
     <div class="infoModal" v-else-if="addWindow" >
-
         <figure class="innerbox">
             <figcaption>
                 <img src="../assets/Info_Icon.png" width="22" height="21" 
                 style="vertical-align: middle; margin-right: 5px;"/>
                     <slot name="title"></slot>
-                </figcaption>
-                <slot name="body"></slot>
-            </figure>
+            </figcaption>
+            <slot name="body"></slot>
+        </figure>
 
         <!--REPORT INFO -->
-        <div v-if="dataType=='report'">
-            <figure class="innerbox">
-                <figcaption>
-                    <img src="../assets/Info_Icon.png" width="22" height="21" 
-                    style="vertical-align: middle;"/>
-                    {{ dataUse.name }}
-                </figcaption>
-                <p><cite>{{ $t('information.content') }}</cite></p>
-                <p>{{ dataUse.content }}</p>
 
-                <p style="margin-top: 10px;">- {{ dataUse.android.name }} {{ dataUse.publish_date }} </p>
-
-                <button v-if="compareDates(dataUse.publish_date)" class="button" id="menu"
-                style="margin-bottom: 6px; text-align: center; margin-left: auto; text-transform: none; width: 30%"
-                @click="editReport => {reportStore.editReport(dataUse); $router.push({name: 'create-report'})}">
-                    {{ $t('report.edit_report') }}
-                </button>
-            </figure>
-        </div>
         <!-- END REPORT INFO -->
 
         <!-- OPERATOR INFO -->
-        <div v-else-if="dataType=='operator'">
-            <figure class="innerbox2">
-                <figcaption style="text-transform: uppercase;">
-                    <img src="../assets/Info_Icon.png" width="22" height="19" 
-                    style="vertical-align: middle;"/>
-                    {{ $t('data_base.android_info', { n: dataUse.name.name}) }}
-                </figcaption>
-                <p for="androidList"><cite>{{ $t('data_base.androids') }}</cite></p>
-                <ul id="androidList">
-                    <div v-if="dataUse.androids.length">
-                        <li>
-                            {{ $t("operator.androids_assigned", { n: dataUse.androids.length }) }}
-                        </li>
-                    </div>
-                    <div v-else>
-                        <li style="text-transform: uppercase;">
-                            {{ $t('information.null_desc') }}
-                        </li>
-                    </div>
-                </ul>
-                <br/>
-                <div>
-                    <button class="button" id="menu" @click="editOperator => { 
-                        operatorStore.editOperator(dataUse);
-                        $router.push({name: 'assing-android'})
-                        }"
-                        style="margin-bottom: 6px; text-align: center; float: right; text-transform: none; width: 45%">
-                        {{ $t('data_base.btn_assing_android') }}
-                    </button>
-                </div>
-            </figure>
-        </div>
+
         <!-- END OPERATOR INFO -->
 
         <!-- TYPES INFO -->
-        <div v-else-if="dataType=='type'">
+        <div v-if="dataType=='type'">
             <figure class="innerbox">
                 <figcaption style ="text-transform: uppercase;">
                     <img src="../assets/Info_Icon.png" width="22" height="19" 
