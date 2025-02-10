@@ -94,7 +94,7 @@ import axios from 'axios';
 import { useLoadingStore } from '../stores/LoadingStore';
 import ConfirmationModal from './partials/ConfirmationModal.vue';
 import messageModal from '../utils/MessageModal.mjs';
-import dateUtils from '../utils/DateUtils';
+import dateUtils from '../utils/DateUtils.mjs';
 
 export default {
     el: 'ReportForm',
