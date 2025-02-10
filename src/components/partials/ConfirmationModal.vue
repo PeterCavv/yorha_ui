@@ -11,7 +11,7 @@
             <div class="modal-text">
                 <slot name="text"></slot>
                 <div class="inOneLine" style="margin-top: 10px;">
-                    <button class="button-menu" @click="closeModal">{{ $t('report.back_btn') }}</button>
+                    <button class="button button-menu" @click="closeModal">{{ $t('report.back_btn') }}</button>
                     <slot name="button"></slot>
                 </div>
                 

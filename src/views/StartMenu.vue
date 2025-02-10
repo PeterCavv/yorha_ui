@@ -182,26 +182,8 @@ export default {
       text-transform: uppercase;
     }
 
-    .button-menu{
-      text-align: left;
-      padding-right: 10rem; 
-      width: 10rem;
-      text-align: center;
-    }
-    .button-list{
-      text-align: left;
-      padding-right: 10rem; 
-      width: 15rem;
-    }
-
     .data-figure{
       background-color: #dcd8c06b;
-    }
-
-    .button-submit{
-      text-align: center;
-      padding-right: 10rem; 
-      width: 6rem;
     }
 
     .info{
