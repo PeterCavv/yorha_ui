@@ -1,11 +1,3 @@
-<script setup>
-import { useReportData } from '../stores/ReportStore';
-import { useOperatorData } from '../stores/OperatorStore';
-
-const reportStore = useReportData();
-const operatorStore = useOperatorData();
-</script>
-
 <template>
     <div v-if="!addWindow || addWindow === null">
         <figure class="innerbox">
@@ -33,27 +25,11 @@ const operatorStore = useOperatorData();
         <!-- END OPERATOR INFO -->
 
         <!-- TYPES INFO -->
-        <div v-if="dataType=='type'">
-            <figure class="innerbox">
-                <figcaption style ="text-transform: uppercase;">
-                    <img src="../assets/Info_Icon.png" width="22" height="19" 
-                    style="vertical-align: middle;"/>
-                    {{ $t('data_base.types', { n: dataUse.name, m: dataUse.resume }) }}
-                </figcaption>
-                <p><cite>{{ $t('data_base.type_desc') }}</cite></p>
-                <p>{{ dataUse.desc }}</p>
-                <br/>
-                <button class="button" id="menu"
-                style="margin-bottom: 6px; text-align: center; float: right; text-transform: none; width: 30%"
-                @click="changeEditBox()">
-                    {{ $t('data_base.edit_type') }}
-                </button>
-            </figure>
-        </div>
+
         <!-- END TYPE INFO -->
 
         <!-- WEAPONS INFO -->
-        <div v-else-if="dataType == 'weapon'">
+        <div v-if="dataType == 'weapon'">
             <figure class="innerbox">
                 <figcaption style="text-transform: uppercase;">
                     <img src="../assets/Info_Icon.png" width="22" height="19"

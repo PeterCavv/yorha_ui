@@ -1,3 +1,9 @@
+<script setup>
+import { ref } from 'vue';
+
+const addWindow = ref(false);
+</script>
+
 <template>
     <h2>{{ $t('system.types_title') }}</h2>
 
@@ -13,7 +19,7 @@
                     <div v-if="typeList.length" class="dataScroll">
                         <div v-for="(type, index) in typeList" :key="index">
                             <div v-show="type.name != 'NoType'">
-                                <button @click="showTypeInfo(type)" 
+                                <button @click="() => {showTypeInfo(type); addWindow = true}" 
                                 class="button button-list" id="menu" style="width: 100%;">
                                     {{ type.name }}
                                 </button>
@@ -25,7 +31,21 @@
                 </figure>
             </blockquote>   
 
-            <InfoWindow class="infoWindow" :dataUse="selectedType" :dataType="'type'" :addWindow="addWindow" :edit="false" style="margin-top: -35px;"/>
+            <InfoWindow class="infoWindow" :addWindow="addWindow" :edit="false" style="margin-top: -35px;">
+                <template #title>
+                    {{ $t('data_base.types', { n: selectedType.name, m: selectedType.resume }) }}
+                </template>
+                <template #body>
+                    <p><cite>{{ $t('data_base.type_desc') }}</cite></p>
+                    <p>{{ selectedType.desc }}</p>
+                    <br/>
+                    <button class="button" id="menu"
+                    style="margin-bottom: 6px; text-align: center; float: right; text-transform: none; width: 30%"
+                    @click="">
+                        {{ $t('data_base.edit_type') }}
+                    </button>
+                </template>
+            </InfoWindow>
  
         </div>
         <hr/>
@@ -48,13 +68,11 @@ export default {
     },
     data: {
         selectedType: null,
-        addWindow: 0
     },
     mixins: [searcher],
     methods: {
         showTypeInfo(type) {
                 this.selectedType = type;
-                this.addWindow= 1;
 		}
     }
 
