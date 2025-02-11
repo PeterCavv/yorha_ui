@@ -116,6 +116,9 @@
         "execute_title": "Executers Data"
 
     },
+    "not_authorized": {
+        "message": "You are trying to access to a YoRHa's restricted area without permission."
+    },
     "information": {
         "title": "Information",
         "desc": "The necessary information will be shown here.",

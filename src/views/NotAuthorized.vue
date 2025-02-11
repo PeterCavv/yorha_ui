@@ -14,10 +14,15 @@ const userRole = computed(() => authStore.user.role)
             {{ $t('start.warning_message') }}
         </h1>
         <p>
-            Está intentando acceder a una zona restringida de YoRHa sin los permisos requeridos.
+            {{ $t('not_authorized.message') }}
         </p>
-        <button v-if="!userRole" class="button button-menu" @click="() => {$router.push({name: 'home'});}">Iniciar Sesión</button>
-        <button v-else class="button button-menu">Menú de Inicio</button>
+        <button v-if="!userRole" class="button button-menu" style="text-transform: uppercase;"
+        @click="() => {$router.push({name: 'home'});}">
+            {{ $t("auth.button") }}
+        </button>
+        <button v-else class="button button-menu" style="text-transform: uppercase;">
+            {{ $t("start.title") }}
+        </button>
     </div>
 </template>
 

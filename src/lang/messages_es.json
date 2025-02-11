@@ -114,6 +114,9 @@
         "execute_title": "Datos de Ejecutores"
 
     },
+    "not_authorized": {
+        "message": "Est\u00E1 intentando acceder a una zona restringida de YoRHa sin los permisos requeridos."
+    },
     "information": {
         "title": "Informaci\u00f3n ",
         "desc": "La informaci\u00f3n necesaria ser\u00e1 mostrada aqu\u00ed.",
@@ -137,7 +140,7 @@
         "type_message": "No se encontraron tipos"
     },
     "placeholder": {
-        "report_title": "Título del Informe",
+        "report_title": "T\u00EDtulo del Informe",
         "report_content": "Este informe trata sobre...",
         "android_content": "Este androide..."
     },

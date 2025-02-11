@@ -8,7 +8,7 @@ const messages ={
 }
 
 export default createI18n({
-    locale: window.navigator.language.substring(0, 2) || import.meta.env.VITE_DEFAULT_LOCALE,
+    locale: /*window.navigator.language.substring(0, 2) || */import.meta.env.VITE_DEFAULT_LOCALE,
     fallbackLocale: import.meta.env.VITE_FALLBACK_LOCALE,
     legacy: false,
     globalInjection: true,
