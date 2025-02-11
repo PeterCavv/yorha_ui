@@ -136,6 +136,11 @@
         "types": "Buscar un tipo",
         "type_message": "No se encontraron tipos"
     },
+    "placeholder": {
+        "report_title": "Título del Informe",
+        "report_content": "Este informe trata sobre...",
+        "android_content": "Este androide..."
+    },
     "operator": {
         "assg_title": "Asignaciones",
         "subtitle": "オペレーター割り当て",

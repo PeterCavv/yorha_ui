@@ -89,7 +89,7 @@
                 
             <label for="textarea">{{ $t('android.biography') }}:</label>
             <textarea v-model="bio" class="full" id="textarea" rows="8" 
-            placeholder="This android..." :maxlength="350" style="padding-right: 0px;"></textarea>
+            v-bind:placeholder="$t('placeholder.android_content')" :maxlength="350" style="padding-right: 0px;"></textarea>
 
             <p v-if="(selectedModel == 'YoRHa' && selectedType == 'Operator')" 
             style="font-size:small; font-style: normal;">
