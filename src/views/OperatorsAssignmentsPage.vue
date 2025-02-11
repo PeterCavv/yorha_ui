@@ -76,24 +76,10 @@ const operator = options.value.operator;
                 </a>
               </td>
               <td v-else-if="android.assigned_operator != null && android.assigned_operator.name.name === operator.name.name">
-                <a @click="showModal = true;">
+                <a @click="() => {selectedAndroid = android; showModal = true;}">
                   <img src="../assets/Block_Icon.png" style="width: 20px; margin-top: 5px;">
                 </a>
               </td>
-
-              <ConfirmationModal :isVisible="showModal" @update:isVisible="showModal = $event">
-                <template #text>
-                    <p style="padding-bottom: 30px;">
-                        {{ $t("modal.unassing_message") }}
-                    </p>
-                </template>
-                
-                <template #button>
-                    <button class="button-menu" style="margin-left: auto;" 
-                    @click="removeAssignedAndroid(android.id, operator.id);">{{ $t("modal.unassing_btn") }}</button>
-                </template>
-              </ConfirmationModal>
-
               <td></td>
             </tr>
           </template>
@@ -101,6 +87,19 @@ const operator = options.value.operator;
         <template v-else class="dataScroll">{{ $t('data_search.android_message')}}</template>
     </tbody>
     </table>
+
+    <ConfirmationModal :isVisible="showModal" @update:isVisible="showModal = $event">
+      <template #text>
+          <p style="padding-bottom: 30px;">
+              {{ $t("modal.unassing_message") }}
+          </p>
+      </template>
+      
+      <template #button>
+          <button class="button-menu" style="margin-left: auto;" 
+          @click="removeAssignedAndroid(selectedAndroid.id, operator.id);">{{ $t("modal.unassing_btn") }}</button>
+      </template>
+    </ConfirmationModal>
   </div>
 
   <hr class="bottom-screen"/>
