@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue'
 import { useAuthStore } from '../stores/UserStore'
 import { computed } from 'vue'
 
