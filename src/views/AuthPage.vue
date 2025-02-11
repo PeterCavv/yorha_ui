@@ -48,20 +48,30 @@
 </template>
 
 <script>
+import { storeToRefs } from 'pinia';
 import { connection } from '../services/ApiConnection'
+import { useAuthStore } from '../stores/UserStore';
 
     export default {
         name: 'App',
         data() {
-        return{
-            showData: 0,
-            hideButton: true,
-            errors: false,
-            inName: null,
-            inPass: null,
-            users: [],
-            userLogged: false
-        }
+            return{
+                showData: 0,
+                hideButton: true,
+                errors: false,
+                inName: null,
+                inPass: null,
+                users: [],
+                userLogged: false
+            }
+        },
+        setup() {
+            const store = useAuthStore();
+            return{
+                ...storeToRefs(store),
+                setRole: store.setRole,
+                role: store.user.role
+            }
         },
         methods: {
             showTemplate(destination){
@@ -89,7 +99,7 @@ import { connection } from '../services/ApiConnection'
             wait(){
                 if(this.existUser()){
                     this.hideButton = false;
-                    setTimeout(() => {this.$router.push({name: 'startmenu'})}, 10000);
+                    setTimeout(() => {this.setRole('admin'); this.$router.push({name: 'startmenu'})}, 10000);
                 } else {
                     return false;
                 }
