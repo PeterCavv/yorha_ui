@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import { routeLocationKey } from 'vue-router';
+import { useAuthStore } from '../../stores/UserStore';
+import { computed } from 'vue';
+
+const authStore = useAuthStore();
+const userRole = computed(() => authStore.user.role)
 </script>
 
 <template>
-    <div class="navegator">
+    <div class="navegator" v-if="userRole">
         <router-link class="button button-nav" id="menu" 
         to="/startmenu" >
             <img src="../../assets/StartMenu_icon.png" 
@@ -22,7 +27,7 @@ import { routeLocationKey } from 'vue-router';
             </span>
         </router-link>
 
-        <router-link class="button button-nav" id="menu" 
+        <router-link v-if="userRole === 'admin'" class="button button-nav" id="menu" 
         to="/system" >
             <img src="../../assets/System_Icon.png" 
             class="img-nav"/>

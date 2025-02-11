@@ -1,7 +1,10 @@
 <script setup>
 import { ref } from 'vue'
+import { useAuthStore } from '../stores/UserStore'
+import { computed } from 'vue'
 
-const open = ref(false)
+const authStore = useAuthStore();
+const userRole = computed(() => authStore.user.role)
 </script>
 
 <template>
@@ -20,7 +23,7 @@ const open = ref(false)
       {{ $t('start.fabrication_title') }}
   </h2>
 
-  <div v-if="emptyOperator">
+  <div v-if="emptyOperator && userRole === 'admin'">
     <figure class="warning">
       <figcaption>
         {{ $t('start.warning_message') }}
@@ -36,7 +39,7 @@ const open = ref(false)
     </figure>
   </div>
     
-    <figure>
+    <figure v-if="userRole === 'admin'">
         <figcaption>
           {{ $t('start.fabrication_subtitle1') }}
         </figcaption>

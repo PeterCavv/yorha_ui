@@ -187,7 +187,7 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
 
   .bottom-screen{
     position: fixed;
