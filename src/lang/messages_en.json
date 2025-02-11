@@ -116,6 +116,9 @@
         "execute_title": "Executers Data"
 
     },
+    "not_authorized": {
+        "message": "You are trying to access to a YoRHa's restricted area without permission."
+    },
     "information": {
         "title": "Information",
         "desc": "The necessary information will be shown here.",
@@ -138,6 +141,11 @@
         "types": "Search types",
         "type_message": "No types found"
         
+    },
+    "placeholder": {
+        "report_title": "Report Title",
+        "report_content": "This report is about...",
+        "android_content": "This android..."
     },
     "operator": {
         "assg_title": "Operator Assignments",

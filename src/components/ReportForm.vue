@@ -37,24 +37,24 @@ const content = computed({
             <div class="inOneLine-form">
                 <label for="inputTitle">{{ $t('report.create_title') }}</label>
                 <input v-model="title" type="text" class="android-attribute" id="inputTitle" 
-                style="padding-right: 0px;" placeholder="Report Title"/>
+                style="padding-right: 0px;" v-bind:placeholder="$t('placeholder.report_title')" required/>
 
                 <label for="inputDate">{{ $t('report.create_date') }}</label>
                 <input v-if="id === null || compareDates(date)" v-model="date" type="date" class="android-attribute" id="inputDate"
-                style="padding-right: 0px;" :min="minDate">
+                style="padding-right: 0px;" :min="minDate" required>
                 <input v-else v-model="date" type="date" class="android-attribute" id="inputDate"
                 style="padding-right: 0px;" :min="minDate" disabled>
             </div>
 
             <label for="textarea">{{ $t('report.create_content') }}</label>
-            <textarea v-model="content" class="full" id="textarea" rows="8" 
-            placeholder="This report is about..." :maxlength="800" style="padding-right: 0px;"></textarea>
+            <textarea v-model="content" class="full" id="textarea" rows="8" required
+            v-bind:placeholder="$t('placeholder.report_content')" :maxlength="800" style="padding-right: 0px;"></textarea>
 
             <div class="inOneLine">
                 
             </div>
 
-            <button style="margin-top: 10px;" @click="() => {
+            <button type="submit" style="margin-top: 10px;" @click="() => {
                     //While auth isn't applied, it going to send commander's ID.
                     let report = {
                         name: title,
