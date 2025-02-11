@@ -146,14 +146,11 @@ router.beforeEach((to, from, next) => {
       : null; 
 
   if (requiredRoles !== null) {
-    // Si el array de roles está vacío ([]) -> Se permite acceso a cualquier rol
     if (requiredRoles.length === 0) {
-      // Si no hay rol asignado, dejamos pasar
       if (!authStore.hasRole) {
         return next('/not-authorized');
       }
     } else {
-      // Si hay roles requeridos, comprobar que el rol del usuario esté dentro de la lista
       if (!authStore.hasRole || !requiredRoles.includes(userRole)) {
         return next('/not-authorized');
       }
