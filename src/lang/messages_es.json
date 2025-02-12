@@ -76,8 +76,7 @@
         "create_signed": "Firmado por:",
         "edit_report": "Editar Informe",
         "create_report": "Crear Informe",
-        "back_btn": "Volver",
-        "delete_report": "Borrar"
+        "back_btn": "Volver"
     },
     "data_base": {
         "title": "Base de datos",

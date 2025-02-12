@@ -6,7 +6,7 @@ export const useAuthStore = defineStore('auth', {
     state: () => ({
         user: {
             name: null,
-            role: null
+            role: "user"
         }
     }),
     getters: {

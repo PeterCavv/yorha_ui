@@ -69,7 +69,7 @@ const content = computed({
                 class="button-menu">{{ $t('form.submit') }}</button>
 
             <button v-if="!compareDates(date) || id !== null" class="button-menu" 
-            style="float: right; margin-top: 10px;" @click="showModal = true;">{{ $t('report.delete_report') }}</button>
+            style="float: right; margin-top: 10px;" @click="showModal = true;">{{ $t('modal.delete_btn') }}</button>
             
         </fieldset>
     </form>
@@ -82,7 +82,7 @@ const content = computed({
         </template>
         
         <template #button>
-            <button class="button button-menu" style="margin-left: auto;" @click="deleteReport(id)">{{ $t('report.delete_report') }}</button>
+            <button class="button button-menu" style="margin-left: auto;" @click="deleteReport(id)">{{ $t('modal.delete_btn') }}</button>
         </template>
     </ConfirmationModal>
     
