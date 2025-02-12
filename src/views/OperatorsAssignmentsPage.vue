@@ -35,7 +35,7 @@ const operator = options.value.operator;
       <cite style="font-size: small">{{  $t('operator.cite_add_android') }}</cite>
     </figure>
 
-  <div class="center-container">
+  <div class="table-center-container">
     <div class="input-group">
       <input class="searcher-assign" v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.android_search')">
       
@@ -206,7 +206,7 @@ export default {
     vertical-align: middle;
   }
 
-  .center-container {
+  .table-center-container {
     display: flex;
     flex-direction: column; 
     justify-content: center;
