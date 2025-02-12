@@ -20,16 +20,18 @@
     </figure>
     <hr/>
 
-    <button @click="show('operator');" class="button button-select" id="menu">
-        {{ $t('system.operators') }}
-        <img v-if="checkOperators" src="../assets/New_Icon.png" width="24" height="18" 
-        style="vertical-align: middle; float: right;"/>
-    </button>
+    <div style="margin-left: 10px;">
+        <button @click="show('operator');" class="button button-menu" id="menu" style=" margin-right: 10px;">
+            {{ $t('system.operators') }}
+            <img v-if="checkOperators" src="../assets/New_Icon.png" width="24" height="18" 
+            style="vertical-align: middle; float: right;"/>
+        </button>
 
-    <button @click="show('type');" class="button button-select" id="menu">{{ $t('system.types') }}</button>
+        <button @click="show('type');" class="button button-menu" id="menu">{{ $t('system.types') }}</button>
 
-    <button @click="show('report');" class="button button-select" id="menu">{{ $t('system.execute') }}</button>
-    <br/>
+        <button @click="show('report');" class="button button-menu" id="menu">{{ $t('system.execute') }}</button>
+        <br/>
+    </div>
 
     <OperatorPage :operators="operators" v-if="dataOperator"/>
     <TypePage :types="types" v-if="dataType"/>

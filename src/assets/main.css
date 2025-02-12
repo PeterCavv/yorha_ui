@@ -28,6 +28,7 @@ body {
 }
 a {
   color: inherit;
+  cursor: help;
 }
 p {
   margin: 0 0 1rem 0;
@@ -434,6 +435,10 @@ iframe {
 
 }
 
+.full{
+  width: 100%;
+}
+
 .inOneLine{
   display: flex; 
   gap: 1rem;
@@ -443,6 +448,27 @@ iframe {
   display: flex; 
   gap: 1rem;
   margin-bottom: 10px;
+}
+
+.inOneLine-vertical{
+  display: flex;
+  justify-content: center; 
+  flex-direction: column;
+}
+
+.inOneLine-vertical-center{
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  flex-direction: column;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  flex-direction: column;
+  height: 90vh;
 }
 
 .searcherInput{
