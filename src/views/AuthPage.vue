@@ -149,7 +149,7 @@ import { ref } from 'vue';
     }
 </script>
 
-<style>
+<style scoped>
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.15s ease;
 }
@@ -167,22 +167,6 @@ import { ref } from 'vue';
     justify-content: center;
     align-items: center;
     z-index: 9999;
-}
-@media only screen and (max-width: 602px){
-    .button-select{
-		display:block;
-		margin-bottom: 10px;
-		width: 100%;
-    }
-}
-
-@media only screen and (min-width: 602px){
-    .button-select{
-		margin-left: 40px;
-		margin-right: -20px;
-		width: 15em;
-		display:inline-block;
-    }
 }
 
 #menu{

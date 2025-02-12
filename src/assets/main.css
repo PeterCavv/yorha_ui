@@ -529,6 +529,23 @@ iframe {
   }
 }
 
+@media only screen and (max-width: 602px){
+  .button-select{
+  display:block;
+  margin-bottom: 10px;
+  width: 100%;
+  }
+}
+
+@media only screen and (min-width: 602px){
+  .button-select{
+  margin-left: 40px;
+  margin-right: -20px;
+  width: 15em;
+  display:inline-block;
+  }
+}
+
 .dataScroll{
   overflow-y:scroll; 
   height: 18rem;
