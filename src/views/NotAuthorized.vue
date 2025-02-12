@@ -27,14 +27,6 @@ const userRole = computed(() => authStore.user.role)
 </template>
 
 <style scoped>
-    .center-container {
-        display: flex;
-        justify-content: center; 
-        align-items: center;
-        height: 100vh; 
-        flex-direction: column;
-    }
-
     @media only screen and (max-width: 602px){
         .center-container{
             text-align: center;
