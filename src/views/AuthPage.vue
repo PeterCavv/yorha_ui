@@ -2,22 +2,22 @@
     <div class="center-container">
         <div class="inOneLine-vertical-center" style="text-transform: uppercase; opacity: 0.90; 
         letter-spacing: 0.5rem; text-shadow: 0.3rem 0.3rem 0 #bab5a1; font-weight: normal; margin-bottom: 15px;">
-            <span style="font-size: 5rem;">
+            <span v-animated-text style="font-size: 5rem;">
                 {{ $t('auth.title') }}
             </span>
-            <span style="text-shadow: 0em 0em 0em; letter-spacing: 0.1rem; font-size: 1.1rem; ">
+            <span v-animated-text style="text-shadow: 0em 0em 0em; letter-spacing: 0.1rem; font-size: 1.1rem; ">
                 {{ $t('auth.subtitle1') }}
             </span>
-            <span style="text-shadow: 0em 0em 0em; font-size: 0.8rem; letter-spacing: 0.5rem;">
+            <span v-animated-text style="text-shadow: 0em 0em 0em; font-size: 0.8rem; letter-spacing: 0.5rem;">
                 {{ $t('auth.subtitle2') }}
             </span>
         </div>
 
         <div>
             <div class="inOneLine-vertical-center" v-if="hideButton">
-                <input id="name" v-model="inName" type="text" style="margin-bottom: 5px; 
+                <input v-expand-input id="name" v-model="inName" type="text" style="margin-bottom: 5px; 
                 width: 15rem;" v-bind:placeholder="$t('loggin.user')">
-                <input id="pass" v-model="inPass" type="password" style="margin-bottom: 20px; 
+                <input v-expand-input id="pass" v-model="inPass" type="password" style="margin-bottom: 20px; 
                 width: 15rem;" v-bind:placeholder="$t('loggin.password')">
                 <small style="margin-bottom: 15px;" v-if="errors">
                     {{ $t('auth.error_pass_message') }}
