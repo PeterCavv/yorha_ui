@@ -10,9 +10,9 @@ function animateText(element, text, totalDuration = 900, steps = 5) {
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   const length = text.length;
   
-  if (length === 0) return; // Si no hay texto, no hacer nada
+  if (length === 0) return; 
 
-  const speed = totalDuration / length; // Ajusta la velocidad proporcionalmente
+  const speed = totalDuration / length; 
 
   function updateLetter(span, targetChar, step) {
       let iteration = 0;
@@ -38,12 +38,12 @@ function animateText(element, text, totalDuration = 900, steps = 5) {
   });
 }
 
-// Directiva de Vue con animación adaptativa
+
 const animatedTextDirective = {
   mounted(el) {
-      const text = el.textContent.trim(); // Obtener el texto
-      el.textContent = ''; // Limpiar antes de animar
-      animateText(el, text); // Aplicar la animación
+      const text = el.textContent.trim(); 
+      el.textContent = ''; 
+      animateText(el, text); 
   },
 };
 
