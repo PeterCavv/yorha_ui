@@ -8,7 +8,25 @@
         "error_pass_message": "Algo sali\u00f3 mal. Revise el usuario y contraseña introducidos.",
         "loading_message1": "cargando - ",
         "loading_message2": "Comprobando Sistema",
-        "loading_success": "Estatus de BDD: Verde. Inicializando..."
+        "loading_success": "Estatus de BDD: Verde. Inicializando...",
+        "modal": {
+            "message_link": "¿C\u00F3mo puedo acceder?",
+            "questions": "Preguntas y Respuestas",
+            "sing_up_answer_bold": "No puedes crear una cuenta por ti mismo.",
+            "sing_up_answer": "Si quieres acceder al terminal de YoRHa, es necesario que hables con un administrador.",
+            "admin_question": "¿D\u00F3nde puedo encontrar un administrador?",
+            "admin_answer": "Puedes contactar con el administrador principal de la terminal pulsando",
+            "link": "aqu\u00ED",
+            "admin_answer_2": " Es muy importante que le facilites la informaci\u00F3n siguiente:",
+            "mail_bold": "Email:",
+            "mail": "Necesitas dar un correo electr\u00F3nico para estar al d\u00EDa de la informaci\u00F3n importante.",
+            "role_bold": "Rol:",
+            "role": "Los privilegios que quieres tener (Ejecutor, Operador o Usuario).",
+            "admin_answer_3": "Cuando el administrador haya creado tu cuenta, te enviar\u00E1 tus credenciales para acceder. Una vez inices sesi\u00F3n, por favor recuerde cambias su contrase\u00F1a y nombre de usuario.",
+            "password_question": "He olvidado mi contrase\u00F1a y/o usuario",
+            "password_answer": "Si has olvidado tus credenciales, solo pulsa",
+            "password_answer_2": "y sigue las indicaciones"
+        }
     },
     "start": {
         "title": "Men\u00fa de Inicio",
@@ -93,7 +111,8 @@
         "type_desc": "Descripci\u00f3n del tipo",
         "btn_assing_android": "Asignar un androide",
         "edit_type": "Editar tipo",
-        "editing_type": "Editar Tipo {n}"
+        "editing_type": "Editar Tipo {n}",
+        "editing_android": "Editar credenciales"
     },
     "system": {
         "title": "Sistema",

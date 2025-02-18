@@ -8,7 +8,26 @@
         "error_pass_message": "Something went wrong. Please check the user and password.",
         "loading_message1": "loading - ",
         "loading_message2": "Checking System",
-        "loading_success": "Data Base Status: Green. Initializing..."
+        "loading_success": "Data Base Status: Green. Initializing...",
+        "modal": {
+            "message_link": "How can I sing up?",
+            "questions": "Questions & Answers",
+            "sing_up_answer_bold": "You can't create an account on your own.",
+            "sing_up_answer": "If you want to enter into YoRHa's terminal, it is necessary to talk to an administrator.",
+            "admin_question": "Where can I find an Administrator?",
+            "admin_answer": "You can contact to the main administrator of the terminal by clicking ",
+            "link": "here",
+            "admin_answer_2": " It is very important that you provide some data:",
+            "mail_bold": "Email:",
+            "mail": "You need to provide your email to recive important information from the terminal.",
+            "role_bold": "Role:",
+            "role": "Priviliges you want to have (Operator, Executioner or User).",
+            "admin_answer_3": "When the admin creates your account, it will send to you your credentials to access to the terminal. When you log in, please remember to change your password and username.",
+            "password_question": "I forgot my password and/or user",
+            "password_answer": "If you forgot your credentials to access to the terminal, just click",
+            "password_answer_2": "and follow the instructions."
+        }
+       
     },
     "start": {
         "title": "Start Menu",
@@ -96,7 +115,8 @@
         "type_desc": "Type Description",
         "btn_assing_android": "Assing an android",
         "edit_type": "Edit type",
-        "editing_type": "Edit Type {n}"
+        "editing_type": "Edit Type {n}",
+        "editing_android": "Edit credentials"
     },
     "system": {
         "title": "System",
