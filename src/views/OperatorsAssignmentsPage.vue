@@ -12,28 +12,29 @@ const operator = options.value.operator;
 </script>
 
 <template>
-<br/><br/><br/>
+  <br/><br/><br/>
   <hr/>
-    <h1 class="title">
-        <span>
-          {{ $t("operator.assg_title") }}
-          <font size="4">
-            {{ $t("operator.subtitle") }}
-          </font>
-        </span>
-    </h1>
 
-    <h2>
-      {{ $t("operator.other_androids") }}
-    </h2>
+  <h1 class="title">
+      <span>
+        {{ $t("operator.assg_title") }}
+        <font size="4">
+          {{ $t("operator.subtitle") }}
+        </font>
+      </span>
+  </h1>
 
-    <figure>
-      <figcaption>
-        {{ $t("operator.this_data", { n: operator.name.name }) }}
-      </figcaption>
-      <p>{{ $t('operator.add_android_desc') }}</p>
-      <cite style="font-size: small">{{  $t('operator.cite_add_android') }}</cite>
-    </figure>
+  <h2>
+    {{ $t("operator.other_androids") }}
+  </h2>
+
+  <figure>
+    <figcaption>
+      {{ $t("operator.this_data", { n: operator.name.name }) }}
+    </figcaption>
+    <p>{{ $t('operator.add_android_desc') }}</p>
+    <cite style="font-size: small">{{  $t('operator.cite_add_android') }}</cite>
+  </figure>
 
   <div class="table-center-container">
     <div class="input-group">
@@ -234,6 +235,10 @@ export default {
       flex-direction: column;
       margin-bottom: 10px;
       width: 95%;
+    }
+    .table-center-container{
+      margin-left: 5px;
+      margin-right: 5px;
     }
     .searcher-assign{
       width: 100%;
