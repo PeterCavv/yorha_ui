@@ -26,7 +26,7 @@
                 text-transform: uppercase; width: 10rem;">
                     {{ $t('auth.button') }}
                 </button>
-                <a @click="showModal = true" style="margin-top: 15px;">How can I sing up?</a>
+                <a @click="showModal = true" style="margin-top: 15px;">{{ $t('auth.modal.message_link') }}</a>
             </div>
 
             <h3 v-if="!hideButton" class="inOneLine" style="text-transform: uppercase; letter-spacing: 0.5rem;">
@@ -44,31 +44,44 @@
             <div v-if="showModal" class="modal-overlay" @click="showModal = false">
                 <InfoWindow class="center-container" :addWindow="showModal">
                     <template #title>
-                        Questions & Answers
+                        {{ $t('auth.modal.questions') }}
                     </template>
                     <template #body>
                         <div class="dataScroll" style="height: 400px;">
-                            <h2>How can I sing up?</h2>
-                            <p><b>You can't create an account on your own.</b> If you want to enter into YoRHa's terminal, it is 
-                            necessary to talk to an administrator.</p>
-
-                            <h2 style="margin-top: 40px;">Where can I find an Administrator?</h2>
-                            <p>You can contact to the main administrator of the terminal by clicking <b>here</b>.
-                            It is very important that you provide some data:</p>
+                            <h2>{{ $t('auth.modal.message_link') }}</h2>
+                            <p>
+                                <b>{{ $t('auth.modal.sing_up_answer_bold') }}</b> 
+                                {{ $t('auth.modal.sing_up_answer') }}
+                            </p>
+                            <h2 style="margin-top: 40px;">
+                                {{ $t('auth.modal.admin_question') }}
+                            </h2>
+                            <p>
+                                {{ $t('auth.modal.admin_answer') }}
+                                <b>{{ $t('auth.modal.link') }}</b>.
+                                {{ $t('auth.modal.admin_answer_2') }}
+                            </p>
                                 <ul>
                                     <li>
-                                        <b>Email</b>: You need to provide your email to recive important information from the terminal.
+                                        <b>{{ $t('auth.modal.mail_bold') }}</b>
+                                        {{ $t('auth.modal.mail') }}                                    
                                     </li>
                                     <br/>
                                     <li>
-                                        <b>Role</b>: Priviliges you want to have (Operator, Executioner or User).
+                                        <b>{{ $t('auth.modal.role_bold') }}</b>
+                                        {{ $t('auth.modal.role') }}
                                     </li>
                                 </ul>
-                            <p>When the admin creates your account, it will send to you your credentials to access to the terminal.
-                                When you long in, please remember to change your password and username.
+                            <p>
+                                {{ $t('auth.modal.admin_answer_3') }}
                             </p>
-                            <h2>I forgot my password and/or user</h2>
-                            <p>If you forgot your credentials to access to the terminal, just click <b>here</b> and follow the instructions.</p>
+                            <h2>
+                                {{ $t('auth.modal.password_question') }}
+                            </h2>
+                            <p>
+                                {{ $t('auth.modal.password_answer') }}
+                                <b>{{ $t('auth.modal.link') }}</b> 
+                                {{ $t('auth.modal.password_answer_2') }}</p>
                             
                                 
                         </div>

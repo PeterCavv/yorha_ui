@@ -98,7 +98,7 @@ const addWindow = ref(false);
                 </div>
 
                 <div v-if="userRole === 'admin'" style="margin-bottom: 0.2px; margin-top: 0.2px; margin-left: auto;">
-                    <button class="button button-menu">Edit credentials</button>
+                    <button class="button">{{ $t('data_base.editing_android')}}</button>
                 </div>
             </template>
         </InfoWindow>
