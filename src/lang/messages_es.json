@@ -8,7 +8,25 @@
         "error_pass_message": "Algo sali\u00f3 mal. Revise el usuario y contraseña introducidos.",
         "loading_message1": "cargando - ",
         "loading_message2": "Comprobando Sistema",
-        "loading_success": "Estatus de BDD: Verde. Inicializando..."
+        "loading_success": "Estatus de BDD: Verde. Inicializando...",
+        "modal": {
+            "message_link": "¿C\u00F3mo puedo acceder?",
+            "questions": "Preguntas y Respuestas",
+            "sing_up_answer_bold": "No puedes crear una cuenta por ti mismo.",
+            "sing_up_answer": "Si quieres acceder al terminal de YoRHa, es necesario que hables con un administrador.",
+            "admin_question": "¿D\u00F3nde puedo encontrar un administrador?",
+            "admin_answer": "Puedes contactar con el administrador principal de la terminal pulsando",
+            "link": "aqu\u00ED",
+            "admin_answer_2": " Es muy importante que le facilites la informaci\u00F3n siguiente:",
+            "mail_bold": "Email:",
+            "mail": "Necesitas dar un correo electr\u00F3nico para estar al d\u00EDa de la informaci\u00F3n importante.",
+            "role_bold": "Rol:",
+            "role": "Los privilegios que quieres tener (Ejecutor, Operador o Usuario).",
+            "admin_answer_3": "Cuando el administrador haya creado tu cuenta, te enviar\u00E1 tus credenciales para acceder. Una vez inices sesi\u00F3n, por favor recuerde cambias su contrase\u00F1a y nombre de usuario.",
+            "password_question": "He olvidado mi contrase\u00F1a y/o usuario",
+            "password_answer": "Si has olvidado tus credenciales, solo pulsa",
+            "password_answer_2": "y sigue las indicaciones"
+        }
     },
     "start": {
         "title": "Men\u00fa de Inicio",
@@ -76,8 +94,7 @@
         "create_signed": "Firmado por:",
         "edit_report": "Editar Informe",
         "create_report": "Crear Informe",
-        "back_btn": "Volver",
-        "delete_report": "Borrar"
+        "back_btn": "Volver"
     },
     "data_base": {
         "title": "Base de datos",
@@ -94,7 +111,8 @@
         "type_desc": "Descripci\u00f3n del tipo",
         "btn_assing_android": "Asignar un androide",
         "edit_type": "Editar tipo",
-        "editing_type": "Editar Tipo {n}"
+        "editing_type": "Editar Tipo {n}",
+        "editing_android": "Editar credenciales"
     },
     "system": {
         "title": "Sistema",
@@ -113,6 +131,9 @@
         "execute": "Ejecutores",
         "execute_title": "Datos de Ejecutores"
 
+    },
+    "not_authorized": {
+        "message": "Est\u00E1 intentando acceder a una zona restringida de YoRHa sin los permisos requeridos."
     },
     "information": {
         "title": "Informaci\u00f3n ",
@@ -136,6 +157,11 @@
         "types": "Buscar un tipo",
         "type_message": "No se encontraron tipos"
     },
+    "placeholder": {
+        "report_title": "T\u00EDtulo del Informe",
+        "report_content": "Este informe trata sobre...",
+        "android_content": "Este androide..."
+    },
     "operator": {
         "assg_title": "Asignaciones",
         "subtitle": "オペレーター割り当て",
@@ -143,8 +169,8 @@
         "this_data": "Asignaciones de {n}",
         "name_type": "Operador",
         "add_android_desc": "A\u00f1ade o elimina androides de este Operador.",
-        "cite_add_android": "Un Operador debe de tener como mínimo un Androide asignado!",
-        "androids_assigned": "{n} androides bajo su cargo.",
+        "cite_add_android": "¡Un Operador debe de tener como mínimo un Androide asignado!",
+        "androids_assigned": "{n} androide/s bajo su cargo.",
         "available_search": "Solo Disponibles",
         "owned_search": "Propios",
         "every_search": "Todos"
@@ -168,6 +194,9 @@
     },
     "modal": {
         "loading_message": "Cargando",
-        "delete_message": "Estás a punto de borrar el reporte. Si lo haces no podrás volver a acceder a él. ¿Seguro que quieres continuar?"
+        "delete_message": "Est\u00e1s a punto de borrar el reporte. Si lo haces no podr\u00e1s volver a acceder a \u00E9l. ¿Seguro que quieres continuar?",
+        "unassing_message": "Est\u00e1s a punto de revocar la asignaci\u00F3n del Androide a este Operador. ¿Seguro que quieras continuar?",
+        "delete_btn": "Eliminar",
+        "unassing_btn": "Retirar"
     }
 }

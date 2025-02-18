@@ -1,6 +1,10 @@
 <script setup>
 import { ref } from 'vue';
+import { useAuthStore } from '../stores/UserStore'
+import { computed } from 'vue'
 
+const authStore = useAuthStore();
+const userRole = computed(() => authStore.user.role)
 const addWindow = ref(false);
 </script>
 
@@ -91,6 +95,10 @@ const addWindow = ref(false);
                 <div style="margin-bottom: 5px;">
                     <p v-if="selectedAndroid.desc.length != 0">{{ selectedAndroid.desc }}</p>
                     <p v-else style="text-transform: uppercase;">{{ $t('information.null_desc') }}</p>
+                </div>
+
+                <div v-if="userRole === 'admin'" style="margin-bottom: 0.2px; margin-top: 0.2px; margin-left: auto;">
+                    <button class="button">{{ $t('data_base.editing_android')}}</button>
                 </div>
             </template>
         </InfoWindow>
