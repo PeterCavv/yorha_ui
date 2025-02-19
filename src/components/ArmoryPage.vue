@@ -35,20 +35,20 @@ const addWindow = ref(false);
             <template #body>
                 <div v-if="selectedWeapon.weapon_type.name !='COMBAT_BRACERS'" class="imageBox">
                     <div v-if="selectedWeapon.weapon_type.name == 'SMALL_SWORDS'">
-                        <img v-if="selectedWeapon.name == 'YoRHa-issue Blade'" class="weaponimg" src="../assets/yorha-issue_blade_img.png">
-                        <img v-else-if="selectedWeapon.name == 'Cruel Oath'" class="weaponimg" src="../assets/cruel_oath_img.png">
-                        <img v-else class="weaponimg" src="../assets/virtuous_contract_img.png">
+                        <img v-if="selectedWeapon.name == 'YoRHa-issue Blade'" class="weaponimg" src="../assets/images/yorha-issue_blade_img.png">
+                        <img v-else-if="selectedWeapon.name == 'Cruel Oath'" class="weaponimg" src="../assets/images/cruel_oath_img.png">
+                        <img v-else class="weaponimg" src="../assets/images/virtuous_contract_img.png">
                     </div>
                     <div v-else-if="selectedWeapon.weapon_type.name == 'LARGE_SWORDS'">
-                        <img v-if="selectedWeapon.name == 'Virtuous Treaty'" class="weaponimg" src="../assets/virtuous_treaty_img.png">
-                        <img v-else class="weaponimg" src="../assets/beastlord_img.png">
+                        <img v-if="selectedWeapon.name == 'Virtuous Treaty'" class="weaponimg" src="../assets/images/virtuous_treaty_img.png">
+                        <img v-else class="weaponimg" src="../assets/images/beastlord_img.png">
                     </div>
                     <div v-else>
-                        <img class="weaponimg" src="../assets/virtuous_dignity_img.png">
+                        <img class="weaponimg" src="../assets/images/virtuous_dignity_img.png">
                     </div>
                 </div>
                 <div v-else class="imageBoxBracers">
-                    <img class="weaponbarefistimg" src="../assets/barefist_img.png">
+                    <img class="weaponbarefistimg" src="../assets/images/barefist_img.png">
                 </div>
                 <div class="inOneLine">
                     <cite>{{ selectedWeapon.name }}</cite>

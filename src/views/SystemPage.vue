@@ -22,7 +22,7 @@
 
     <button @click="show('operator');" class="button button-select" id="menu">
         {{ $t('system.operators') }}
-        <img v-if="checkOperators" src="../assets/New_Icon.png" width="24" height="18" 
+        <img v-if="checkOperators" src="../assets/images/New_Icon.png" width="24" height="18" 
         style="vertical-align: middle; float: right;"/>
     </button>
 

@@ -9,7 +9,7 @@
     <div v-else-if="addWindow" >
         <figure class="innerbox">
             <figcaption>
-                <img src="../assets/Info_Icon.png" width="22" height="21" 
+                <img src="../assets/images/Info_Icon.png" width="22" height="21" 
                 style="vertical-align: middle; margin-right: 5px;"/>
                     <slot name="title"></slot>
             </figcaption>

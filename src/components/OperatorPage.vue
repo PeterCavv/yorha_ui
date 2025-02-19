@@ -19,17 +19,17 @@ const store = useOperatorData();
                     <div v-for="(operator, index) in operatorList" :key="index">
                         <button v-if="operator.androids != 0" @click="() => {showTypeInfo(operator); 
                         addWindow = true;}" class="button button-list" id="menu" style="width: 100%;">
-                            <img src="../assets/Operator_Icon.png" width="24" height="18" 
+                            <img src="../assets/images/Operator_Icon.png" width="24" height="18" 
                             style="vertical-align: middle; float: left;"/>
                             &nbsp; {{ operator.name.name }}
                         </button>
 
                         <button v-else @click="() => {showTypeInfo(operator); addWindow = true;}" 
                         class="button button-list" id="menu" style="width: 100%;">
-                            <img src="../assets/Operator_NoAndroid_Icon.png" width="23" height="18" 
+                            <img src="../assets/images/Operator_NoAndroid_Icon.png" width="23" height="18" 
                             style="vertical-align: middle; float: left;"/>
                             &nbsp;{{ operator.name.name }}
-                            <img src="../assets/New_Icon.png" width="23" height="17" 
+                            <img src="../assets/images/New_Icon.png" width="23" height="17" 
                             style="vertical-align: middle; float: right;"/>
                         </button>
                     </div>

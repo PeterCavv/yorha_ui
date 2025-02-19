@@ -15,9 +15,9 @@
 
         <div>
             <div class="inOneLine-vertical-center" v-if="hideButton">
-                <input v-expand-input id="name" v-model="inName" type="text" style="margin-bottom: 5px; 
+                <input id="name" v-model="inName" type="text" style="margin-bottom: 5px; 
                 width: 15rem;" v-bind:placeholder="$t('loggin.user')">
-                <input v-expand-input id="pass" v-model="inPass" type="password" style="margin-bottom: 20px; 
+                <input id="pass" v-model="inPass" type="password" style="margin-bottom: 20px; 
                 width: 15rem;" v-bind:placeholder="$t('loggin.password')">
                 <small style="margin-bottom: 15px;" v-if="errors">
                     {{ $t('auth.error_pass_message') }}

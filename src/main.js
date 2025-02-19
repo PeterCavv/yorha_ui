@@ -4,7 +4,7 @@ import App from './App.vue'
 import router from './router'
 import i18n from "./lang"
 
-import "@/assets/main.css"
+import "./assets/styles/main.css"
 
 function animateText(element, text, totalDuration = 900, steps = 5) {
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

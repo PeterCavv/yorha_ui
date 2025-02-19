@@ -1,6 +1,6 @@
 
 *{
-  cursor: url("./Pointer_Icon.png"), pointer;
+  cursor: url("../images/Pointer_Icon.png"), pointer;
 }
 body {
     background-color: #d1cdb7;
@@ -202,7 +202,7 @@ input[type=reset]:not(:disabled) {
   font-family: inherit;
   letter-spacing: inherit;
   font-weight: inherit;
-  cursor: url("./Block_Icon.png"), not-allowed;
+  cursor: url("../images/Block_Icon.png"), not-allowed;
   -webkit-transition-duration: 0.2s;
   -moz-transition-duration: 0.2s;
   -o-transition-duration: 0.2s;
@@ -249,7 +249,7 @@ button:disabled,
   letter-spacing: inherit;
   font-weight: inherit;
   color: #bab5a1;
-  cursor: url("./Block_Icon.png"), not-allowed;
+  cursor: url("../images/Block_Icon.png"), not-allowed;
 }
 button:not(:disabled),
 .button {
@@ -266,7 +266,7 @@ button:not(:disabled),
   font-family: inherit;
   letter-spacing: inherit;
   font-weight: inherit;
-  cursor: url("./Pointer_Icon.png"), pointer;
+  cursor: url("../images/Pointer_Icon.png"), pointer;
   -webkit-transition-duration: 0.2s;
   -moz-transition-duration: 0.2s;
   -o-transition-duration: 0.2s;
