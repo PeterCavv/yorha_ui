@@ -35,12 +35,15 @@ const addWindow = ref(false);
             <template #body>
                 <div v-if="selectedWeapon.weapon_type.name !='COMBAT_BRACERS'" class="imageBox">
                     <div v-if="selectedWeapon.weapon_type.name == 'SMALL_SWORDS'">
-                        <img v-if="selectedWeapon.name == 'YoRHa-issue Blade'" class="weaponimg" src="../assets/images/yorha-issue_blade_img.png">
-                        <img v-else-if="selectedWeapon.name == 'Cruel Oath'" class="weaponimg" src="../assets/images/cruel_oath_img.png">
+                        <img v-if="selectedWeapon.name == 'YoRHa-issue Blade'" class="weaponimg" 
+                        src="../assets/images/yorha-issue_blade_img.png">
+                        <img v-else-if="selectedWeapon.name == 'Cruel Oath'" class="weaponimg" 
+                        src="../assets/images/cruel_oath_img.png">
                         <img v-else class="weaponimg" src="../assets/images/virtuous_contract_img.png">
                     </div>
                     <div v-else-if="selectedWeapon.weapon_type.name == 'LARGE_SWORDS'">
-                        <img v-if="selectedWeapon.name == 'Virtuous Treaty'" class="weaponimg" src="../assets/images/virtuous_treaty_img.png">
+                        <img v-if="selectedWeapon.name == 'Virtuous Treaty'" class="weaponimg" 
+                        src="../assets/images/virtuous_treaty_img.png">
                         <img v-else class="weaponimg" src="../assets/images/beastlord_img.png">
                     </div>
                     <div v-else>
@@ -66,8 +69,7 @@ const addWindow = ref(false);
 
 <script>
 import searcher from '../utils/Searcher';
-import InfoWindow from './InfoWindow.vue';
-
+import InfoWindow from '../components/common/InfoWindow.vue'
 
     export default {
         name: 'ArmoryPage',
@@ -89,11 +91,11 @@ import InfoWindow from './InfoWindow.vue';
                 this.selectedWeapon = weapon;
             },
             changeString(data){
-            return data.split('_').map(word =>
-                word.charAt(0).toUpperCase() + 
-                word.slice(1).toLowerCase()
-            ).join(' ');
-        }
+                return data.split('_').map(word =>
+                    word.charAt(0).toUpperCase() + 
+                    word.slice(1).toLowerCase()
+                ).join(' ');
+            }
         }
 }
 

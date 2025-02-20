@@ -96,7 +96,7 @@
 import { storeToRefs } from 'pinia';
 import { connection } from '../services/ApiConnection'
 import { useAuthStore } from '../stores/UserStore';
-import InfoWindow from '../components/InfoWindow.vue';
+import InfoWindow from '../components/common/InfoWindow.vue'
 import { ref } from 'vue';
 
     export default {

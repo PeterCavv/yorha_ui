@@ -59,7 +59,7 @@ const addWindow = ref(false);
 
 <script>
 import searcher from '../utils/Searcher.mjs'
-import InfoWindow from './InfoWindow.vue'
+import InfoWindow from '../components/common/InfoWindow.vue'
 import dateUtils  from '../utils/DateUtils.mjs'
 
 export default {

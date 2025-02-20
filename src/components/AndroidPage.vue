@@ -108,7 +108,7 @@ const addWindow = ref(false);
 
 <script>
 import searcher from '../utils/Searcher'
-import InfoWindow from './InfoWindow.vue'
+import InfoWindow from '../components/common/InfoWindow.vue'
 
 export default {
     name: "AndroidPage",

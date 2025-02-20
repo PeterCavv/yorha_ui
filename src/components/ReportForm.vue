@@ -92,7 +92,7 @@ const content = computed({
 import { connection } from '@/services/ApiConnection'
 import axios from 'axios';
 import { useLoadingStore } from '../stores/LoadingStore';
-import ConfirmationModal from './partials/ConfirmationModal.vue';
+import ConfirmationModal from '../components/common/ConfirmationModal.vue';
 import messageModal from '../utils/MessageModal.mjs';
 import dateUtils from '../utils/DateUtils.mjs';
 

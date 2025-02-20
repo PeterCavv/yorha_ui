@@ -106,7 +106,7 @@ const operator = options.value.operator;
   <hr class="bottom-screen"/>
 </template>
 <script>
-import ConfirmationModal from '../components/partials/ConfirmationModal.vue';
+import ConfirmationModal from '../components/common/ConfirmationModal.vue';
 import searcher from '../utils/Searcher'
 import messageModal from '../utils/MessageModal.mjs';
 import axios from 'axios';
