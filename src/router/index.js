@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { connection } from '@/services/ApiConnection'
+import { connection } from '../services/ApiConnection'
 import { setActivePinia, createPinia } from 'pinia'
 import { useLoadingStore } from '../stores/LoadingStore'
 import { useAuthStore } from '../stores/UserStore'
-import AuthPage from "../views/AuthPage.vue"
+import AuthPage from '@/views/common/AuthPage.vue'
 import axios from 'axios'
 import multiguard from 'vue-router-multiguard';
 
@@ -74,7 +74,7 @@ const router = createRouter({
     {
       path: '/startmenu',
       name: 'startmenu',
-      component: () => import('../views/StartMenu.vue'),
+      component: () => import('@/views/StartMenu.vue'),
       props: true,
       beforeEnter: multiguard([androids, operators]),
       meta: { requiresRole: true }
@@ -82,7 +82,7 @@ const router = createRouter({
     {
       path: '/startmenu/fabrication',
       name: 'fabrication',
-      component: () => import('../views/FabricationPage.vue'),
+      component: () => import('@/views/admin/FabricationPage.vue'),
       props: true,
       beforeEnter: multiguard([types, models, appe, androids]),
       meta: { requiresRole: ['admin'] }
@@ -90,7 +90,7 @@ const router = createRouter({
     {
       path: '/database',
       name: 'database',
-      component: () => import('../views/DataBase.vue'),
+      component: () => import('@/views/DataBase.vue'),
       props: true,
       beforeEnter: multiguard([androids, reports, weapons]),
       meta: { requiresRole: true }
@@ -98,14 +98,14 @@ const router = createRouter({
     {
       path: '/database/create-report',
       name: 'create-report',
-      component: () => import('../views/CreateReport.vue'),
+      component: () => import('@/views/CreateReport.vue'),
       props: true,
       meta: { requiresRole: true }
     },
     {
       path: '/system',
       name: 'system',
-      component: () => import('../views/SystemPage.vue'),
+      component: () => import('@/views/admin/SystemPage.vue'),
       props: true,
       beforeEnter: multiguard([operators, types]),
       meta: { requiresRole: ['admin'] }
@@ -113,14 +113,14 @@ const router = createRouter({
     {
       path: '/system/assing-android',
       name: 'assing-android',
-      component: () => import('../views/OperatorsAssignmentsPage.vue'),
+      component: () => import('@/views/admin/OperatorsAssignmentsPage.vue'),
       props: true,
       beforeEnter:  multiguard([androids]),
       meta: { requiresRole: ['admin'] }
     },
     {
       path: '/not-authorized',
-      component: () => import('../views/NotAuthorized.vue')
+      component: () => import('@/views/common/NotAuthorized.vue')
     }
   ]
 })
