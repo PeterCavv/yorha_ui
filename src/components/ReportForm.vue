@@ -37,7 +37,7 @@ const content = computed({
             <div class="inOneLine-form">
                 <label for="inputTitle">{{ $t('report.create_title') }}</label>
                 <input v-model="title" type="text" class="android-attribute" id="inputTitle" 
-                style="padding-right: 0px;" v-bind:placeholder="$t('placeholder.report_title')" required/>
+                style="padding-right: 0px;" :maxlength="30" v-bind:placeholder="$t('placeholder.report_title')" required/>
 
                 <label for="inputDate">{{ $t('report.create_date') }}</label>
                 <input v-if="id === null || compareDates(date)" v-model="date" type="date" class="android-attribute" id="inputDate"
