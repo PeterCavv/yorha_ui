@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { useOperatorData } from '../stores/OperatorStore';
+import { useOperatorData } from '@/stores/OperatorStore';
 import { storeToRefs } from 'pinia';
 
 const store = useOperatorData();
@@ -73,12 +73,12 @@ const operator = options.value.operator;
               <td v-else>-</td>
               <td v-if="android.state.name == 'Operational' && android.assigned_operator == null">
                 <a @click="() => {assingAndroid(android.id, operator.id);}" name="add">
-                  <img src="../assets/images/assing_icon.png" style="width: 20px;">
+                  <img src="@/assets/images/assing_icon.png" style="width: 20px;">
                 </a>
               </td>
               <td v-else-if="android.assigned_operator != null && android.assigned_operator.name.name === operator.name.name">
                 <a @click="() => {selectedAndroid = android; showModal = true;}">
-                  <img src="../assets/images/Block_Icon.png" style="width: 20px; margin-top: 5px;">
+                  <img src="@/assets/images/Block_Icon.png" style="width: 20px; margin-top: 5px;">
                 </a>
               </td>
               <td></td>
@@ -106,9 +106,9 @@ const operator = options.value.operator;
   <hr class="bottom-screen"/>
 </template>
 <script>
-import ConfirmationModal from '../components/common/ConfirmationModal.vue';
-import searcher from '../utils/Searcher'
-import messageModal from '../utils/MessageModal.mjs';
+import ConfirmationModal from '@/components/common/ConfirmationModal.vue';
+import searcher from '@/utils/Searcher'
+import messageModal from '@/utils/MessageModal.mjs';
 import axios from 'axios';
 import { connection } from '@/services/ApiConnection'
 

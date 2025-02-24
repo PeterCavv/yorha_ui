@@ -1,5 +1,5 @@
 <script setup>
-import { useAuthStore } from '../stores/UserStore';
+import { useAuthStore } from '@/stores/UserStore';
 import { computed } from 'vue';
 
 

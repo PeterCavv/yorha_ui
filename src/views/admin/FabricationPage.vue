@@ -120,9 +120,9 @@
 
 <script>
 import { connection } from '@/services/ApiConnection'
-import messageModal  from '../utils/MessageModal.mjs'
+import messageModal  from '@/utils/MessageModal.mjs'
 import axios from "axios"
-import { useLoadingStore } from '../stores/LoadingStore';
+import { useLoadingStore } from '@/stores/LoadingStore';
 
   export default {
     el: 'FabricationPage',
