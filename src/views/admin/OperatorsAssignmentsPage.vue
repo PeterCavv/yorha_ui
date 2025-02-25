@@ -69,14 +69,14 @@ const operator = options.value.operator;
               <td v-if="android.state.name == 'Operational' && android.assigned_operator == null" 
               style="color: #22c05f;">{{ $t('simple_response.affirmative') }}</td>
               <td v-else style="color: #c02222">{{ $t('simple_response.negative') }}</td>
-              <td v-if="android.assigned_operator != null">{{ android.assigned_operator.name.name }}</td>
+              <td v-if="android.assigned_operator != null">{{ android.assigned_operator.name }}</td>
               <td v-else>-</td>
               <td v-if="android.state.name == 'Operational' && android.assigned_operator == null">
                 <a @click="() => {assingAndroid(android.id, operator.id);}" name="add">
                   <img src="@/assets/images/assing_icon.png" style="width: 20px;">
                 </a>
               </td>
-              <td v-else-if="android.assigned_operator != null && android.assigned_operator.name.name === operator.name.name">
+              <td v-else-if="android.assigned_operator != null && android.assigned_operator.name === operator.name.name">
                 <a @click="() => {selectedAndroid = android; showModal = true;}">
                   <img src="@/assets/images/Block_Icon.png" style="width: 20px; margin-top: 5px;">
                 </a>
@@ -147,7 +147,7 @@ export default {
 
         if( this.showList == "owned") {
           return android.filter(
-            android => android.assigned_operator != null && android.assigned_operator.name.name === operator.name.name
+            android => android.assigned_operator != null && android.assigned_operator.name === operator.name.name
           ); 
         }
 

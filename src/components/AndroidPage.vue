@@ -85,7 +85,7 @@ const addWindow = ref(false);
                     </div>
                     <div style="margin-left: auto;" v-if="selectedAndroid.type.name != 'Operator' && selectedAndroid.model.name != 'Special'">
                             <label><cite>{{ $t('android.assigned_operator') }}</cite></label>
-                            <p v-if="selectedAndroid.assigned_operator">{{ selectedAndroid.assigned_operator.name.name }}</p>
+                            <p v-if="selectedAndroid.assigned_operator">{{ selectedAndroid.assigned_operator.name }}</p>
                             <p v-else>{{ $t('information.data_empty') }}</p>
                     </div>
                 </div>
