@@ -234,6 +234,7 @@ input[type=reset]:not(:disabled):active {
 }
 input:disabled,
 button:disabled,
+select:disabled,
 .button-disabled {
   padding: 0.5rem;
   font-size: 1em;
@@ -250,6 +251,9 @@ button:disabled,
   font-weight: inherit;
   color: #bab5a1;
   cursor: url("../images/Block_Icon.png"), not-allowed;
+}
+input:disabled{
+  background-color: #dcd8c0;
 }
 button:not(:disabled),
 .button {
