@@ -21,14 +21,14 @@ const store = useOperatorData();
                         addWindow = true;}" class="button button-list" id="menu" style="width: 100%;">
                             <img src="../assets/images/Operator_Icon.png" width="24" height="18" 
                             style="vertical-align: middle; float: left;"/>
-                            &nbsp; {{ operator.name.name }}
+                            &nbsp; {{ operator.name }}
                         </button>
 
                         <button v-else @click="() => {showTypeInfo(operator); addWindow = true;}" 
                         class="button button-list" id="menu" style="width: 100%;">
                             <img src="../assets/images/Operator_NoAndroid_Icon.png" width="23" height="18" 
                             style="vertical-align: middle; float: left;"/>
-                            &nbsp;{{ operator.name.name }}
+                            &nbsp;{{ operator.name }}
                             <img src="../assets/images/New_Icon.png" width="23" height="17" 
                             style="vertical-align: middle; float: right;"/>
                         </button>
@@ -41,7 +41,7 @@ const store = useOperatorData();
 
         <InfoWindow class="infoWindow" :addWindow="addWindow" style="margin-top: -35px;">
             <template #title>
-                {{ $t('data_base.android_info', { n: selectedOperator.name.name}) }}
+                {{ $t('data_base.android_info', { n: selectedOperator.name}) }}
             </template>
 
             <template #body>

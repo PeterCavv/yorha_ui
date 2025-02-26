@@ -30,7 +30,7 @@ const operator = options.value.operator;
 
   <figure>
     <figcaption>
-      {{ $t("operator.this_data", { n: operator.name.name }) }}
+      {{ $t("operator.this_data", { n: operator.name }) }}
     </figcaption>
     <p>{{ $t('operator.add_android_desc') }}</p>
     <cite style="font-size: small">{{  $t('operator.cite_add_android') }}</cite>
@@ -76,7 +76,7 @@ const operator = options.value.operator;
                   <img src="@/assets/images/assing_icon.png" style="width: 20px;">
                 </a>
               </td>
-              <td v-else-if="android.assigned_operator != null && android.assigned_operator.name === operator.name.name">
+              <td v-else-if="android.assigned_operator != null && android.assigned_operator.name === operator.name">
                 <a @click="() => {selectedAndroid = android; showModal = true;}">
                   <img src="@/assets/images/Block_Icon.png" style="width: 20px; margin-top: 5px;">
                 </a>
@@ -147,7 +147,7 @@ export default {
 
         if( this.showList == "owned") {
           return android.filter(
-            android => android.assigned_operator != null && android.assigned_operator.name === operator.name.name
+            android => android.assigned_operator != null && android.assigned_operator.name === operator.name
           ); 
         }
 
