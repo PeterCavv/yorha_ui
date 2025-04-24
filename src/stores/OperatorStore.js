@@ -9,6 +9,7 @@ export const useOperatorData = defineStore("operator", {
     actions: {
         editOperator(operator){
             this.options.operator = operator;
+            console.log(this.options.operator);
 
         }
     }

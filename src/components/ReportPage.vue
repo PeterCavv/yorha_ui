@@ -44,9 +44,9 @@ const addWindow = ref(false);
                 <p><cite>{{ $t('information.content') }}</cite></p>
                 <p>{{ selectedReport.content }}</p>
 
-                <p style="margin-top: 10px;">- {{ selectedReport.android.name }} {{ selectedReport.publish_date }} </p>
+                <p style="margin-top: 10px;">- {{ selectedReport.android }} {{ selectedReport.publishDate }} </p>
 
-                <button v-if="compareDates(formatDateToYYYYMMDD(selectedReport.publish_date))" class="button" id="menu"
+                <button v-if="compareDates(formatDateToYYYYMMDD(selectedReport.publishDate))" class="button" id="menu"
                 style="margin-bottom: 6px; text-align: center; margin-left: auto; text-transform: none; width: 30%"
                 @click="() => {store.editReport(selectedReport); $router.push({name: 'create-report'})}">
                     {{ $t('report.edit_report') }}
@@ -80,7 +80,8 @@ export default {
     mixins: [searcher, dateUtils],
     methods: {
         showTypeInfo(report) {
-                this.selectedReport = report;
+            console.log(report.publishDate);
+            this.selectedReport = report;
 		}
     }
 

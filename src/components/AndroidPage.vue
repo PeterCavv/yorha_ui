@@ -59,7 +59,7 @@ const addWindow = ref(false);
                     </div>
                     <div style="width: 5rem;">
                         <label><cite>{{ $t('android.type_number') }}</cite></label>
-                        <p v-if="selectedAndroid.type_number != '' && selectedAndroid.type_number != 0">{{ selectedAndroid.type_number}}</p>
+                        <p v-if="selectedAndroid.typeNumber != '' && selectedAndroid.typeNumber != 0">{{ selectedAndroid.typeNumber}}</p>
                         <p v-else>{{ $t('information.data_empty') }}</p>
                     </div>
                     <div style="width: 7rem;">
@@ -68,7 +68,7 @@ const addWindow = ref(false);
                     </div>
                     <div>
                         <label><cite>{{ $t('android.short_name') }}</cite></label>
-                        <p v-if="selectedAndroid.short_name != null">{{ selectedAndroid.short_name}}</p>
+                        <p v-if="selectedAndroid.shortName != null">{{ selectedAndroid.shortName}}</p>
                         <p v-else>{{ $t('information.data_empty') }}</p>
                     </div>
                     

@@ -1,16 +1,3 @@
-<script setup>
-import { ref } from 'vue';
-import { useOperatorData } from '@/stores/OperatorStore';
-import { storeToRefs } from 'pinia';
-
-const store = useOperatorData();
-
-const showModal = ref(false);
-
-const { options } = storeToRefs(store);
-const operator = options.value.operator;
-</script>
-
 <template>
   <br/><br/><br/>
   <hr/>
@@ -30,7 +17,7 @@ const operator = options.value.operator;
 
   <figure>
     <figcaption>
-      {{ $t("operator.this_data", { n: operator.name }) }}
+      {{ $t("operator.this_data", { n: operator.name }) || "Cargando..."}}
     </figcaption>
     <p>{{ $t('operator.add_android_desc') }}</p>
     <cite style="font-size: small">{{  $t('operator.cite_add_android') }}</cite>
@@ -61,8 +48,8 @@ const operator = options.value.operator;
         </tr>
       </thead>
       <tbody>
-        <template v-if="androidList.length">
-          <template v-if="showAllAndroids" v-for="( android, index ) in filteredAndroidList(operator)" :key="index">
+        <template v-if="filteredAndroidList.length">
+          <template v-if="showAllAndroids" v-for="( android, index ) in filteredAndroidList" :key="index">
             <tr class="interactive" style="height: 30px;">
               <td>{{ android.name }}</td>
               <td>{{ android.type.name }}</td>
@@ -72,7 +59,7 @@ const operator = options.value.operator;
               <td v-if="android.assigned_operator != null">{{ android.assigned_operator.name }}</td>
               <td v-else>-</td>
               <td v-if="android.state.name == 'Operational' && android.assigned_operator == null">
-                <a @click="() => {assingAndroid(android.id, operator.id);}" name="add">
+                <a @click="() => {onAssign(android.id, operator.id);}" name="add">
                   <img src="@/assets/images/assing_icon.png" style="width: 20px;">
                 </a>
               </td>
@@ -98,14 +85,100 @@ const operator = options.value.operator;
       
       <template #button>
           <button class="button-menu" style="margin-left: auto;" 
-          @click="removeAssignedAndroid(selectedAndroid.id, operator.id);">{{ $t("modal.unassing_btn") }}</button>
+          @click="onRemove(selectedAndroid.id, operator.id);">{{ $t("modal.unassing_btn") }}</button>
       </template>
     </ConfirmationModal>
   </div>
 
   <hr class="bottom-screen"/>
 </template>
-<script>
+
+<script setup>
+import { computed, toRef } from 'vue';
+import { useRouter } from 'vue-router';
+import { useSearcher } from '@/utils/Searcher.mjs';
+import messageModal from '@/utils/MessageModal.mjs';
+import ConfirmationModal from '@/components/common/ConfirmationModal.vue';
+import { operatorAssigmentsController } from '../../controllers/OperatorAssigmentsController';
+
+const props = defineProps({
+  androids: {
+    type: Object,
+    required: true
+  }
+});
+
+const {
+  operator,
+  selectedAndroid,
+  showList,
+  showAllAndroids,
+  showModal,
+  assignAndroid,
+  removeAssignedAndroid,
+} = operatorAssigmentsController();
+
+const baseAndroids = computed(() =>
+  props.androids.filter(android =>
+    android.type.name !== 'Operator' &&
+    android.model.name !== 'Special'
+  )
+);
+
+const { searchValue, filteredList: searchFilteredList } = useSearcher(baseAndroids, 'name');
+
+const filteredAndroidList = computed(() =>
+  searchFilteredList.value.filter(android => {
+    if (showList.value === 'available') {
+      return android.state.name === 'Operational' && android.assigned_operator == null;
+    }
+    if (showList.value === 'owned') {
+      return android.assigned_operator?.name === operator.value.name;
+    }
+    return true;
+  })
+);
+
+const router = useRouter();
+
+// HANDLER UI
+
+/**
+ * Function to save the selected android and show the confirmation modal
+ * @param androidId Android's ID
+ * @param operatorId Operator's ID
+ */
+function onAssign(androidId, operatorId) {
+  assignAndroid(androidId, operatorId)
+    .then(() => {
+      messageModal.data().httpMethod.UPDATE;
+      router.push({ name: 'system' });
+    })
+    .catch(() => {
+      messageModal.data().status.ERROR;
+    });
+}
+
+/**
+ * Function to remove the selected android and show the confirmation modal
+ * @param androidId Android's ID
+ * @param operatorId Operator's ID
+ */
+function onRemove(androidId, operatorId) {
+  removeAssignedAndroid(androidId, operatorId)
+    .then(() => {
+      messageModal.data().httpMethod.DELETE;
+      router.push({ name: 'system' });
+    })
+    .catch(() => {
+      messageModal.data().status.ERROR;
+    });
+}
+
+// END HANDLER UI
+
+</script>
+<!-- <script>
 import ConfirmationModal from '@/components/common/ConfirmationModal.vue';
 import searcher from '@/utils/Searcher'
 import messageModal from '@/utils/MessageModal.mjs';
@@ -186,7 +259,7 @@ export default {
       }
     }
 }
-</script>
+</script> -->
 <style scoped>
 
   .bottom-screen{

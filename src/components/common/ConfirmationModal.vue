@@ -22,22 +22,19 @@
     </div>
 </template>
   
-<script>
-import messageModal from '../../utils/MessageModal.mjs';
+<script setup>
 
-export default {
-    props: {
-        isVisible: {
-            type: Boolean,
-            required: true
-        }
-    },
-    mixins: [messageModal],
-    methods: {
-        closeModal(){
-            this.$emit('update:isVisible', false); 
-        }
+const props = defineProps({
+    isVisible: {
+        type: Boolean,
+        required: true
     }
+});
+
+const emit = defineEmits(['update:isVisible']);
+
+function closeModal(){
+    emit('update:isVisible',false);
 }
 
 </script>
