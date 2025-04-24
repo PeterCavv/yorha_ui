@@ -110,7 +110,7 @@
                 {{ $t('form.submit') }}
             </button>
 
-            <button v-else type="button" @click="addAndroid()" class="button-menu" style="margin-top: 10px;">{{ $t('form.submit') }}</button>
+            <button v-else type="button" @click="createAndroid()" class="button-menu" style="margin-top: 10px;">{{ $t('form.submit') }}</button>
         </fieldset>
     </form>
 
@@ -118,7 +118,40 @@
 
 </template>
 
-<script>
+<script setup>
+import { fabricationController } from '@/controllers/admin/FabricationController';
+
+const props = defineProps({
+    types: {
+        type: Object,
+        req: true
+    },
+    models: {
+        type: Object,
+        req: true
+    },
+    appe: {
+        type: Object,
+        req: true
+    },
+    androids: {
+        type: Object,
+        req: true
+    }
+});
+
+const {
+    selectedType,
+    selectedModel,
+    selectedAppearance,
+    androidName,
+    bio,
+    createAndroid  
+} = fabricationController(props);
+
+</script>
+
+<!-- <script>
 import { connection } from '@/services/ApiConnection'
 import messageModal  from '@/utils/MessageModal.mjs'
 import axios from "axios"
@@ -243,7 +276,7 @@ import { useLoadingStore } from '@/stores/LoadingStore';
         }
     }
   }
-</script>
+</script> -->
 
 <style>
 

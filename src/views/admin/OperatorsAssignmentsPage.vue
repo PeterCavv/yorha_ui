@@ -99,7 +99,7 @@ import { useRouter } from 'vue-router';
 import { useSearcher } from '@/utils/Searcher.mjs';
 import messageModal from '@/utils/MessageModal.mjs';
 import ConfirmationModal from '@/components/common/ConfirmationModal.vue';
-import { operatorAssigmentsController } from '../../controllers/OperatorAssigmentsController';
+import { operatorAssigmentsController } from '../../controllers/admin/OperatorAssigmentsController';
 
 const props = defineProps({
   androids: {
