@@ -1,13 +1,3 @@
-<script setup>
-import { ref } from 'vue';
-import { useAuthStore } from '../stores/UserStore'
-import { computed } from 'vue'
-
-const authStore = useAuthStore();
-const userRole = computed(() => authStore.user.role)
-const addWindow = ref(false);
-</script>
-
 <template>
     <h2>{{ $t('data_base.android_data') }}</h2>
     <input v-model="searchValue" type="text" v-bind:placeholder="$t('data_search.android_search')"
@@ -106,7 +96,46 @@ const addWindow = ref(false);
     <hr/>
 </template>
 
-<script>
+<script setup>
+import { ref, toRef } from 'vue';
+import { useAuthStore } from '../stores/UserStore'
+import { computed } from 'vue'
+import { useSearcher } from '@/utils/Searcher.mjs';
+import InfoWindow from '@/components/common/InfoWindow.vue'
+
+const selectedAndroid = ref(null);
+
+// DATA FROM STORE
+
+const authStore = useAuthStore();
+const userRole = computed(() => authStore.user.role)
+const addWindow = ref(false);
+
+// END DATA FROM STORE
+
+// DEFINING PROPS
+
+const props = defineProps({
+    androids: {
+        type: Object,
+        required: true
+    }
+});
+
+const { searchValue, filteredList: androidList } = useSearcher(toRef(props.androids), 'name');
+
+// END DEFINING PROPS
+
+// HANDLER UI
+
+function showTypeInfo(android) {
+    selectedAndroid.value = android;
+}
+
+// END HANDLER UI
+</script>
+
+<!-- <script>
 import searcher from '../utils/Searcher'
 import InfoWindow from '../components/common/InfoWindow.vue'
 
@@ -121,9 +150,10 @@ export default {
             required: true
         }
     },
-    data: {
-        selectedAndroid: null,
-
+    data() {
+        return{
+            selectedAndroid: null,
+        }
     },
     mixins: [searcher],
     methods: {
@@ -132,7 +162,7 @@ export default {
 		}
     }
 }
-</script>
+</script> -->
 
 <style>
 .img-android{

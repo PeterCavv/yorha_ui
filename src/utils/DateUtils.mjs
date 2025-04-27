@@ -1,36 +1,79 @@
-const dateUtils = {
-    methods: {
-        formatDateToDDMMYYYY(date) {
-            const [year, month, day] = date.split('-');
-            return `${day}/${month}/${year}`;
-        },
-        formatDateToYYYYMMDD(date){
-            const [day, month, year] = date.split('/');
-            return `${year}-${month}-${day}`;
-        },
-        setMinDate() {
-            const today = new Date();
-            const year = today.getFullYear();
-            const month = String(today.getMonth() + 1).padStart(2, '0'); 
-            const day = String(today.getDate()).padStart(2, '0');
-            this.minDate = `${year}-${month}-${day}`;  
-        },
-        compareDates(date){
-            if(date === null){
-                return false;
-            }
 
-            const inputDate = new Date(date);
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
+function formatDateToDDMMYYYY(date) {
+    const [year, month, day] = date.split('-');
+    return `${day}/${month}/${year}`;
+};
 
-            if(inputDate < today || inputDate === today){
-                return false;
-            } else {
-                return true;
-            }
-        }
-    },
+function formatDateToYYYYMMDD(date) {
+    const [day, month, year] = date.split('/');
+    return `${year}-${month}-${day}`;
+};
+
+function setMinDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); 
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;  
 }
 
-export { dateUtils as default };
+function compareDates(date) {   
+    if(date === null){
+        return false;
+    }
+
+    const inputDate = new Date(date);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    if(inputDate < today || inputDate === today){
+        return false;
+    } else {
+        return true;
+    }
+}
+
+export const dateUtils = { 
+    formatDateToDDMMYYYY, 
+    formatDateToYYYYMMDD, 
+    setMinDate, 
+    compareDates 
+};
+
+
+// const dateUtils = {
+//     methods: {
+//         formatDateToDDMMYYYY(date) {
+//             const [year, month, day] = date.split('-');
+//             return `${day}/${month}/${year}`;
+//         },
+//         formatDateToYYYYMMDD(date){
+//             const [day, month, year] = date.split('/');
+//             return `${year}-${month}-${day}`;
+//         },
+//         setMinDate() {
+//             const today = new Date();
+//             const year = today.getFullYear();
+//             const month = String(today.getMonth() + 1).padStart(2, '0'); 
+//             const day = String(today.getDate()).padStart(2, '0');
+//             this.minDate = `${year}-${month}-${day}`;  
+//         },
+//         compareDates(date){
+//             if(date === null){
+//                 return false;
+//             }
+
+//             const inputDate = new Date(date);
+//             const today = new Date();
+//             today.setHours(0, 0, 0, 0);
+
+//             if(inputDate < today || inputDate === today){
+//                 return false;
+//             } else {
+//                 return true;
+//             }
+//         }
+//     },
+// }
+
+// export { dateUtils as default };

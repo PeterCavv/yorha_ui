@@ -24,10 +24,59 @@
 
 </template>
 
-<script>
-import ReportPage from '../components/ReportPage.vue'
-import AndroidPage from '../components/AndroidPage.vue'
-import ArmoryPage from '../components/ArmoryPage.vue';
+<script setup>
+import { ref } from 'vue'
+import ReportPage from '@/components/ReportPage.vue'
+import AndroidPage from '@/components/AndroidPage.vue'
+import ArmoryPage from '@/components/ArmoryPage.vue'
+
+const dataAndroids = ref(false);
+const dataReports = ref(false);
+const dataWeapons = ref(false);
+
+const props = defineProps({
+	androids: {
+		type: Object,
+		req: true
+	},
+	reports: {
+		type: Object,
+		req: true
+	},
+	weapons: {
+		type: Object,
+		required: true
+	}
+});
+
+function show(typeData) {
+		switch (typeData) {
+			case "android":
+				dataAndroids.value = true;
+				dataReports.value = false;
+				dataWeapons.value = false;
+				break;
+			case "report":
+				dataAndroids.value = false;
+				dataReports.value = true;
+				dataWeapons.value = false;
+				break;
+			case "weapon":
+				dataAndroids.value = false;
+				dataReports.value = false;
+				dataWeapons.value = true;
+				break;
+			default:
+				break;
+		}
+	}
+
+</script>
+
+<!-- <script>
+import ReportPage from '@/components/ReportPage.vue'
+import AndroidPage from '@/components/AndroidPage.vue'
+import ArmoryPage from '@/components/ArmoryPage.vue';
 
 export default {
 	el: "DataBase",
@@ -57,14 +106,6 @@ export default {
 			required: true
 		}
 	},
-	computed: {
-		reportList() {
-			if (this.searchValue.trim().length > 0) {
-				return this.reports.filter((report) => report.name.toLowerCase().includes(this.searchValue.trim().toLowerCase()));
-			}
-			return this.reports;
-		}
-	},
 	methods: {
 		show(typeData) {
 			switch (typeData) {
@@ -89,4 +130,4 @@ export default {
 		}
 	}
 }
-</script>
+</script> -->

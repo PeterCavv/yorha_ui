@@ -1,5 +1,7 @@
 import { defineStore } from "pinia";
-import dateUtils from "../utils/DateUtils.mjs";
+import { dateUtils } from "../utils/DateUtils.mjs";
+
+const { formatDateToYYYYMMDD } = dateUtils;
 
 export const useReportData = defineStore("report", {
     state: () => ({
@@ -24,7 +26,7 @@ export const useReportData = defineStore("report", {
             this.options.id = report.id;
             this.options.title = report.name;
             this.options.content = report.content;
-            this.options.date = dateUtils.methods.formatDateToYYYYMMDD(report.publishDate);
+            this.options.date = formatDateToYYYYMMDD(report.publishDate);
             this.options.android = report.android;
 
         },

@@ -1,11 +1,3 @@
-<script setup>
-import { ref } from 'vue';
-import { useReportData } from '../stores/ReportStore';
-
-const store = useReportData();
-const addWindow = ref(false);
-</script>
-
 <template>
     <h2>{{ $t('data_base.reports_data') }}</h2>
     <div class="inOneLine">
@@ -57,7 +49,36 @@ const addWindow = ref(false);
     <hr/>
 </template>
 
-<script>
+<script setup>
+import { ref, toRef } from 'vue';
+import { useReportData } from '../stores/ReportStore';
+import InfoWindow from '@/components/common/InfoWindow.vue';
+import { dateUtils } from '../utils/DateUtils.mjs';
+import { useSearcher } from '../utils/Searcher.mjs';
+
+const selectedReport = ref(null);
+
+const store = useReportData();
+const addWindow = ref(false);
+
+const props = defineProps({
+    reports: {
+        type: Object,
+        required: true
+    }
+});
+
+const { compareDates, formatDateToYYYYMMDD } = dateUtils;
+
+const { searchValue, filteredList: reportList } = useSearcher(toRef(props.reports), 'name');
+
+function showTypeInfo(report) {
+    selectedReport.value = report;
+}
+
+</script>
+
+<!-- <script>
 import searcher from '../utils/Searcher.mjs'
 import InfoWindow from '../components/common/InfoWindow.vue'
 import dateUtils  from '../utils/DateUtils.mjs'
@@ -86,7 +107,7 @@ export default {
     }
 
 }
-</script>
+</script> -->
 
 <style>
 .img-android{
