@@ -36,7 +36,11 @@
 
 </template>
 
-<script>
+<script setup>
+import ReportForm from '../components/ReportForm.vue';
+</script>
+
+<!-- <script>
 import ReportForm from '../components/ReportForm.vue';
 
   export default {
@@ -45,7 +49,7 @@ import ReportForm from '../components/ReportForm.vue';
         ReportForm
     }
   }
-</script>
+</script> -->
 
 <style>
 

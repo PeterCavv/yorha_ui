@@ -1,34 +1,3 @@
-<script setup>
-import { ref, computed } from 'vue';
-import { useReportData } from '../stores/ReportStore';
-import messageModal from '../utils/MessageModal.mjs';
-
-const store = useReportData();
-const showModal = ref(false);
-
-//DATA FROM STORE
-
-const id = computed({
-    get: () => store.options.id,
-    set: (val) => (store.options.id = val)
-});
-const title = computed({
-    get: () => store.options.title,
-    set: (val) => (store.options.title = val)
-});
-const date = computed({
-    get: () => store.options.date,
-    set: (val) => (store.options.date = val)
-});
-const content = computed({
-    get: () => store.options.content,
-    set: (val) => (store.options.content = val)
-})
-
-//END DATA FROM STORE
-
-</script>
-
 <template>
     <form @submit.prevent="handleSubmit">
         <fieldset>
@@ -50,20 +19,16 @@ const content = computed({
             <textarea v-model="content" class="full" id="textarea" rows="8" required
             v-bind:placeholder="$t('placeholder.report_content')" :maxlength="800" style="padding-right: 0px;"></textarea>
 
-            <div class="inOneLine">
-                
-            </div>
-
             <button type="submit" style="margin-top: 10px;" @click="() => {
                     //While auth isn't applied, it going to send commander's ID.
-                    let report = {
+                    const report = {
                         name: title,
                         content: content,
                         publishDate: formatDateToDDMMYYYY(date),
                         androidId: '67a0e518debbc114fd37d4eb'
                     }
                     
-                    id ? updateReport(report, id) : postReport(report);
+                    id ? onEditReport(report, id) : onCreateReport(report);
                     
                 }" 
                 class="button-menu">{{ $t('form.submit') }}</button>
@@ -82,13 +47,88 @@ const content = computed({
         </template>
         
         <template #button>
-            <button class="button button-menu" style="margin-left: auto;" @click="deleteReport(id)">{{ $t('modal.delete_btn') }}</button>
+            <button class="button button-menu" style="margin-left: auto;" @click="onDeleteReport(id)">
+                {{ $t('modal.delete_btn') }}
+            </button>
         </template>
     </ConfirmationModal>
     
 </template>
 
-<script>
+<script setup>
+import ConfirmationModal from '@/components/common/ConfirmationModal.vue';
+import { dateUtils } from '../utils/DateUtils.mjs';
+import { useCreateReportController } from '../controllers/common/CreateReportController';
+import messageModal from '@/utils/MessageModal.mjs';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const { 
+    id,
+    title,
+    date,
+    content,
+    showModal,
+    createReport,
+    editReport,
+    deleteReport 
+} = useCreateReportController;
+
+const { formatDateToDDMMYYYY, setMinDate, compareDates } = dateUtils;
+
+const minDate = setMinDate();
+
+// HANDLER UI
+
+/**
+ * Function to handle the form submission to create a new report.
+ * @param report {Object} - Report object to be created.
+ */
+function onCreateReport(report) {
+    createReport(report).then(() => {
+        messageModal.data().httpMethod.CREATE;
+        router.push({ name: 'database' });
+    })
+    .catch(() => {
+      messageModal.data().status.ERROR;
+    });
+}
+
+/**
+ * Fnction to handle the form submission to edit an existing report.
+ * @param report {Object} - Report object to be edited.
+ * @param id {string} - ID of the report to be edited.
+ */
+function onEditReport(report, id) {
+    editReport(report).then(() => {
+        messageModal.data().httpMethod.UPDATE;
+        router.push({ name: 'database' });
+    })
+    .catch(() => {
+      messageModal.data().status.ERROR;
+    });
+}
+
+/**
+ * Function to handle the deletion of a report.
+ * @param id {string} - ID of the report to be deleted.
+ */
+function onDeleteReport(id) {
+    deleteReport(id).then(() => {
+        messageModal.data().httpMethod.DELETE;
+        router.push({ name: 'database' });
+    })
+    .catch(() => {
+      messageModal.data().status.ERROR;
+    });
+}
+
+// END HANDLER UI
+
+</script>
+
+<!-- <script>
 import { connection } from '@/services/ApiConnection'
 import axios from 'axios';
 import { useLoadingStore } from '../stores/LoadingStore';
@@ -194,6 +234,6 @@ export default {
         this.setMinDate();
     },
 }
-</script>
+</script> -->
 
 
